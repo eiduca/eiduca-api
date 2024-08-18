@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository
 import java.util.Optional
 
 @Repository
-interface IdentityCardConcreteRepository: ConcreteRepository<IdentityCard>, RevisionRepository<IdentityCard, String, Long> {
+interface IdentityCardRepository: ConcreteRepository<IdentityCard>, RevisionRepository<IdentityCard, String, Long> {
 
     @Query(name = "SELECT i FROM IdentityCard i WHERE person = :person AND deletedBy IS NULL AND deletedAt is NULL")
     fun findByPerson(person: Person): Optional<IdentityCard>

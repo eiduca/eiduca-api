@@ -3,6 +3,8 @@ package app.com.eiduca.module.core.model.concrect
 import app.com.eiduca.module.core.common.ConcreteModel
 import app.com.eiduca.module.core.enums.Gender
 import app.com.eiduca.module.core.interfaces.IUniqueAttributeModifier
+import app.com.eiduca.module.core.request.post.PersonRequestPost
+import app.com.eiduca.module.core.request.put.PersonRequestPut
 import jakarta.persistence.Column
 import jakarta.persistence.Entity
 import jakarta.persistence.EnumType
@@ -42,4 +44,20 @@ class Person(
     override fun toString(): String {
         return "Person(${setToString("fullname='$fullname', fullnameFather='$fullnameFather', fullnameMother='$fullnameMother', username='$username', email='$email', identityCardNumber='$identityCardNumber', password='$password', birthday=$birthday, gender=$gender, isAccountNonExpired=$isAccountNonExpired, isAccountNonLocked=$isAccountNonLocked, isCredentialsNonExpired=$isCredentialsNonExpired, isEnabled=$isEnabled")})"
     }
+
+    override fun equals(other: Any?): Boolean {
+        if(other !is Person) return false
+        return other.identityCardNumber == identityCardNumber
+    }
+
+    override fun hashCode(): Int = identityCardNumber.hashCode()
+
+    fun toPersonRequestPost(): PersonRequestPost{
+        return PersonRequestPost(fullname,fullnameFather,fullnameMother, username, email, identityCardNumber, gender, password, birthday)
+    }
+
+    fun toPersonRequestPut(): PersonRequestPut{
+        return PersonRequestPut(id, fullname, fullnameFather, fullnameMother, username, email, identityCardNumber, gender, birthday)
+    }
+
 }

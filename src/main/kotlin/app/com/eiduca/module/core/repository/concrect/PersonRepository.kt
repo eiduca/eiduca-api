@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository
 import java.util.Optional
 
 @Repository
-interface PersonConcreteRepository: ConcreteRepository<Person>, RevisionRepository<Person, String, Long>{
+interface PersonRepository: ConcreteRepository<Person>, RevisionRepository<Person, String, Long>{
     @Query(name = "SELECT p FROM Person p WHERE username = :username WHERE deletedBy IS NULL AND deletedAt IS NULL")
     fun findByUsername(username: String): Optional<Person>
 }

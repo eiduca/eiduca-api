@@ -1,7 +1,7 @@
 package app.com.eiduca.module.core.common
 
 import app.com.eiduca.module.core.enums.RegisterType
-import com.github.f4b6a3.uuid.UuidCreator
+import app.com.eiduca.module.core.util.GeneratorUUID
 import jakarta.persistence.*
 import java.io.Serializable
 import java.time.LocalDateTime
@@ -22,7 +22,7 @@ abstract class CommonModel(
 
     @PrePersist
     protected fun prePersist() {
-        id = UuidCreator.getTimeOrderedEpoch().toString()
+        id = GeneratorUUID.v7toString()
         concatValuesFields()
     }
 
