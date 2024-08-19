@@ -13,4 +13,10 @@ class RoleService(
 
     fun findByName(name: String): Role = roleRepository.findByName(name).orElseThrow { NotFoundException("Not found role by name [$name]") }
 
+    fun saveOrUpdate(role: Role): Role {
+        roleRepository.findByName(role.name).ifPresent { role.id = it.id }
+        return  roleRepository.save(role)
+    }
+
+
 }

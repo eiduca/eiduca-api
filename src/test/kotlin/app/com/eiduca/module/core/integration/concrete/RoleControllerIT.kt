@@ -1,9 +1,9 @@
 package app.com.eiduca.module.core.integration.concrete
 
 import app.com.eiduca.module.core.constant.ReturnStatus
-import app.com.eiduca.module.core.create.PersonCreate
-import app.com.eiduca.module.core.model.concrect.Person
-import app.com.eiduca.module.core.service.concrect.PersonService
+import app.com.eiduca.module.core.create.RoleCreate
+import app.com.eiduca.module.core.model.concrect.Role
+import app.com.eiduca.module.core.service.concrect.RoleService
 import app.com.eiduca.module.core.wrapper.PageableResponse
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
@@ -21,65 +21,65 @@ import kotlin.test.assertEquals
 import kotlin.test.assertNotNull
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-class PersonControllerIT {
+class RoleControllerIT {
 
     @Autowired lateinit var testRestTemplate: TestRestTemplate
-    @Autowired lateinit var personService: PersonService
+    @Autowired lateinit var roleService: RoleService
     @Value("\${apiPrefix}") lateinit var apiPrefix: String
-    val endpoint = "persons"
+    val endpoint = "roles"
 
     @Test
-    @DisplayName("List pageable of persons when successful")
+    @DisplayName("List pageable of roles when successful")
     fun findAll_WhenSuccessful() {
         val exchange = testRestTemplate.exchange("$apiPrefix/$endpoint",HttpMethod.GET,null,
-            ParameterizedTypeReference.forType<PageableResponse<Person>>(PageableResponse::class.java)
+            ParameterizedTypeReference.forType<PageableResponse<Role>>(PageableResponse::class.java)
         )
         assertEquals(exchange.statusCode, ReturnStatus.OK)
     }
 
     @Test
-    @DisplayName("Find person by id when successful")
+    @DisplayName("Find role by id when successful")
     fun findById_WhenSuccessful() {
-        val person = personService.saveOrUpdate(PersonCreate.PERSON_SAVE)
-        val exchange = testRestTemplate.getForEntity("$apiPrefix/$endpoint/{id}",Person::class.java, person.id)
+        val role = roleService.saveOrUpdate(RoleCreate.ROLE_SAVE)
+        val exchange = testRestTemplate.getForEntity("$apiPrefix/$endpoint/{id}",Role::class.java, role.id)
         assertDoesNotThrow {
             assertEquals(exchange.statusCode, ReturnStatus.OK)
-            exchange.body?.let { assertEquals(it.id, person.id) }
+            exchange.body?.let { assertEquals(it.id, role.id) }
         }
     }
 
     @Test
-    @DisplayName("Create person when successful")
+    @DisplayName("Create role when successful")
     fun save_WhenSuccessful() {
-        val person = PersonCreate.PERSON_NOT_EXIST
-        val exchange = testRestTemplate.postForEntity("$apiPrefix/$endpoint", person.toPersonRequestPost(), Person::class.java)
-        assertPerson(exchange, person, ReturnStatus.CREATED)
+        val role = RoleCreate.ROLE_NOT_EXIST
+        val exchange = testRestTemplate.postForEntity("$apiPrefix/$endpoint", role.toRoleRequest(), Role::class.java)
+        assertRole(exchange, role, ReturnStatus.CREATED)
     }
 
     @Test
-    @DisplayName("Update person when successful")
+    @DisplayName("Update role when successful")
     fun update_WhenSuccessful() {
-        val person = personService.saveOrUpdate(PersonCreate.PERSON_SAVE)
-        val exchange = testRestTemplate.exchange("$apiPrefix/$endpoint",HttpMethod.PUT, HttpEntity(person.toPersonRequestPut()), Person::class.java)
-        assertPerson(exchange, person, ReturnStatus.UPDATED)
+        val role = roleService.saveOrUpdate(RoleCreate.ROLE_SAVE)
+        val exchange = testRestTemplate.exchange("$apiPrefix/$endpoint/{id}",HttpMethod.PUT, HttpEntity(role.toRoleRequest()), Role::class.java, role.id)
+        assertRole(exchange, role, ReturnStatus.UPDATED)
     }
 
     @Test
-    @DisplayName("Delete person by id when successful")
+    @DisplayName("Delete role by id when successful")
     fun deleteById_WhenSuccessful() {
-        val person = personService.saveOrUpdate(PersonCreate.PERSON_SAVE)
-        val exchange = testRestTemplate.exchange("$apiPrefix/$endpoint/{id}",HttpMethod.DELETE, null, Void::class.java, person.id)
+        val role = roleService.saveOrUpdate(RoleCreate.ROLE_SAVE)
+        val exchange = testRestTemplate.exchange("$apiPrefix/$endpoint/{id}",HttpMethod.DELETE, null, Void::class.java, role.id)
         assertDoesNotThrow {
             assertEquals(exchange.statusCode, ReturnStatus.DELETED)
         }
     }
 
-    private fun assertPerson(exchange: ResponseEntity<Person>, person: Person, returnStatus: HttpStatus){
+    private fun assertRole(exchange: ResponseEntity<Role>, person: Role, returnStatus: HttpStatus){
         assertDoesNotThrow {
             assertEquals(exchange.statusCode, returnStatus)
             exchange.body?.let {
                 assertNotNull(it.id)
-                assertEquals(it.identityCardNumber, person.identityCardNumber)
+                assertEquals(it.name, person.name)
             }
         }
     }

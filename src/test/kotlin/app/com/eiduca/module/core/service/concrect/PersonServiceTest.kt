@@ -17,7 +17,6 @@ import org.mockito.ArgumentMatchers
 import org.mockito.BDDMockito
 import org.mockito.InjectMocks
 import org.mockito.Mock
-import org.mockito.kotlin.any
 import org.springframework.data.domain.PageImpl
 import org.springframework.data.domain.Pageable
 import org.springframework.test.context.junit.jupiter.SpringExtension
@@ -79,6 +78,17 @@ class PersonServiceTest{
         val person = PersonCreate.PERSON_SAVE
         assertDoesNotThrow {
             val response = personService.save(person)
+            assertNotNull(response.id)
+            assertEquals(response.identityCardNumber, person.identityCardNumber)
+        }
+    }
+
+    @Test
+    @DisplayName("Create or update person when successful")
+    fun saveOrUpdate_WhenSuccessful() {
+        val person = PersonCreate.PERSON_UPDATE
+        assertDoesNotThrow {
+            val response = personService.saveOrUpdate(person)
             assertNotNull(response.id)
             assertEquals(response.identityCardNumber, person.identityCardNumber)
         }

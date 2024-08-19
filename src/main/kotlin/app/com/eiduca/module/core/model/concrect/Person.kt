@@ -46,8 +46,7 @@ class Person(
     }
 
     override fun equals(other: Any?): Boolean {
-        if(other !is Person) return false
-        return other.identityCardNumber == identityCardNumber
+        return if(other is Person) other.identityCardNumber == identityCardNumber else false
     }
 
     override fun hashCode(): Int = identityCardNumber.hashCode()

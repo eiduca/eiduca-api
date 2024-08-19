@@ -13,4 +13,9 @@ class PermissionService(
 
     fun findByName(name: String): Permission = permissionRepository.findByName(name).orElseThrow { NotFoundException("Not found permission by name [$name]") }
 
+    fun saveOrUpdate(permission: Permission): Permission {
+        permissionRepository.findByName(permission.name).ifPresent { permission.id = it.id }
+        return  permissionRepository.save(permission)
+    }
+
 }

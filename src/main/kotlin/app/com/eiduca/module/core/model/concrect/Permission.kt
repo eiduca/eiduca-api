@@ -13,6 +13,7 @@ class Permission(
     var description: String,
     var entity: String,
 ): ConcreteModel(), IUniqueAttributeModifier {
+    constructor(): this("","","")
 
     override fun updateUniqueAttributes() {
         name += nanoId()
