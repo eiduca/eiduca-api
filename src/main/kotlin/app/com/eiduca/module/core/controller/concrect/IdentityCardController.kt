@@ -28,7 +28,7 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 @CrossOrigin("*")
 @RequestMapping("\${apiPrefix}/identity-cards")
-class IdentityCardsController(
+class IdentityCardController(
     val identityCardService: IdentityCardService
 ): ConcreteController(){
 

@@ -2,6 +2,7 @@ package app.com.eiduca.module.core.model.concrect
 
 import app.com.eiduca.module.core.common.ConcreteModel
 import app.com.eiduca.module.core.enums.MaritalStatus
+import app.com.eiduca.module.core.request.body.IdentityCardRequest
 import jakarta.persistence.Entity
 import jakarta.persistence.EnumType
 import jakarta.persistence.Enumerated
@@ -14,7 +15,7 @@ import java.time.LocalDate
 @Audited
 @Table(name="tb_identity_card")
 class IdentityCard(
-    @ManyToOne  var person: Person,
+    @ManyToOne var person: Person,
     @Enumerated(EnumType.STRING) var maritalStatus: MaritalStatus = MaritalStatus.SINGLE,
     var residential: String,
     var naturalFrom: String,
@@ -36,4 +37,7 @@ class IdentityCard(
     }
 
     override fun hashCode(): Int = person.hashCode() + emittedAt.hashCode() + validAt.hashCode()
+
+    fun toIdentityCardRequest(): IdentityCardRequest = IdentityCardRequest(person.id, maritalStatus, residential, naturalFrom, emittedIn, emittedAt, validAt)
+
 }

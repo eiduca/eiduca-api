@@ -60,7 +60,7 @@ class PermissionControllerIT {
     @Test
     @DisplayName("Update permission when successful")
     fun update_WhenSuccessful() {
-        val permission = permissionService.saveOrUpdate(PermissionCreate.PERMISSION_SAVE)
+        val permission = permissionService.saveOrUpdate(PermissionCreate.PERMISSION_UPDATE)
         val exchange = testRestTemplate.exchange("$apiPrefix/$endpoint/{id}",HttpMethod.PUT, HttpEntity(permission.toPermissionRequest()), Permission::class.java, permission.id)
         assertPermission(exchange, permission, ReturnStatus.UPDATED)
     }

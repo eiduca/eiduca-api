@@ -60,7 +60,7 @@ class RoleControllerIT {
     @Test
     @DisplayName("Update role when successful")
     fun update_WhenSuccessful() {
-        val role = roleService.saveOrUpdate(RoleCreate.ROLE_SAVE)
+        val role = roleService.saveOrUpdate(RoleCreate.ROLE_UPDATE)
         val exchange = testRestTemplate.exchange("$apiPrefix/$endpoint/{id}",HttpMethod.PUT, HttpEntity(role.toRoleRequest()), Role::class.java, role.id)
         assertRole(exchange, role, ReturnStatus.UPDATED)
     }

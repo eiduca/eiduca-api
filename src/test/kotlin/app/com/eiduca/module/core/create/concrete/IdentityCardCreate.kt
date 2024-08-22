@@ -1,5 +1,6 @@
 package app.com.eiduca.module.core.create.concrete
 
+import app.com.eiduca.module.core.factory.concrete.IdentityCardFactory
 import app.com.eiduca.module.core.factory.concrete.PermissionFactory
 import app.com.eiduca.module.core.seed.concrete.IdentityCardSeed
 import app.com.eiduca.module.core.seed.concrete.PermissionSeed
@@ -13,7 +14,7 @@ class IdentityCardCreate {
 
         val IDENTITY_CARD_UPDATE = IDENTITY_CARD_SAVE.apply { id = GeneratorUUID.v7toString() }
 
-        val IDENTITY_CARD_NOT_EXIST = PermissionFactory.build("TEST", "Administrador de teste")
+        val IDENTITY_CARD_NOT_EXIST = IdentityCardFactory.build(PersonCreate.PERSON_NOT_EXIST)
 
     }
 

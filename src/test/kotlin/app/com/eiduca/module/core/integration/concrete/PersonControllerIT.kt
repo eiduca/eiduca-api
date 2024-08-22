@@ -61,7 +61,7 @@ class PersonControllerIT {
     @Test
     @DisplayName("Update person when successful")
     fun update_WhenSuccessful() {
-        val person = personService.saveOrUpdate(PersonCreate.PERSON_SAVE)
+        val person = personService.saveOrUpdate(PersonCreate.PERSON_UPDATE)
         val exchange = testRestTemplate.exchange("$apiPrefix/$endpoint",HttpMethod.PUT, HttpEntity(person.toPersonRequestPut()), Person::class.java)
         assertPerson(exchange, person, ReturnStatus.UPDATED)
     }
