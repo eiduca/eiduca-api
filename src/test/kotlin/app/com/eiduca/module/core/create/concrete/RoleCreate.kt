@@ -1,8 +1,7 @@
-package app.com.eiduca.module.core.create
+package app.com.eiduca.module.core.create.concrete
 
-import app.com.eiduca.module.core.factory.RoleFactory
-import app.com.eiduca.module.core.seed.PersonSeed
-import app.com.eiduca.module.core.seed.RoleSeed
+import app.com.eiduca.module.core.factory.concrete.RoleFactory
+import app.com.eiduca.module.core.seed.concrete.RoleSeed
 import app.com.eiduca.module.core.util.GeneratorUUID
 
 class RoleCreate {

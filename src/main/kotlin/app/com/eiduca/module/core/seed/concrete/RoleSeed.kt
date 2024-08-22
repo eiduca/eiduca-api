@@ -1,6 +1,6 @@
-package app.com.eiduca.module.core.seed
+package app.com.eiduca.module.core.seed.concrete
 
-import app.com.eiduca.module.core.factory.RoleFactory
+import app.com.eiduca.module.core.factory.concrete.RoleFactory
 import app.com.eiduca.module.core.model.concrect.Role
 
 enum class RoleSeed(val role: Role) {

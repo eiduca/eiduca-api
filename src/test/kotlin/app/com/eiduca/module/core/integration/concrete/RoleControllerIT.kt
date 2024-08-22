@@ -1,7 +1,7 @@
 package app.com.eiduca.module.core.integration.concrete
 
 import app.com.eiduca.module.core.constant.ReturnStatus
-import app.com.eiduca.module.core.create.RoleCreate
+import app.com.eiduca.module.core.create.concrete.RoleCreate
 import app.com.eiduca.module.core.model.concrect.Role
 import app.com.eiduca.module.core.service.concrect.RoleService
 import app.com.eiduca.module.core.wrapper.PageableResponse
@@ -25,7 +25,8 @@ class RoleControllerIT {
 
     @Autowired lateinit var testRestTemplate: TestRestTemplate
     @Autowired lateinit var roleService: RoleService
-    @Value("\${apiPrefix}") lateinit var apiPrefix: String
+    @Value("\${apiPrefix}")
+    lateinit var apiPrefix: String
     val endpoint = "roles"
 
     @Test
@@ -67,7 +68,7 @@ class RoleControllerIT {
     @Test
     @DisplayName("Delete role by id when successful")
     fun deleteById_WhenSuccessful() {
-        val role = roleService.saveOrUpdate(RoleCreate.ROLE_SAVE)
+        val role = roleService.saveOrUpdate(RoleCreate.ROLE_UPDATE)
         val exchange = testRestTemplate.exchange("$apiPrefix/$endpoint/{id}",HttpMethod.DELETE, null, Void::class.java, role.id)
         assertDoesNotThrow {
             assertEquals(exchange.statusCode, ReturnStatus.DELETED)

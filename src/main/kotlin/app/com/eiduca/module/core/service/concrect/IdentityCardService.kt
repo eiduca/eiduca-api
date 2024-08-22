@@ -4,6 +4,7 @@ import app.com.eiduca.module.core.common.ConcreteService
 import app.com.eiduca.module.core.exception.NotFoundException
 import app.com.eiduca.module.core.model.concrect.IdentityCard
 import app.com.eiduca.module.core.model.concrect.Person
+import app.com.eiduca.module.core.model.concrect.Role
 import app.com.eiduca.module.core.repository.concrect.IdentityCardRepository
 import org.springframework.stereotype.Service
 
@@ -13,4 +14,10 @@ class IdentityCardService(
 ): ConcreteService<IdentityCard>(identityCardRepository)  {
 
     fun findByPerson(person: Person): IdentityCard = identityCardRepository.findByPerson(person).orElseThrow { NotFoundException("Not found IdentityCard by id [${person.id}]") }
+
+    fun saveOrUpdate(identityCard: IdentityCard): IdentityCard {
+        identityCardRepository.findByPerson(identityCard.person).ifPresent { identityCard.id = it.id }
+        return  identityCardRepository.save(identityCard)
+    }
+
 }

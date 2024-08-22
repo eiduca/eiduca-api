@@ -1,4 +1,4 @@
-package app.com.eiduca.module.core.factory
+package app.com.eiduca.module.core.factory.concrete
 
 import app.com.eiduca.module.core.builder.concrect.PersonBuilder
 import app.com.eiduca.module.core.enums.Gender

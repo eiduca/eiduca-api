@@ -1,7 +1,8 @@
-package app.com.eiduca.module.core.factory
+package app.com.eiduca.module.core.factory.concrete
 
 import app.com.eiduca.module.core.builder.concrect.PermissionBuilder
 import app.com.eiduca.module.core.enums.EntityEnum
+import app.com.eiduca.module.core.enums.RegisterType
 import app.com.eiduca.module.core.model.concrect.Permission
 
 class PermissionFactory {
@@ -12,6 +13,7 @@ class PermissionFactory {
             .name("PERMISSION_$name")
             .description(description)
             .entity(entity.name)
+            .registerType(RegisterType.SYSTEM)
             .build()
 
     }

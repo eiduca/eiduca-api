@@ -1,7 +1,7 @@
-package app.com.eiduca.module.core.seed
+package app.com.eiduca.module.core.seed.concrete
 
 import app.com.eiduca.module.core.enums.EntityEnum
-import app.com.eiduca.module.core.factory.PermissionFactory
+import app.com.eiduca.module.core.factory.concrete.PermissionFactory
 import app.com.eiduca.module.core.model.concrect.Permission
 
 enum class PermissionSeed (val permission: Permission) {

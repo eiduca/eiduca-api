@@ -1,6 +1,6 @@
-package app.com.eiduca.module.core.seed
+package app.com.eiduca.module.core.seed.concrete
 
-import app.com.eiduca.module.core.factory.PersonFactory
+import app.com.eiduca.module.core.factory.concrete.PersonFactory
 import app.com.eiduca.module.core.model.concrect.Person
 
 enum class PersonSeed(val person: Person) {

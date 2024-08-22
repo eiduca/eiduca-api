@@ -28,4 +28,12 @@ class IdentityCard(
     override fun toString(): String {
         return "IdentityCard(${setToString("person=$person, maritalStatus=$maritalStatus, residential='$residential', naturalFrom='$naturalFrom', emittedIn='$emittedIn', emittedAt=$emittedAt, validAt=$validAt")})"
     }
+
+    override fun equals(other: Any?): Boolean {
+        if (other !is IdentityCard) return false
+        if(other.person != person) return false
+        return other.emittedAt == emittedAt && other.validAt == validAt
+    }
+
+    override fun hashCode(): Int = person.hashCode() + emittedAt.hashCode() + validAt.hashCode()
 }

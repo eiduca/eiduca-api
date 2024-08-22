@@ -1,13 +1,9 @@
 package app.com.eiduca.module.core.service.concrect
 
-import app.com.eiduca.module.core.constant.ReturnStatus
-import app.com.eiduca.module.core.create.PersonCreate
-import app.com.eiduca.module.core.model.concrect.Person
+import app.com.eiduca.module.core.create.concrete.PersonCreate
 import app.com.eiduca.module.core.repository.concrect.PersonRepository
-import app.com.eiduca.module.core.seed.PersonSeed
-import app.com.eiduca.module.core.util.GeneratorUUID
+import app.com.eiduca.module.core.seed.concrete.PersonSeed
 import org.junit.jupiter.api.Assertions.assertFalse
-import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test

@@ -1,8 +1,8 @@
 package app.com.eiduca.module.core.service.concrect
 
-import app.com.eiduca.module.core.create.RoleCreate
+import app.com.eiduca.module.core.create.concrete.RoleCreate
 import app.com.eiduca.module.core.repository.concrect.RoleRepository
-import app.com.eiduca.module.core.seed.RoleSeed
+import app.com.eiduca.module.core.seed.concrete.RoleSeed
 import org.junit.jupiter.api.Assertions.assertFalse
 import org.junit.jupiter.api.Test
 
@@ -94,7 +94,7 @@ class RoleServiceTest {
     @Test
     @DisplayName("Update role when successful")
     fun update_WhenSuccessful() {
-        val role = RoleCreate.ROLE_SAVE
+        val role = RoleCreate.ROLE_UPDATE
         assertDoesNotThrow {
             val response = roleService.update(role)
             assertNotNull(response.id)

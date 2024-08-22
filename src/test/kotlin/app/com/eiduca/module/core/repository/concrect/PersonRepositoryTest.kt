@@ -1,6 +1,6 @@
 package app.com.eiduca.module.core.repository.concrect
 
-import app.com.eiduca.module.core.create.PersonCreate
+import app.com.eiduca.module.core.create.concrete.PersonCreate
 import app.com.eiduca.module.core.exception.NotFoundException
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.DisplayName

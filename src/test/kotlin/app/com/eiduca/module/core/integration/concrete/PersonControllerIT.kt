@@ -1,7 +1,7 @@
 package app.com.eiduca.module.core.integration.concrete
 
 import app.com.eiduca.module.core.constant.ReturnStatus
-import app.com.eiduca.module.core.create.PersonCreate
+import app.com.eiduca.module.core.create.concrete.PersonCreate
 import app.com.eiduca.module.core.model.concrect.Person
 import app.com.eiduca.module.core.service.concrect.PersonService
 import app.com.eiduca.module.core.wrapper.PageableResponse
@@ -25,7 +25,9 @@ class PersonControllerIT {
 
     @Autowired lateinit var testRestTemplate: TestRestTemplate
     @Autowired lateinit var personService: PersonService
-    @Value("\${apiPrefix}") lateinit var apiPrefix: String
+
+    @Value("\${apiPrefix}")
+    lateinit var apiPrefix: String
     val endpoint = "persons"
 
     @Test
@@ -67,7 +69,7 @@ class PersonControllerIT {
     @Test
     @DisplayName("Delete person by id when successful")
     fun deleteById_WhenSuccessful() {
-        val person = personService.saveOrUpdate(PersonCreate.PERSON_SAVE)
+        val person = personService.saveOrUpdate(PersonCreate.PERSON_UPDATE)
         val exchange = testRestTemplate.exchange("$apiPrefix/$endpoint/{id}",HttpMethod.DELETE, null, Void::class.java, person.id)
         assertDoesNotThrow {
             assertEquals(exchange.statusCode, ReturnStatus.DELETED)

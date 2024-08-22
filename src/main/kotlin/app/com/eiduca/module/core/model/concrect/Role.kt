@@ -22,9 +22,7 @@ class Role (
 
     override fun toString(): String = "Role(${setToString("name='$name', description='$description'")})"
 
-    override fun equals(other: Any?): Boolean {
-        return if(other is Role) name == other.name else false
-    }
+    override fun equals(other: Any?): Boolean = if(other is Role) name == other.name else false
 
     override fun hashCode(): Int = name.hashCode()
 

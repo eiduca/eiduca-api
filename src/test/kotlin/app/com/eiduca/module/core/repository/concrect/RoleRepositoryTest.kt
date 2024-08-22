@@ -1,6 +1,6 @@
 package app.com.eiduca.module.core.repository.concrect
 
-import app.com.eiduca.module.core.create.RoleCreate
+import app.com.eiduca.module.core.create.concrete.RoleCreate
 import app.com.eiduca.module.core.exception.NotFoundException
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.DisplayName
@@ -57,7 +57,7 @@ class RoleRepositoryTest{
     @Test
     @DisplayName("Delete role by id when successful")
     fun deleteById_WhenSuccessful() {
-        val role = RoleCreate.ROLE_SAVE
+        val role = RoleCreate.ROLE_UPDATE
        assertDoesNotThrow {
             roleRepository.deleteById(role.id)
            assertTrue(roleRepository.findById(role.id).isEmpty)

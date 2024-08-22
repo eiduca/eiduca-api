@@ -2,6 +2,7 @@ package app.com.eiduca.module.core.model.concrect
 
 import app.com.eiduca.module.core.common.ConcreteModel
 import app.com.eiduca.module.core.interfaces.IUniqueAttributeModifier
+import app.com.eiduca.module.core.request.body.PermissionRequest
 import jakarta.persistence.Column
 import jakarta.persistence.Entity
 import jakarta.persistence.Table
@@ -13,6 +14,7 @@ class Permission(
     var description: String,
     var entity: String,
 ): ConcreteModel(), IUniqueAttributeModifier {
+
     constructor(): this("","","")
 
     override fun updateUniqueAttributes() {
@@ -20,4 +22,11 @@ class Permission(
     }
 
     override fun toString(): String = "Permission(${setToString("name='$name', description='$description', entity='$entity'")})"
+
+    override fun equals(other: Any?): Boolean = if(other is Permission) name == other.name else false
+
+    override fun hashCode(): Int = name.hashCode()
+
+    fun toPermissionRequest(): PermissionRequest = PermissionRequest(name, description, entity)
+
 }
