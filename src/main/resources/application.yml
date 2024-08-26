@@ -1,6 +1,11 @@
 spring:
   application:
     name: eiduca
+  cache:
+    type: redis
+  sql:
+    init:
+      mode: always
   profiles:
     active: ${PROFILE:dev}
   jpa:

@@ -42,7 +42,7 @@ class RoleRepositoryTest{
         roleRepository.save(role)
         roleRepository.findByName(role.name).ifPresentOrElse({
             assert(it.name == role.name)
-        }, {throw NotFoundException("Not found  role by name") })
+        }, {throw NotFoundException("Not found role by name") })
     }
 
     @Test

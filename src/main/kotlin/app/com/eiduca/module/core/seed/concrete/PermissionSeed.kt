@@ -27,4 +27,14 @@ enum class PermissionSeed (val permission: Permission) {
     IDENTITY_CARD_SAVE(PermissionFactory.build("SAVE_IDENTITY_CARD", "Save identity card", EntityEnum.IDENTITY_CARD)),
     IDENTITY_CARD_UPDATE(PermissionFactory.build("UPDATE_IDENTITY_CARD", "Edit identity card", EntityEnum.IDENTITY_CARD)),
     IDENTITY_CARD_DELETE(PermissionFactory.build("DELETE_IDENTITY_CARD", "Delete identity card", EntityEnum.IDENTITY_CARD)),
+
+    ADDRESS_VIEW(PermissionFactory.build("VIEW_ADDRESS", "View address", EntityEnum.ADDRESS)),
+    ADDRESS_SAVE(PermissionFactory.build("SAVE_ADDRESS", "Save address", EntityEnum.ADDRESS)),
+    ADDRESS_UPDATE(PermissionFactory.build("UPDATE_ADDRESS", "Edit address", EntityEnum.ADDRESS)),
+    ADDRESS_DELETE(PermissionFactory.build("DELETE_ADDRESS", "Delete address", EntityEnum.ADDRESS)),
+
+    PERSON_ADDRESS_VIEW(PermissionFactory.build("VIEW_PERSON_ADDRESS", "View address of user", EntityEnum.PERSON_ADDRESS)),
+    PERSON_ADDRESS_SAVE(PermissionFactory.build("SAVE_PERSON_ADDRESS", "Save address of user", EntityEnum.PERSON_ADDRESS)),
+    PERSON_ADDRESS_UPDATE(PermissionFactory.build("UPDATE_PERSON_ADDRESS", "Edit address of user", EntityEnum.PERSON_ADDRESS)),
+    PERSON_ADDRESS_DELETE(PermissionFactory.build("DELETE_PERSON_ADDRESS", "Delete address of user", EntityEnum.PERSON_ADDRESS)),
 }

@@ -31,7 +31,7 @@ class PermissionRepositoryTest{
             val permission = permissionRepository.save(PermissionCreate.PERMISSION_NOT_EXIST)
             permissionRepository.findById(permission.id).ifPresentOrElse({
                 assertEquals(it.id, permission.id)
-            },{throw NotFoundException("Not found role by id")})
+            },{throw NotFoundException("Not found permission by id")})
         }
     }
 

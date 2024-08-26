@@ -11,4 +11,7 @@ import java.util.Optional
 interface PersonRepository: ConcreteRepository<Person>, RevisionRepository<Person, String, Long>{
     @Query(name = "SELECT p FROM Person p WHERE username = :username WHERE deletedBy IS NULL AND deletedAt IS NULL")
     fun findByUsername(username: String): Optional<Person>
+
+    @Query(name = "ModelConcrete.findByEmail")
+    fun findByEmail(email: String): Optional<Person>
 }

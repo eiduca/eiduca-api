@@ -105,7 +105,7 @@ class RoleServiceTest {
     @Test
     @DisplayName("Delete role by id when successful")
     fun deleteById_WhenSuccessful() {
-        val role = RoleCreate.ROLE_SAVE
+        val role = RoleCreate.ROLE_UPDATE
         assertDoesNotThrow {
             roleService.deleteById(role.id)
         }

@@ -1,10 +1,12 @@
 package app.com.eiduca.module.core.controller.concrect
 
+import app.com.eiduca.configuration.annotation.HasPermission
 import app.com.eiduca.module.core.common.ConcreteController
 import app.com.eiduca.module.core.constant.MessageDoc
 import app.com.eiduca.module.core.constant.ReturnStatus
 import app.com.eiduca.module.core.model.concrect.Permission
 import app.com.eiduca.module.core.request.body.PermissionRequest
+import app.com.eiduca.module.core.seed.concrete.PermissionSeed
 import app.com.eiduca.module.core.service.concrect.PermissionService
 import io.swagger.v3.oas.annotations.Operation
 import io.swagger.v3.oas.annotations.responses.ApiResponse
@@ -33,6 +35,7 @@ class PermissionController(
 ): ConcreteController() {
 
     @GetMapping
+    @HasPermission(PermissionSeed.PERMISSION_VIEW)
     @Operation(tags = ["permission"], summary = MessageDoc.SUMMARY_FIND_ALL, description = MessageDoc.DESCRIPTION_FIND_ALL)
     @ApiResponses(value = [ ApiResponse(responseCode = MessageDoc.STATUS_PERMISSION_DENIED, description = MessageDoc.PERMISSION_DENIED) ])
     fun findAll(@ParameterObject pageable: Pageable): ResponseEntity<Page<Permission>> {
@@ -40,6 +43,7 @@ class PermissionController(
     }
 
     @GetMapping("/{id}")
+    @HasPermission(PermissionSeed.PERMISSION_VIEW)
     @Operation(tags = ["permission"], summary = MessageDoc.SUMMARY_FIND_BY_ID, description = MessageDoc.DESCRIPTION_FIND_BY_ID)
     @ApiResponses(value = [ ApiResponse(responseCode = MessageDoc.STATUS_PERMISSION_DENIED, description = MessageDoc.PERMISSION_DENIED) ])
     fun findById(@PathVariable id: String): ResponseEntity<Permission> {
@@ -48,6 +52,7 @@ class PermissionController(
 
     @Transactional
     @PostMapping
+    @HasPermission(PermissionSeed.PERMISSION_SAVE)
     @Operation(tags = ["permission"], summary = MessageDoc.SUMMARY_SAVE, description = MessageDoc.DESCRIPTION_SAVE)
     @ApiResponses(value = [
         ApiResponse(responseCode = MessageDoc.STATUS_CREATED, description = MessageDoc.CREATED),
@@ -55,12 +60,12 @@ class PermissionController(
         ApiResponse(responseCode = MessageDoc.STATUS_PERMISSION_DENIED, description = MessageDoc.PERMISSION_DENIED)
     ])
     fun save(@Valid @RequestBody permissionRequest: PermissionRequest): ResponseEntity<Permission> {
-        val permission = permissionRequest.toPermission()
-        return ResponseEntity(permissionService.save(permission), ReturnStatus.CREATED)
+        return ResponseEntity(permissionService.save(permissionRequest.toPermission()), ReturnStatus.CREATED)
     }
 
     @Transactional
     @PutMapping("/{id}")
+    @HasPermission(PermissionSeed.PERMISSION_UPDATE)
     @Operation(tags = ["permission"], summary = MessageDoc.SUMMARY_UPDATE, description = MessageDoc.DESCRIPTION_UPDATE)
     @ApiResponses(value = [
         ApiResponse(responseCode = MessageDoc.STATUS_UPDATE, description = MessageDoc.UPDATE),
@@ -69,12 +74,12 @@ class PermissionController(
         ApiResponse(responseCode = MessageDoc.STATUS_PERMISSION_DENIED, description = MessageDoc.PERMISSION_DENIED)
     ])
     fun update(@Valid @RequestBody permissionRequest: PermissionRequest, @PathVariable id: String): ResponseEntity<Permission> {
-        val permission = permissionRequest.toPermission()
-        return ResponseEntity(permissionService.update(permission,id), ReturnStatus.UPDATED)
+        return ResponseEntity(permissionService.update(permissionRequest.toPermission(),id), ReturnStatus.UPDATED)
     }
 
     @Transactional
     @DeleteMapping("/{id}")
+    @HasPermission(PermissionSeed.PERMISSION_DELETE)
     @Operation(tags = ["permission"], summary = MessageDoc.SUMMARY_DELETE, description = MessageDoc.DESCRIPTION_DELETE)
     @ApiResponses(value = [
         ApiResponse(responseCode = MessageDoc.STATUS_DELETED, description = MessageDoc.DELETED),

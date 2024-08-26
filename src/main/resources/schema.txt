@@ -1,0 +1,14 @@
+ALTER TABLE tb_person_address ADD UNIQUE(person_id,address_id)
+sql.init.mode= always
+
+>docker run --name eiduca-api-redis -p 6379:6379 -d redis
+Para ver os dados no redis
+>docker exec -it eiduca-api-redis sh
+>redis-cli
+>keys *
+
+->Para colocar um dados em cache @Cacheable(value="product")
+->Para actualizar um dados em cache @CachePut(value="product")
+->Para limpar o cache @CacheEvit(value="product", allEntries = true)
+->Para cachear um dado com uma condição url=product/{id}  @Cacheable(value="product", condition = "#id > 2")
+

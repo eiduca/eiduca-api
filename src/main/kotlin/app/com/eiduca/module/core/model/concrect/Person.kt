@@ -30,7 +30,7 @@ class Person(
     @JvmField var isAccountNonLocked: Boolean? = true,
     @JvmField var isCredentialsNonExpired: Boolean? = true,
     @JvmField var isEnabled: Boolean? = true,
-) : ConcreteModel(), IUniqueAttributeModifier {
+): ConcreteModel(), IUniqueAttributeModifier {
 
     constructor(): this("",null,null,"","","","",LocalDate.now(), Gender.MALE)
 

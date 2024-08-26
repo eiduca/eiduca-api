@@ -8,6 +8,6 @@ import java.util.Optional
 
 @Repository
 interface PermissionRepository: ConcreteRepository<Permission> {
-    @Query(name = "SELECT p FROM Permission p WHERE name = :name AND deletedBy IS NULL AND deletedAt is NULL")
+    @Query(name = "ModelConcrete.findByName")
     fun findByName(name: String): Optional<Permission>
 }

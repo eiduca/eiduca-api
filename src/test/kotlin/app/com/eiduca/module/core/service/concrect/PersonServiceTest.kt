@@ -82,7 +82,7 @@ class PersonServiceTest{
     @Test
     @DisplayName("Create or update person when successful")
     fun saveOrUpdate_WhenSuccessful() {
-        val person = PersonCreate.PERSON_UPDATE
+        val person = PersonCreate.PERSON_SAVE
         assertDoesNotThrow {
             val response = personService.saveOrUpdate(person)
             assertNotNull(response.id)
