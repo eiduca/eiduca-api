@@ -3,10 +3,10 @@ package app.com.eiduca.module.core.component
 import app.com.eiduca.module.core.model.concrect.Permission
 import app.com.eiduca.module.core.model.concrect.Person
 import app.com.eiduca.module.core.model.concrect.Role
-import app.com.eiduca.module.core.seed.concrete.IdentityCardSeed
-import app.com.eiduca.module.core.seed.concrete.PermissionSeed
-import app.com.eiduca.module.core.seed.concrete.PersonSeed
-import app.com.eiduca.module.core.seed.concrete.RoleSeed
+import app.com.eiduca.module.core.seed.IdentityCardSeed
+import app.com.eiduca.module.core.seed.PermissionSeed
+import app.com.eiduca.module.core.seed.PersonSeed
+import app.com.eiduca.module.core.seed.RoleSeed
 import app.com.eiduca.module.core.service.concrect.IdentityCardService
 import app.com.eiduca.module.core.service.concrect.PermissionService
 import app.com.eiduca.module.core.service.concrect.PersonService

@@ -1,9 +1,7 @@
 package app.com.eiduca.module.core.create.concrete
 
-import app.com.eiduca.module.core.factory.concrete.IdentityCardFactory
-import app.com.eiduca.module.core.factory.concrete.PermissionFactory
-import app.com.eiduca.module.core.seed.concrete.IdentityCardSeed
-import app.com.eiduca.module.core.seed.concrete.PermissionSeed
+import app.com.eiduca.module.core.factory.IdentityCardFactory
+import app.com.eiduca.module.core.seed.IdentityCardSeed
 import app.com.eiduca.module.core.util.GeneratorUUID
 
 class IdentityCardCreate {

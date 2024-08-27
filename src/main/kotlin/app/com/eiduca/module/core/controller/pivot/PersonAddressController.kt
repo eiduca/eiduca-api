@@ -6,7 +6,7 @@ import app.com.eiduca.module.core.constant.MessageDoc
 import app.com.eiduca.module.core.constant.ReturnStatus
 import app.com.eiduca.module.core.model.pivot.PersonAddress
 import app.com.eiduca.module.core.request.body.PersonAddressRequest
-import app.com.eiduca.module.core.seed.concrete.PermissionSeed
+import app.com.eiduca.module.core.seed.PermissionSeed
 import app.com.eiduca.module.core.service.pivot.PersonAddressService
 import io.swagger.v3.oas.annotations.Operation
 import io.swagger.v3.oas.annotations.responses.ApiResponse

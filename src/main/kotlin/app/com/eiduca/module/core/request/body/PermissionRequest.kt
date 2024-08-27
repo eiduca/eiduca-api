@@ -1,6 +1,6 @@
 package app.com.eiduca.module.core.request.body
 
-import app.com.eiduca.module.core.builder.concrect.PermissionBuilder
+import app.com.eiduca.module.core.builder.PermissionBuilder
 import app.com.eiduca.module.core.model.concrect.Permission
 import io.swagger.v3.oas.annotations.media.Schema
 

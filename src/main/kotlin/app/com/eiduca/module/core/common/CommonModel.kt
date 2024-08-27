@@ -47,7 +47,7 @@ abstract class ConcreteModel(
         return "ModelConcrete(id='$id', createdAt=$createdAt, updatedAt=$updatedAt, createdBy=$createdBy, updatedBy=$updatedBy, deletedAt=$deletedAt, deletedBy=$deletedBy, concatFields='$concatFields')"
     }
 
-    protected fun setToString(fields: String)= "id='$id', $fields, createdAt=$createdAt, updatedAt=$updatedAt, createdBy=$createdBy, updatedBy=$updatedBy, deletedAt=$deletedAt, deletedBy=$deletedBy, concatFields='$concatFields'"
+    open fun setToString(fields: String): String = "id='$id', $fields, createdAt=$createdAt, updatedAt=$updatedAt, createdBy=$createdBy, updatedBy=$updatedBy, deletedAt=$deletedAt, deletedBy=$deletedBy, concatFields='$concatFields'"
 
 }
 

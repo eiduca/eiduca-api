@@ -3,7 +3,7 @@ package app.com.eiduca.module.core.service.concrect
 import app.com.eiduca.module.core.create.concrete.IdentityCardCreate
 import app.com.eiduca.module.core.repository.concrect.IdentityCardRepository
 import app.com.eiduca.module.core.repository.concrect.PersonRepository
-import app.com.eiduca.module.core.seed.concrete.IdentityCardSeed
+import app.com.eiduca.module.core.seed.IdentityCardSeed
 import org.junit.jupiter.api.Assertions.assertFalse
 import org.junit.jupiter.api.Test
 

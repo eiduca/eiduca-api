@@ -2,7 +2,7 @@ package app.com.eiduca.module.core.service.concrect
 
 import app.com.eiduca.module.core.create.concrete.PersonCreate
 import app.com.eiduca.module.core.repository.concrect.PersonRepository
-import app.com.eiduca.module.core.seed.concrete.PersonSeed
+import app.com.eiduca.module.core.seed.PersonSeed
 import org.junit.jupiter.api.Assertions.assertFalse
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.DisplayName

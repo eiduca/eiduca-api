@@ -29,9 +29,9 @@ abstract class CommonBuilder<T>{
 
 abstract class ConcreteBuilder<T>: CommonBuilder<T>(){
 
-    protected var deletedBy: String? = null
-    protected var deletedAt: LocalDateTime? = null
-    protected var registerType: RegisterType? = RegisterType.APPLICATION
+    private var deletedBy: String? = null
+    private var deletedAt: LocalDateTime? = null
+    private var registerType: RegisterType? = RegisterType.APPLICATION
 
     fun deletedAt(deletedAt: LocalDateTime? = null) = apply { this.deletedAt = deletedAt }
 

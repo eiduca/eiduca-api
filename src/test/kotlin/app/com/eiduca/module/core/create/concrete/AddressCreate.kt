@@ -1,7 +1,7 @@
 package app.com.eiduca.module.core.create.concrete
 
-import app.com.eiduca.module.core.factory.concrete.AddressFactory
-import app.com.eiduca.module.core.seed.concrete.AddressSeed
+import app.com.eiduca.module.core.factory.AddressFactory
+import app.com.eiduca.module.core.seed.AddressSeed
 import app.com.eiduca.module.core.util.GeneratorUUID
 
 class AddressCreate {

@@ -1,7 +1,7 @@
 package app.com.eiduca.module.core.create.concrete
 
-import app.com.eiduca.module.core.factory.concrete.PermissionFactory
-import app.com.eiduca.module.core.seed.concrete.PermissionSeed
+import app.com.eiduca.module.core.factory.PermissionFactory
+import app.com.eiduca.module.core.seed.PermissionSeed
 import app.com.eiduca.module.core.util.GeneratorUUID
 
 class PermissionCreate {

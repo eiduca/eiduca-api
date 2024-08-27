@@ -5,10 +5,8 @@ import app.com.eiduca.module.core.common.ConcreteController
 import app.com.eiduca.module.core.constant.MessageDoc
 import app.com.eiduca.module.core.constant.ReturnStatus
 import app.com.eiduca.module.core.model.concrect.Address
-import app.com.eiduca.module.core.model.concrect.Role
 import app.com.eiduca.module.core.request.body.AddressRequest
-import app.com.eiduca.module.core.request.body.RoleRequest
-import app.com.eiduca.module.core.seed.concrete.PermissionSeed
+import app.com.eiduca.module.core.seed.PermissionSeed
 import app.com.eiduca.module.core.service.concrect.AddressService
 import io.swagger.v3.oas.annotations.Operation
 import io.swagger.v3.oas.annotations.responses.ApiResponse

@@ -1,6 +1,6 @@
 package app.com.eiduca.module.academic.model.concrete
 
-import app.com.eiduca.module.academic.common.CompanyModel
+import app.com.eiduca.module.academic.common.company.CompanyModel
 import app.com.eiduca.module.academic.enums.UniversityType
 import jakarta.persistence.Entity
 import jakarta.persistence.EnumType
@@ -19,5 +19,9 @@ class University(
     foundingDate: LocalDate,
     @Enumerated(EnumType.STRING) var type: UniversityType = UniversityType.INDEFINITE,
 ): CompanyModel(name, acronym, email, contact, website, foundingDate) {
+
+    constructor(): this("", "", "", "", "", LocalDate.now(), UniversityType.INDEFINITE)
+
+    override fun toString(): String = "University(${setToString("type=$type")})"
 
 }

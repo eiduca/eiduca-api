@@ -1,7 +1,7 @@
 package app.com.eiduca.module.core.request.body
 
-import app.com.eiduca.module.core.builder.concrect.AddressBuilder
-import app.com.eiduca.module.core.builder.concrect.PersonBuilder
+import app.com.eiduca.module.core.builder.AddressBuilder
+import app.com.eiduca.module.core.builder.PersonBuilder
 import app.com.eiduca.module.core.model.pivot.PersonAddress
 import io.swagger.v3.oas.annotations.media.Schema
 

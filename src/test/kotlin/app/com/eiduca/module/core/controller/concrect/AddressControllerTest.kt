@@ -2,7 +2,7 @@ package app.com.eiduca.module.core.controller.concrect
 
 import app.com.eiduca.module.core.constant.ReturnStatus
 import app.com.eiduca.module.core.create.concrete.AddressCreate
-import app.com.eiduca.module.core.seed.concrete.AddressSeed
+import app.com.eiduca.module.core.seed.AddressSeed
 import app.com.eiduca.module.core.service.concrect.AddressService
 import org.junit.jupiter.api.Assertions.assertFalse
 import org.junit.jupiter.api.Assertions.assertTrue

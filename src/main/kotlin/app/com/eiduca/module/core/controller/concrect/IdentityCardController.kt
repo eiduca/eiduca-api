@@ -6,7 +6,7 @@ import app.com.eiduca.module.core.constant.MessageDoc
 import app.com.eiduca.module.core.constant.ReturnStatus
 import app.com.eiduca.module.core.model.concrect.IdentityCard
 import app.com.eiduca.module.core.request.body.IdentityCardRequest
-import app.com.eiduca.module.core.seed.concrete.PermissionSeed
+import app.com.eiduca.module.core.seed.PermissionSeed
 import app.com.eiduca.module.core.service.concrect.IdentityCardService
 import io.swagger.v3.oas.annotations.Operation
 import io.swagger.v3.oas.annotations.responses.ApiResponse

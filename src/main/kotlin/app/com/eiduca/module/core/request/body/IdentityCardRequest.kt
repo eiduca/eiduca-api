@@ -1,7 +1,7 @@
 package app.com.eiduca.module.core.request.body
 
-import app.com.eiduca.module.core.builder.concrect.IdentityCardBuilder
-import app.com.eiduca.module.core.builder.concrect.PersonBuilder
+import app.com.eiduca.module.core.builder.IdentityCardBuilder
+import app.com.eiduca.module.core.builder.PersonBuilder
 import app.com.eiduca.module.core.enums.MaritalStatus
 import app.com.eiduca.module.core.model.concrect.IdentityCard
 import io.swagger.v3.oas.annotations.media.Schema

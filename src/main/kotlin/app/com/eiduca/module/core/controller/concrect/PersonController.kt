@@ -7,7 +7,7 @@ import app.com.eiduca.module.core.constant.ReturnStatus
 import app.com.eiduca.module.core.model.concrect.Person
 import app.com.eiduca.module.core.request.post.PersonRequestPost
 import app.com.eiduca.module.core.request.put.PersonRequestPut
-import app.com.eiduca.module.core.seed.concrete.PermissionSeed
+import app.com.eiduca.module.core.seed.PermissionSeed
 import app.com.eiduca.module.core.service.concrect.PersonService
 import io.swagger.v3.oas.annotations.Operation
 import io.swagger.v3.oas.annotations.responses.ApiResponse

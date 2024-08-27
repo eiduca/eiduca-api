@@ -1,7 +1,6 @@
 package app.com.eiduca.module.core.request.body
 
-import app.com.eiduca.module.core.builder.concrect.AddressBuilder
-import app.com.eiduca.module.core.builder.concrect.RoleBuilder
+import app.com.eiduca.module.core.builder.AddressBuilder
 import app.com.eiduca.module.core.model.concrect.Address
 
 class AddressRequest(

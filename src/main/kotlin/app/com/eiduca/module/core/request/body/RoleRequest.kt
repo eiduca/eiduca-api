@@ -1,6 +1,6 @@
 package app.com.eiduca.module.core.request.body
 
-import app.com.eiduca.module.core.builder.concrect.RoleBuilder
+import app.com.eiduca.module.core.builder.RoleBuilder
 import app.com.eiduca.module.core.model.concrect.Role
 import io.swagger.v3.oas.annotations.media.Schema
 

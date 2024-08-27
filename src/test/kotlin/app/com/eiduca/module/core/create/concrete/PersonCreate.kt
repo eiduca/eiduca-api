@@ -1,7 +1,7 @@
 package app.com.eiduca.module.core.create.concrete
 
-import app.com.eiduca.module.core.factory.concrete.PersonFactory
-import app.com.eiduca.module.core.seed.concrete.PersonSeed
+import app.com.eiduca.module.core.factory.PersonFactory
+import app.com.eiduca.module.core.seed.PersonSeed
 import app.com.eiduca.module.core.util.GeneratorUUID
 
 class PersonCreate {

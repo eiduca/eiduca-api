@@ -2,7 +2,7 @@ package app.com.eiduca.module.core.service.concrect
 
 import app.com.eiduca.module.core.create.concrete.RoleCreate
 import app.com.eiduca.module.core.repository.concrect.RoleRepository
-import app.com.eiduca.module.core.seed.concrete.RoleSeed
+import app.com.eiduca.module.core.seed.RoleSeed
 import org.junit.jupiter.api.Assertions.assertFalse
 import org.junit.jupiter.api.Test
 

@@ -1,6 +1,6 @@
 package app.com.eiduca.module.academic.repository.concrete
 
-import app.com.eiduca.module.academic.common.DataRangeRepository
+import app.com.eiduca.module.academic.common.datarange.DataRangeRepository
 import app.com.eiduca.module.academic.model.concrete.AcademicYear
 import org.springframework.data.jpa.repository.Query
 import org.springframework.stereotype.Repository

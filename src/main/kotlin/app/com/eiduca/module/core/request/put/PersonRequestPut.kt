@@ -1,6 +1,6 @@
 package app.com.eiduca.module.core.request.put
 
-import app.com.eiduca.module.core.builder.concrect.PersonBuilder
+import app.com.eiduca.module.core.builder.PersonBuilder
 import app.com.eiduca.module.core.enums.Gender
 import app.com.eiduca.module.core.model.concrect.Person
 import io.swagger.v3.oas.annotations.media.Schema

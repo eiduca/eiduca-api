@@ -2,7 +2,7 @@ package app.com.eiduca.module.core.controller.concrect
 
 import app.com.eiduca.module.core.constant.ReturnStatus
 import app.com.eiduca.module.core.create.concrete.IdentityCardCreate
-import app.com.eiduca.module.core.seed.concrete.IdentityCardSeed
+import app.com.eiduca.module.core.seed.IdentityCardSeed
 import app.com.eiduca.module.core.service.concrect.IdentityCardService
 import org.junit.jupiter.api.Assertions.assertFalse
 import org.junit.jupiter.api.Assertions.assertTrue

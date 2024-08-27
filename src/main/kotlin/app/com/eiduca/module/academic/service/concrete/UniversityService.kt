@@ -1,6 +1,6 @@
 package app.com.eiduca.module.academic.service.concrete
 
-import app.com.eiduca.module.academic.common.CompanyService
+import app.com.eiduca.module.academic.common.company.CompanyService
 import app.com.eiduca.module.academic.enums.UniversityType
 import app.com.eiduca.module.academic.model.concrete.University
 import app.com.eiduca.module.academic.repository.concrete.UniversityRepository

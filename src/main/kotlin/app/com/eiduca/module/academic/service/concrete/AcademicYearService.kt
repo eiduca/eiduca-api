@@ -1,6 +1,6 @@
 package app.com.eiduca.module.academic.service.concrete
 
-import app.com.eiduca.module.academic.common.DataRangeService
+import app.com.eiduca.module.academic.common.datarange.DataRangeService
 import app.com.eiduca.module.academic.model.concrete.AcademicYear
 import app.com.eiduca.module.academic.repository.concrete.AcademicYearRepository
 import app.com.eiduca.module.core.exception.NotFoundException

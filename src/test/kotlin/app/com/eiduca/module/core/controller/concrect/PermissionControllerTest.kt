@@ -2,7 +2,7 @@ package app.com.eiduca.module.core.controller.concrect
 
 import app.com.eiduca.module.core.constant.ReturnStatus
 import app.com.eiduca.module.core.create.concrete.PermissionCreate
-import app.com.eiduca.module.core.seed.concrete.PermissionSeed
+import app.com.eiduca.module.core.seed.PermissionSeed
 import app.com.eiduca.module.core.service.concrect.PermissionService
 import org.junit.jupiter.api.Assertions.assertFalse
 import org.junit.jupiter.api.Assertions.assertTrue
