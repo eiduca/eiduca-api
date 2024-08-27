@@ -8,5 +8,4 @@ import org.springframework.stereotype.Service
 @Service
 class PersonAddressService(
     val personAddressRepository: PersonAddressRepository
-): CommonService<PersonAddress>(personAddressRepository) {
-}
+): CommonService<PersonAddress>(personAddressRepository)

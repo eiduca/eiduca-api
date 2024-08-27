@@ -13,7 +13,7 @@ import org.springframework.data.domain.Pageable
 
 @DataJpaTest
 @DisplayName("Test of address of person repository")
-class PersonAddressRepositoryTest{
+class InstitutionAddressRepositoryTest{
 
     @Autowired lateinit var personAddressRepository: PersonAddressRepository
 
