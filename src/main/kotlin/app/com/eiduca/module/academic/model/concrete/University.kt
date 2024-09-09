@@ -18,10 +18,24 @@ class University(
     website: String,
     foundingDate: LocalDate,
     @Enumerated(EnumType.STRING) var type: UniversityType = UniversityType.INDEFINITE,
-): CompanyModel(name, acronym, email, contact, website, foundingDate) {
+    latitude: Double? = null,
+    longitude: Double? = null,
+): CompanyModel(name, acronym, email, contact, website, foundingDate, latitude, longitude) {
 
     constructor(): this("", "", "", "", "", LocalDate.now(), UniversityType.INDEFINITE)
 
     override fun toString(): String = "University(${setToString("type=$type")})"
 
+    override fun equals(other: Any?): Boolean {
+        if (other !is University) return false
+        if (!super.equals(other)) return false
+        if (type != other.type) return false
+        return true
+    }
+
+    override fun hashCode(): Int {
+        var result = super.hashCode()
+        result = 31 * result + type.hashCode()
+        return result
+    }
 }

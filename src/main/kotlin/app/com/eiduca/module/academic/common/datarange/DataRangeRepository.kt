@@ -1,18 +1,26 @@
 package app.com.eiduca.module.academic.common.datarange
 
-import app.com.eiduca.module.core.common.ConcreteRepository
+import app.com.eiduca.module.academic.query.DataRangeJPQL
+import app.com.eiduca.module.core.common.general.ConcreteRepository
+import org.springframework.data.domain.Page
+import org.springframework.data.domain.Pageable
 import org.springframework.data.jpa.repository.Query
 import org.springframework.data.repository.NoRepositoryBean
 import java.time.LocalDate
-import java.util.*
 
 @NoRepositoryBean
 interface DataRangeRepository <T: DataRangeModel> : ConcreteRepository<T> {
 
-    @Query(name = "SELECT e FROM #{#entityName} e WHERE startDate = :startDate AND deletedBy IS NULL AND deletedAt IS NULL")
-    fun findByStartDate(startDate: LocalDate): Optional<T>
+    @Query(name = DataRangeJPQL.FIND_ALL_START_DATE)
+    fun findByStartDate(startDate: LocalDate): List<T>
 
-    @Query(name = "SELECT e FROM #{#entityName} e WHERE endDate = :endDate AND deletedBy IS NULL AND deletedAt IS NULL")
-    fun findByEndDate(endDate: LocalDate): Optional<T>
+    @Query(name = DataRangeJPQL.FIND_ALL_START_DATE, countName = DataRangeJPQL.FIND_COUNT_START_DATE)
+    fun findByStartDate(startDate: LocalDate, pageable: Pageable): Page<T>
+
+    @Query(name = DataRangeJPQL.FIND_ALL_END_DATE)
+    fun findByEndDate(endDate: LocalDate): List<T>
+
+    @Query(name = DataRangeJPQL.FIND_ALL_END_DATE, countName = DataRangeJPQL.FIND_COUNT_END_DATE)
+    fun findByEndDate(endDate: LocalDate, pageable: Pageable): Page<T>
 
 }

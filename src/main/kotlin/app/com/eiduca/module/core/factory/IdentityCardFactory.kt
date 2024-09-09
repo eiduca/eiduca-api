@@ -11,9 +11,10 @@ class IdentityCardFactory {
 
     companion object{
 
-        fun build(person: Person, registerType: RegisterType = RegisterType.SYSTEM) : IdentityCard {
+        fun build(person: Person,code: String, registerType: RegisterType = RegisterType.SYSTEM) : IdentityCard {
             val now = LocalDate.now()
             return IdentityCardBuilder()
+                .code(code)
                 .emittedIn("Luanda")
                 .naturalFrom("Luanda")
                 .residential("Antigos guerreiros")

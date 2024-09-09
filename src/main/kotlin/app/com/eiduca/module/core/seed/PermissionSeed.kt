@@ -4,7 +4,7 @@ import app.com.eiduca.module.core.enums.EntityEnum
 import app.com.eiduca.module.core.factory.PermissionFactory
 import app.com.eiduca.module.core.model.concrect.Permission
 
-enum class PermissionSeed (val permission: Permission) {
+ enum class PermissionSeed(val permission: Permission) {
 
     PERMISSION_SUPER(PermissionFactory.build("SUPER", "Has full permission on the system", EntityEnum.APPLICATION)),
 
@@ -33,8 +33,36 @@ enum class PermissionSeed (val permission: Permission) {
     ADDRESS_UPDATE(PermissionFactory.build("UPDATE_ADDRESS", "Edit address", EntityEnum.ADDRESS)),
     ADDRESS_DELETE(PermissionFactory.build("DELETE_ADDRESS", "Delete address", EntityEnum.ADDRESS)),
 
-    PERSON_ADDRESS_VIEW(PermissionFactory.build("VIEW_PERSON_ADDRESS", "View address of user", EntityEnum.PERSON_ADDRESS)),
-    PERSON_ADDRESS_SAVE(PermissionFactory.build("SAVE_PERSON_ADDRESS", "Save address of user", EntityEnum.PERSON_ADDRESS)),
-    PERSON_ADDRESS_UPDATE(PermissionFactory.build("UPDATE_PERSON_ADDRESS", "Edit address of user", EntityEnum.PERSON_ADDRESS)),
-    PERSON_ADDRESS_DELETE(PermissionFactory.build("DELETE_PERSON_ADDRESS", "Delete address of user", EntityEnum.PERSON_ADDRESS)),
-}
+     PERSON_ADDRESS_VIEW(PermissionFactory.build("VIEW_PERSON_ADDRESS", "View address of user", EntityEnum.PERSON_ADDRESS)),
+     PERSON_ADDRESS_SAVE(PermissionFactory.build("SAVE_PERSON_ADDRESS", "Save address of user", EntityEnum.PERSON_ADDRESS)),
+     PERSON_ADDRESS_UPDATE(PermissionFactory.build("UPDATE_PERSON_ADDRESS", "Edit address of user", EntityEnum.PERSON_ADDRESS)),
+     PERSON_ADDRESS_DELETE(PermissionFactory.build("DELETE_PERSON_ADDRESS", "Delete address of user", EntityEnum.PERSON_ADDRESS)),
+
+     /*-- Module academic --*/
+
+     ACADEMIC_YEAR_VIEW(PermissionFactory.build("VIEW_ACADEMIC_YEAR", "View academic year", EntityEnum.ACADEMIC_YEAR)),
+     ACADEMIC_YEAR_SAVE(PermissionFactory.build("SAVE_ACADEMIC_YEAR", "Save academic year", EntityEnum.ACADEMIC_YEAR)),
+     ACADEMIC_YEAR_UPDATE(PermissionFactory.build("UPDATE_ACADEMIC_YEAR", "Edit academic year", EntityEnum.ACADEMIC_YEAR)),
+     ACADEMIC_YEAR_DELETE(PermissionFactory.build("DELETE_ACADEMIC_YEAR", "Delete academic year", EntityEnum.ACADEMIC_YEAR)),
+
+     UNIVERSITY_VIEW(PermissionFactory.build("VIEW_UNIVERSITY", "View university", EntityEnum.UNIVERSITY)),
+     UNIVERSITY_SAVE(PermissionFactory.build("SAVE_UNIVERSITY", "Save university", EntityEnum.UNIVERSITY)),
+     UNIVERSITY_UPDATE(PermissionFactory.build("UPDATE_UNIVERSITY", "Edit university", EntityEnum.UNIVERSITY)),
+     UNIVERSITY_DELETE(PermissionFactory.build("DELETE_UNIVERSITY", "Delete university", EntityEnum.UNIVERSITY)),
+     
+     INSTITUTION_VIEW(PermissionFactory.build("VIEW_INSTITUTION", "View institution", EntityEnum.INSTITUTION)),
+     INSTITUTION_SAVE(PermissionFactory.build("SAVE_INSTITUTION", "Save institution", EntityEnum.INSTITUTION)),
+     INSTITUTION_UPDATE(PermissionFactory.build("UPDATE_INSTITUTION", "Edit institution", EntityEnum.INSTITUTION)),
+     INSTITUTION_DELETE(PermissionFactory.build("DELETE_INSTITUTION", "Delete institution", EntityEnum.INSTITUTION)),
+
+     UNIVERSITY_ADDRESS_VIEW(PermissionFactory.build("VIEW_UNIVERSITY_ADDRESS", "View address of university", EntityEnum.UNIVERSITY_ADDRESS)),
+     UNIVERSITY_ADDRESS_SAVE(PermissionFactory.build("SAVE_UNIVERSITY_ADDRESS", "Save address of university", EntityEnum.UNIVERSITY_ADDRESS)),
+     UNIVERSITY_ADDRESS_UPDATE(PermissionFactory.build("UPDATE_UNIVERSITY_ADDRESS", "Edit address of university", EntityEnum.UNIVERSITY_ADDRESS)),
+     UNIVERSITY_ADDRESS_DELETE(PermissionFactory.build("DELETE_UNIVERSITY_ADDRESS", "Delete address of university", EntityEnum.UNIVERSITY_ADDRESS)),
+
+     INSTITUTION_ADDRESS_VIEW(PermissionFactory.build("VIEW_INSTITUTION_ADDRESS", "View address of institution", EntityEnum.INSTITUTION_ADDRESS)),
+     INSTITUTION_ADDRESS_SAVE(PermissionFactory.build("SAVE_INSTITUTION_ADDRESS", "Save address of institution", EntityEnum.INSTITUTION_ADDRESS)),
+     INSTITUTION_ADDRESS_UPDATE(PermissionFactory.build("UPDATE_INSTITUTION_ADDRESS", "Edit address of institution", EntityEnum.INSTITUTION_ADDRESS)),
+     INSTITUTION_ADDRESS_DELETE(PermissionFactory.build("DELETE_INSTITUTION_ADDRESS", "Delete address of institution", EntityEnum.INSTITUTION_ADDRESS)),
+
+ }

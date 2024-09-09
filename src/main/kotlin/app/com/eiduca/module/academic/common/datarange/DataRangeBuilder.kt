@@ -1,9 +1,9 @@
 package app.com.eiduca.module.academic.common.datarange
 
-import app.com.eiduca.module.core.common.ConcreteBuilder
+import app.com.eiduca.module.core.common.general.ConcreteBuilder
 import java.time.LocalDate
 
-abstract  class DataRangeBuilder <T: DataRangeModel>: ConcreteBuilder<T>() {
+abstract class DataRangeBuilder <T: DataRangeModel>: ConcreteBuilder<T>() {
 
     protected var startDate: LocalDate = LocalDate.now()
     protected var endDate: LocalDate = LocalDate.now()

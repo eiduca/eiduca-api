@@ -1,11 +1,12 @@
 package app.com.eiduca.module.core.controller.pivot
 
 import app.com.eiduca.configuration.annotation.HasPermission
-import app.com.eiduca.module.core.common.PivotController
+import app.com.eiduca.configuration.constant.ProjectConst
+import app.com.eiduca.module.core.common.general.PivotController
 import app.com.eiduca.module.core.constant.MessageDoc
 import app.com.eiduca.module.core.constant.ReturnStatus
 import app.com.eiduca.module.core.model.pivot.PersonAddress
-import app.com.eiduca.module.core.request.body.PersonAddressRequest
+import app.com.eiduca.module.core.request.PersonAddressRequest
 import app.com.eiduca.module.core.seed.PermissionSeed
 import app.com.eiduca.module.core.service.pivot.PersonAddressService
 import io.swagger.v3.oas.annotations.Operation
@@ -20,17 +21,17 @@ import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 
 @RestController
-@CrossOrigin("*")
+@CrossOrigin(ProjectConst.CROSS_ORIGIN)
 @RequestMapping("\${apiPrefix}/person-address")
 class PersonAddressController(
     val personAddressService: PersonAddressService
-): PivotController() {
+): PivotController<PersonAddress, PersonAddressRequest>() {
 
     @GetMapping
     @HasPermission(PermissionSeed.PERSON_ADDRESS_VIEW)
     @Operation(tags = ["person-address"], summary = MessageDoc.SUMMARY_FIND_ALL, description = MessageDoc.DESCRIPTION_FIND_ALL)
     @ApiResponses(value = [ ApiResponse(responseCode = MessageDoc.STATUS_PERMISSION_DENIED, description = MessageDoc.PERMISSION_DENIED) ])
-    fun findAll(@ParameterObject pageable: Pageable): ResponseEntity<Page<PersonAddress>> {
+    override fun findAll(@ParameterObject pageable: Pageable): ResponseEntity<Page<PersonAddress>> {
         return ResponseEntity(personAddressService.findAll(pageable), ReturnStatus.OK)
     }
 
@@ -38,7 +39,7 @@ class PersonAddressController(
     @HasPermission(PermissionSeed.PERSON_ADDRESS_VIEW)
     @Operation(tags = ["person-address"], summary = MessageDoc.SUMMARY_FIND_BY_ID, description = MessageDoc.DESCRIPTION_FIND_BY_ID)
     @ApiResponses(value = [ ApiResponse(responseCode = MessageDoc.STATUS_PERMISSION_DENIED, description = MessageDoc.PERMISSION_DENIED) ])
-    fun findById(@PathVariable id: String): ResponseEntity<PersonAddress> {
+    override fun findById(@PathVariable id: String): ResponseEntity<PersonAddress> {
         return ResponseEntity(personAddressService.findById(id), ReturnStatus.OK)
     }
 
@@ -51,8 +52,8 @@ class PersonAddressController(
         ApiResponse(responseCode = MessageDoc.STATUS_FAILED, description = MessageDoc.FAILED),
         ApiResponse(responseCode = MessageDoc.STATUS_PERMISSION_DENIED, description = MessageDoc.PERMISSION_DENIED)
     ])
-    fun save(@Valid @RequestBody personAddressRequest: PersonAddressRequest): ResponseEntity<PersonAddress> {
-        return ResponseEntity(personAddressService.save(personAddressRequest.toPersonAddress()), ReturnStatus.CREATED)
+    override fun save(@Valid @RequestBody request: PersonAddressRequest): ResponseEntity<PersonAddress> {
+        return ResponseEntity(personAddressService.save(request.toModel()), ReturnStatus.CREATED)
     }
 
     @Transactional
@@ -65,8 +66,8 @@ class PersonAddressController(
         ApiResponse(responseCode = MessageDoc.STATUS_NOT_FOUND, description = MessageDoc.NOT_FOUND),
         ApiResponse(responseCode = MessageDoc.STATUS_PERMISSION_DENIED, description = MessageDoc.PERMISSION_DENIED)
     ])
-    fun update(@Valid @RequestBody personAddressRequest: PersonAddressRequest, @PathVariable id: String): ResponseEntity<PersonAddress> {
-        return ResponseEntity(personAddressService.update(personAddressRequest.toPersonAddress(),id), ReturnStatus.UPDATED)
+    override fun update(@Valid @RequestBody request: PersonAddressRequest, @PathVariable id: String): ResponseEntity<PersonAddress> {
+        return ResponseEntity(personAddressService.update(request.toModel(),id), ReturnStatus.UPDATED)
     }
 
     @Transactional
@@ -78,7 +79,7 @@ class PersonAddressController(
         ApiResponse(responseCode = MessageDoc.STATUS_NOT_FOUND, description = MessageDoc.NOT_FOUND),
         ApiResponse(responseCode = MessageDoc.STATUS_PERMISSION_DENIED, description = MessageDoc.PERMISSION_DENIED)
     ])
-    fun deleteById(@PathVariable id: String): ResponseEntity<Unit> {
+    override fun deleteById(@PathVariable id: String): ResponseEntity<Unit> {
         return ResponseEntity(personAddressService.deleteById(id), ReturnStatus.DELETED)
     }
 }

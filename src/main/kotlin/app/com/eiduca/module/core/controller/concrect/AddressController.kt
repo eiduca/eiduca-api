@@ -1,11 +1,12 @@
 package app.com.eiduca.module.core.controller.concrect
 
 import app.com.eiduca.configuration.annotation.HasPermission
-import app.com.eiduca.module.core.common.ConcreteController
+import app.com.eiduca.configuration.constant.ProjectConst
+import app.com.eiduca.module.core.common.general.ConcreteController
 import app.com.eiduca.module.core.constant.MessageDoc
 import app.com.eiduca.module.core.constant.ReturnStatus
 import app.com.eiduca.module.core.model.concrect.Address
-import app.com.eiduca.module.core.request.body.AddressRequest
+import app.com.eiduca.module.core.request.AddressRequest
 import app.com.eiduca.module.core.seed.PermissionSeed
 import app.com.eiduca.module.core.service.concrect.AddressService
 import io.swagger.v3.oas.annotations.Operation
@@ -28,17 +29,17 @@ import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
-@CrossOrigin("*")
+@CrossOrigin(ProjectConst.CROSS_ORIGIN)
 @RequestMapping("\${apiPrefix}/addresses")
 class AddressController(
     val addressService: AddressService
-): ConcreteController() {
+): ConcreteController<Address, AddressRequest>() {
 
     @GetMapping
     @HasPermission(PermissionSeed.ADDRESS_VIEW)
     @Operation(tags = ["address"], summary = MessageDoc.SUMMARY_FIND_ALL, description = MessageDoc.DESCRIPTION_FIND_ALL)
     @ApiResponses(value = [ ApiResponse(responseCode = MessageDoc.STATUS_PERMISSION_DENIED, description = MessageDoc.PERMISSION_DENIED) ])
-    fun findAll(@ParameterObject pageable: Pageable): ResponseEntity<Page<Address>> {
+    override fun findAll(@ParameterObject pageable: Pageable): ResponseEntity<Page<Address>> {
         return ResponseEntity(addressService.findAll(pageable), ReturnStatus.OK)
     }
 
@@ -46,7 +47,7 @@ class AddressController(
     @HasPermission(PermissionSeed.ADDRESS_VIEW)
     @Operation(tags = ["address"], summary = MessageDoc.SUMMARY_FIND_BY_ID, description = MessageDoc.DESCRIPTION_FIND_BY_ID)
     @ApiResponses(value = [ ApiResponse(responseCode = MessageDoc.STATUS_PERMISSION_DENIED, description = MessageDoc.PERMISSION_DENIED) ])
-    fun findById(@PathVariable id: String): ResponseEntity<Address> {
+    override fun findById(@PathVariable id: String): ResponseEntity<Address> {
         return ResponseEntity(addressService.findById(id), ReturnStatus.OK)
     }
 
@@ -59,8 +60,8 @@ class AddressController(
         ApiResponse(responseCode = MessageDoc.STATUS_FAILED, description = MessageDoc.FAILED),
         ApiResponse(responseCode = MessageDoc.STATUS_PERMISSION_DENIED, description = MessageDoc.PERMISSION_DENIED)
     ])
-    fun save(@Valid @RequestBody addressRequest: AddressRequest): ResponseEntity<Address> {
-        return ResponseEntity(addressService.save(addressRequest.toAddress()), ReturnStatus.CREATED)
+    override fun save(@Valid @RequestBody request: AddressRequest): ResponseEntity<Address> {
+        return ResponseEntity(addressService.save(request.toModel()), ReturnStatus.CREATED)
     }
 
     @Transactional
@@ -73,8 +74,8 @@ class AddressController(
         ApiResponse(responseCode = MessageDoc.STATUS_NOT_FOUND, description = MessageDoc.NOT_FOUND),
         ApiResponse(responseCode = MessageDoc.STATUS_PERMISSION_DENIED, description = MessageDoc.PERMISSION_DENIED)
     ])
-    fun update(@Valid @RequestBody addressRequest: AddressRequest, @PathVariable id: String): ResponseEntity<Address> {
-        return ResponseEntity(addressService.update(addressRequest.toAddress(),id), ReturnStatus.UPDATED)
+    override fun update(@Valid @RequestBody request: AddressRequest, @PathVariable id: String): ResponseEntity<Address> {
+        return ResponseEntity(addressService.update(request.toModel(),id), ReturnStatus.UPDATED)
     }
 
     @Transactional
@@ -86,7 +87,7 @@ class AddressController(
         ApiResponse(responseCode = MessageDoc.STATUS_NOT_FOUND, description = MessageDoc.NOT_FOUND),
         ApiResponse(responseCode = MessageDoc.STATUS_PERMISSION_DENIED, description = MessageDoc.PERMISSION_DENIED)
     ])
-    fun deleteById(@PathVariable id: String): ResponseEntity<Unit> {
+    override fun deleteById(@PathVariable id: String): ResponseEntity<Unit> {
         return ResponseEntity(addressService.deleteById(id), ReturnStatus.DELETED)
     }
 }

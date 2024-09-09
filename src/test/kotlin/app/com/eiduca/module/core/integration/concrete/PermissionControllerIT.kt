@@ -53,7 +53,7 @@ class PermissionControllerIT {
     @DisplayName("Create permission when successful")
     fun save_WhenSuccessful() {
         val permission = PermissionCreate.PERMISSION_NOT_EXIST
-        val exchange = testRestTemplate.postForEntity("$apiPrefix/$endpoint", permission.toPermissionRequest(), Permission::class.java)
+        val exchange = testRestTemplate.postForEntity("$apiPrefix/$endpoint", permission.toRequest(), Permission::class.java)
         assertPermission(exchange, permission, ReturnStatus.CREATED)
     }
 
@@ -61,7 +61,7 @@ class PermissionControllerIT {
     @DisplayName("Update permission when successful")
     fun update_WhenSuccessful() {
         val permission = permissionService.saveOrUpdate(PermissionCreate.PERMISSION_UPDATE)
-        val exchange = testRestTemplate.exchange("$apiPrefix/$endpoint/{id}",HttpMethod.PUT, HttpEntity(permission.toPermissionRequest()), Permission::class.java, permission.id)
+        val exchange = testRestTemplate.exchange("$apiPrefix/$endpoint/{id}",HttpMethod.PUT, HttpEntity(permission.toRequest()), Permission::class.java, permission.id)
         assertPermission(exchange, permission, ReturnStatus.UPDATED)
     }
 

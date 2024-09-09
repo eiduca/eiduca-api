@@ -12,7 +12,7 @@ class AddressCreate {
 
         val ADDRESS_UPDATE = ADDRESS_SAVE.apply { id = GeneratorUUID.v7toString() }
 
-        val ADDRESS_NOT_EXIST = AddressFactory.build()
+        val ADDRESS_NOT_EXIST = AddressFactory.build("76796c038ab2")
 
     }
 

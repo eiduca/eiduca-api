@@ -8,7 +8,8 @@ class AddressFactory {
 
     companion object{
 
-        fun build() : Address = AddressBuilder()
+        fun build(code: String) : Address = AddressBuilder()
+            .code(code)
             .streetName("Project New Life")
             .city("Project New Life")
             .postalCode("0000-000")
@@ -16,6 +17,8 @@ class AddressFactory {
             .stateOrProvince("Luanda")
             .neighborhood("Principal")
             .houseNumber("24")
+            .latitude(0.0)
+            .longitude(0.0)
             .registerType(RegisterType.SYSTEM)
             .build()
 

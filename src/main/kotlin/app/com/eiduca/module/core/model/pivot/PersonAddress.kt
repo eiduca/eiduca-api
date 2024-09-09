@@ -1,9 +1,9 @@
 package app.com.eiduca.module.core.model.pivot
 
-import app.com.eiduca.module.core.common.PivotModel
+import app.com.eiduca.module.core.common.general.PivotModel
 import app.com.eiduca.module.core.model.concrect.Address
 import app.com.eiduca.module.core.model.concrect.Person
-import app.com.eiduca.module.core.request.body.PersonAddressRequest
+import app.com.eiduca.module.core.request.PersonAddressRequest
 import jakarta.persistence.Entity
 import jakarta.persistence.ManyToOne
 import jakarta.persistence.Table

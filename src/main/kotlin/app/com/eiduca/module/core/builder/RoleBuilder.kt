@@ -1,15 +1,9 @@
 package app.com.eiduca.module.core.builder
 
-import app.com.eiduca.module.core.common.ConcreteBuilder
+import app.com.eiduca.module.core.common.named.NamedDescriptionBuilder
 import app.com.eiduca.module.core.model.concrect.Role
 
-class RoleBuilder: ConcreteBuilder<Role>(){
-    private var name: String = ""
-    private var description: String = ""
-
-    fun name(name: String) = apply{ this.name = name }
-
-    fun description(description: String) = apply{ this.description = description }
+class RoleBuilder: NamedDescriptionBuilder<Role>(){
 
     override fun build(): Role {
         val role = Role(name, description)

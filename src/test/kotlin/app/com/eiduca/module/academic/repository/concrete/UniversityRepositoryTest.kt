@@ -4,6 +4,7 @@ import app.com.eiduca.module.academic.common.company.CompanyRepositoryTest
 import app.com.eiduca.module.academic.create.concrete.UniversityCreate
 import app.com.eiduca.module.academic.model.concrete.University
 import app.com.eiduca.module.core.exception.NotFoundException
+import app.com.eiduca.module.core.util.AssertUtil
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.DisplayName
 import org.springframework.beans.factory.annotation.Autowired
@@ -17,37 +18,24 @@ class UniversityRepositoryTest(
 ): CompanyRepositoryTest<University>(universityRepository, UniversityCreate.UNIVERSITY_SAVE){
 
    @Test
-   @DisplayName("Find university by type when successful")
-   fun findByType_WhenSuccessful() {
-      assertDoesNotThrow {
-         val university = universityRepository.save(UniversityCreate.UNIVERSITY_SAVE)
-         universityRepository.findByType(university.type).ifPresentOrElse({
-            assertEquals(it.id, university.id)
-         },{throw NotFoundException("Not found university by type") })
-      }
+   @DisplayName("Find university by type when successful, return list")
+   fun findByType_ReturnList_WhenSuccessful() {
+      runner()
+      persistModel()
+      AssertUtil.assert(universityRepository.findByType(model.type))
    }
 
    @Test
-   @DisplayName("Find university by name when successful")
-   fun findByName_WhenSuccessful() = findByName()
+   @DisplayName("Find university by type when successful, return list pageable")
+   fun findByType_ReturnPage_WhenSuccessful() {
+      runner()
+      persistModel()
+      AssertUtil.assert(universityRepository.findByType(model.type, AssertUtil.PAGEABLE))
+   }
 
-   @Test
-   @DisplayName("Find university by email when successful")
-   fun findByEmail_WhenSuccessful() = findByEmail()
+   override fun runner() = universityRepository.deleteAll()
 
-   @Test
-   @DisplayName("Find university by acronym when successful")
-   fun findByAcronym_WhenSuccessful() = findByAcronym()
-
-   @Test
-   @DisplayName("Find university by contact when successful")
-   fun findByContact_WhenSuccessful() = findByContact()
-
-   @Test
-   @DisplayName("Find university by website when successful")
-   fun findByWebsite_WhenSuccessful() = findByWebsite()
-
-   @Test
-   @DisplayName("Find university by foundingDate when successful")
-   fun findByFoundingDate_WhenSuccessful() = findByFoundingDate()
+   override fun persistModel(){
+      universityRepository.findByName(model.name).orElse(universityRepository.save(model))
+   }
 }

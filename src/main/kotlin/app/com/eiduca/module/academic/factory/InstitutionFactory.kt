@@ -16,6 +16,8 @@ class InstitutionFactory {
             .acronym(acronym)
             .name(name)
             .foundingDate(LocalDate.now().minusYears(10))
+            .latitude(0.0)
+            .longitude(0.0)
             .build()
 
     }

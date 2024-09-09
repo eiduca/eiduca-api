@@ -1,30 +1,28 @@
 package app.com.eiduca.module.core.service.concrect
 
+import app.com.eiduca.module.core.common.ConcreteServiceTest
 import app.com.eiduca.module.core.create.concrete.IdentityCardCreate
+import app.com.eiduca.module.core.model.concrect.IdentityCard
 import app.com.eiduca.module.core.repository.concrect.IdentityCardRepository
 import app.com.eiduca.module.core.repository.concrect.PersonRepository
-import app.com.eiduca.module.core.seed.IdentityCardSeed
-import org.junit.jupiter.api.Assertions.assertFalse
+import app.com.eiduca.module.core.util.AssertUtil
 import org.junit.jupiter.api.Test
 
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.DisplayName
-import org.junit.jupiter.api.assertDoesNotThrow
 import org.junit.jupiter.api.extension.ExtendWith
-import org.mockito.ArgumentMatchers
 import org.mockito.BDDMockito
 import org.mockito.InjectMocks
 import org.mockito.Mock
 import org.springframework.data.domain.PageImpl
-import org.springframework.data.domain.Pageable
 import org.springframework.test.context.junit.jupiter.SpringExtension
-import java.util.*
+import java.util.Optional
 import kotlin.test.assertEquals
 import kotlin.test.assertNotNull
 
 @ExtendWith(SpringExtension::class)
 @DisplayName("Test of identity card service")
-class IdentityCardServiceTest {
+class IdentityCardServiceTest: ConcreteServiceTest<IdentityCard>() {
 
     @InjectMocks
     lateinit var identityCardService: IdentityCardService
@@ -37,84 +35,138 @@ class IdentityCardServiceTest {
 
     @BeforeEach
     fun setUp() {
-        val identityCard = IdentityCardCreate.IDENTITY_CARD_SAVE
-        val identityCards = PageImpl(IdentityCardSeed.entries.map { it.identityCard })
-        BDDMockito.`when`(identityCardRepository.findAll(Pageable.ofSize(15))).thenReturn(identityCards)
-        BDDMockito.`when`(identityCardRepository.findById(ArgumentMatchers.anyString())).thenReturn(Optional.of(identityCard))
-        BDDMockito.`when`(identityCardRepository.findByPerson(identityCard.person)).thenReturn(Optional.of(identityCard))
-        BDDMockito.`when`(identityCardRepository.save(identityCard)).thenReturn(identityCard)
-        BDDMockito.doNothing().`when`(identityCardRepository).deleteById(ArgumentMatchers.anyString())
+        setUpConcrete(identityCardService, identityCardRepository, IdentityCardCreate.IDENTITY_CARD_SAVE)
+        val list = mutableListOf(model)
+        val page = PageImpl(list)
 
-        BDDMockito.`when`(personRepository.save(identityCard.person)).thenReturn(identityCard.person)
+        BDDMockito.`when`(identityCardRepository.findByCode(model.code)).thenReturn(Optional.of(model))
+        BDDMockito.`when`(identityCardRepository.findByPerson(model.person)).thenReturn(list)
+        BDDMockito.`when`(identityCardRepository.findByPerson(model.person, AssertUtil.PAGEABLE)).thenReturn(page)
+        BDDMockito.`when`(identityCardRepository.findByResidential(model.residential)).thenReturn(list)
+        BDDMockito.`when`(identityCardRepository.findByResidential(model.residential, AssertUtil.PAGEABLE)).thenReturn(page)
+        BDDMockito.`when`(identityCardRepository.findByNaturalFrom(model.naturalFrom)).thenReturn(list)
+        BDDMockito.`when`(identityCardRepository.findByNaturalFrom(model.naturalFrom, AssertUtil.PAGEABLE)).thenReturn(page)
+        BDDMockito.`when`(identityCardRepository.findByEmittedFrom(model.emittedFrom)).thenReturn(list)
+        BDDMockito.`when`(identityCardRepository.findByEmittedFrom(model.emittedFrom, AssertUtil.PAGEABLE)).thenReturn(page)
+        BDDMockito.`when`(identityCardRepository.findByEmittedAt(model.emittedAt)).thenReturn(list)
+        BDDMockito.`when`(identityCardRepository.findByEmittedAt(model.emittedAt, AssertUtil.PAGEABLE)).thenReturn(page)
+        BDDMockito.`when`(identityCardRepository.findByValidAt(model.validAt)).thenReturn(list)
+        BDDMockito.`when`(identityCardRepository.findByValidAt(model.validAt, AssertUtil.PAGEABLE)).thenReturn(page)
+        BDDMockito.`when`(identityCardRepository.findByMaritalStatus(model.maritalStatus)).thenReturn(list)
+        BDDMockito.`when`(identityCardRepository.findByMaritalStatus(model.maritalStatus, AssertUtil.PAGEABLE)).thenReturn(page)
+        BDDMockito.`when`(personRepository.save(model.person)).thenReturn(model.person)
     }
 
     @Test
-    @DisplayName("List pageable of identity cards when successful")
-    fun findAll_WhenSuccessful() {
-        val response = identityCardService.findAll(Pageable.ofSize(15))
-        assertFalse(response.isEmpty)
+    @DisplayName("Find identity card by person when successful, list return")
+    fun findByCode_WhenSuccessful() {
+        identityCardService.save(model)
+        AssertUtil.assert(identityCardService.findByCode(model.code))
     }
 
     @Test
-    @DisplayName("Find identity card by id when successful")
-    fun findById_WhenSuccessful() {
-        val identityCard = IdentityCardCreate.IDENTITY_CARD_SAVE
-        assertDoesNotThrow {
-            val response = identityCardService.findById(identityCard.id)
-            assertEquals(response.id, identityCard.id)
-        }
+    @DisplayName("Find identity card by person when successful, list return")
+    fun findByPerson_ReturnList_WhenSuccessful() {
+        identityCardService.save(model)
+        AssertUtil.assert(identityCardService.findByPerson(model.person))
     }
 
     @Test
-    @DisplayName("Find identity card by person when successful")
-    fun findByPerson_WhenSuccessful() {
-        val identityCard = IdentityCardCreate.IDENTITY_CARD_SAVE
-        assertDoesNotThrow {
-            val response = identityCardService.findByPerson(identityCard.person)
-            assertEquals(response, identityCard)
-        }
+    @DisplayName("Find identity card by person when successful, list return pageable")
+    fun findByPerson_ReturnPage_WhenSuccessful() {
+        identityCardService.save(model)
+        AssertUtil.assert(identityCardService.findByPerson(model.person, AssertUtil.PAGEABLE))
     }
 
     @Test
-    @DisplayName("Create identity card when successful")
-    fun save_WhenSuccessful() {
-        val identityCard = IdentityCardCreate.IDENTITY_CARD_SAVE
-        assertDoesNotThrow {
-            val response = identityCardService.save(identityCard)
-            assertNotNull(response.id)
-            assertEquals(response, identityCard)
-        }
+    @DisplayName("Find identity card by residential when successful, list return")
+    fun findByResidential_ReturnList_WhenSuccessful() {
+        identityCardService.save(model)
+        AssertUtil.assert(identityCardService.findByResidential(model.residential))
+    }
+
+    @Test
+    @DisplayName("Find identity card by residential when successful, list return pageable")
+    fun findByResidential_ReturnPage_WhenSuccessful() {
+        identityCardService.save(model)
+        AssertUtil.assert(identityCardService.findByResidential(model.residential, AssertUtil.PAGEABLE))
+    }
+
+    @Test
+    @DisplayName("Find identity card by naturalFrom when successful, list return")
+    fun findByNaturalFrom_ReturnList_WhenSuccessful() {
+        identityCardService.save(model)
+        AssertUtil.assert(identityCardService.findByNaturalFrom(model.naturalFrom))
+    }
+
+    @Test
+    @DisplayName("Find identity card by naturalFrom when successful, list return pageable")
+    fun findByNaturalFrom_ReturnPage_WhenSuccessful() {
+        identityCardService.save(model)
+        AssertUtil.assert(identityCardService.findByNaturalFrom(model.naturalFrom, AssertUtil.PAGEABLE))
+    }
+
+    @Test
+    @DisplayName("Find identity card by emittedIn when successful, list return")
+    fun findByEmittedFrom_ReturnList_WhenSuccessful() {
+        identityCardService.save(model)
+        AssertUtil.assert(identityCardService.findByEmittedFrom(model.emittedFrom))
+    }
+
+    @Test
+    @DisplayName("Find identity card by emittedIn when successful, list return pageable")
+    fun findByEmittedFrom_ReturnPage_WhenSuccessful() {
+        identityCardService.save(model)
+        AssertUtil.assert(identityCardService.findByEmittedFrom(model.emittedFrom, AssertUtil.PAGEABLE))
+    }
+
+    @Test
+    @DisplayName("Find identity card by emittedAt when successful, list return")
+    fun findByEmittedAt_ReturnList_WhenSuccessful() {
+        identityCardService.save(model)
+        AssertUtil.assert(identityCardService.findByEmittedAt(model.emittedAt))
+    }
+
+    @Test
+    @DisplayName("Find identity card by emittedAt when successful, list return pageable")
+    fun findByEmittedAt_ReturnPage_WhenSuccessful() {
+        identityCardService.save(model)
+        AssertUtil.assert(identityCardService.findByEmittedAt(model.emittedAt, AssertUtil.PAGEABLE))
+    }
+
+    @Test
+    @DisplayName("Find identity card by validAt when successful, list return")
+    fun findByValidAt_ReturnList_WhenSuccessful() {
+        identityCardService.save(model)
+        AssertUtil.assert(identityCardService.findByValidAt(model.validAt))
+    }
+
+    @Test
+    @DisplayName("Find identity card by validAt when successful, list return pageable")
+    fun findByValidAt_ReturnPage_WhenSuccessful() {
+        identityCardService.save(model)
+        AssertUtil.assert(identityCardService.findByValidAt(model.validAt, AssertUtil.PAGEABLE))
+    }
+
+    @Test
+    @DisplayName("Find identity card by validAt when successful, list return")
+    fun findByMaritalStatus_ReturnList_WhenSuccessful() {
+        identityCardService.save(model)
+        AssertUtil.assert(identityCardService.findByMaritalStatus(model.maritalStatus))
+    }
+
+    @Test
+    @DisplayName("Find identity card by validAt when successful, list return pageable")
+    fun findByMaritalStatus_ReturnPage_WhenSuccessful() {
+        identityCardService.save(model)
+        AssertUtil.assert(identityCardService.findByMaritalStatus(model.maritalStatus, AssertUtil.PAGEABLE))
     }
 
     @Test
     @DisplayName("Create or update identity card when successful")
     fun saveOrUpdate_WhenSuccessful() {
-        val identityCard = IdentityCardCreate.IDENTITY_CARD_SAVE
-        assertDoesNotThrow {
-            val response = identityCardService.saveOrUpdate(identityCard)
-            assertNotNull(response.id)
-            assertEquals(response, identityCard)
-        }
+        val response = identityCardService.saveOrUpdate(model)
+        assertNotNull(response.id)
+        assertEquals(response, model)
     }
-
-    @Test
-    @DisplayName("Update identity card when successful")
-    fun update_WhenSuccessful() {
-        val identityCard = IdentityCardCreate.IDENTITY_CARD_UPDATE
-        assertDoesNotThrow {
-            val response = identityCardService.update(identityCard)
-            assertNotNull(response.id)
-            assert(response == identityCard)
-        }
-    }
-
-    @Test
-    @DisplayName("Delete identity card by id when successful")
-    fun deleteById_WhenSuccessful() {
-        val identityCard = IdentityCardCreate.IDENTITY_CARD_UPDATE
-        assertDoesNotThrow {
-            identityCardService.deleteById(identityCard.id)
-        }
-    }
-
 }

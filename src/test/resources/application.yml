@@ -1,4 +1,5 @@
-#spring:
-#  autoconfigure:
-#    exclude: org.springframework.boot.ApplicationRunner
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: create
 apiPrefix: /api/v1

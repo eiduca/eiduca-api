@@ -7,7 +7,7 @@ import jakarta.persistence.*
 import java.time.LocalDate
 
 @Entity
-@Table(name ="tb_institution")
+@Table(name ="tb_institutions")
 class Institution (
     name: String,
     acronym: String,
@@ -17,10 +17,23 @@ class Institution (
     foundingDate: LocalDate,
     @ManyToOne var university: University,
     @Enumerated(EnumType.STRING) var type: InstitutionType = InstitutionType.FACULTY,
-): CompanyModel(name, acronym, email, contact, website, foundingDate), IUniqueAttributeModifier {
+    latitude: Double? = null,
+    longitude: Double? = null,
+): CompanyModel(name, acronym, email, contact, website, foundingDate, latitude, longitude), IUniqueAttributeModifier {
 
     constructor(): this("","","","","",LocalDate.now(), University())
 
     override fun toString(): String = "Institution(${setToString("university=$university, type=$type")})"
 
+    override fun equals(other: Any?): Boolean {
+        if (other !is Institution) return false
+        if (!super.equals(other)) return false
+        return university == other.university
+    }
+
+    override fun hashCode(): Int {
+        var result = super.hashCode()
+        result = 31 * result + university.hashCode()
+        return result
+    }
 }

@@ -1,8 +1,9 @@
 package app.com.eiduca.module.core.model.concrect
 
-import app.com.eiduca.module.core.common.ConcreteModel
+import app.com.eiduca.module.core.common.general.ConcreteModel
 import app.com.eiduca.module.core.enums.MaritalStatus
-import app.com.eiduca.module.core.request.body.IdentityCardRequest
+import app.com.eiduca.module.core.request.IdentityCardRequest
+import jakarta.persistence.Column
 import jakarta.persistence.Entity
 import jakarta.persistence.EnumType
 import jakarta.persistence.Enumerated
@@ -13,21 +14,22 @@ import java.time.LocalDate
 
 @Entity
 @Audited
-@Table(name="tb_identity_card")
+@Table(name="tb_identity_cards")
 class IdentityCard(
-    @ManyToOne var person: Person,
-    @Enumerated(EnumType.STRING) var maritalStatus: MaritalStatus = MaritalStatus.SINGLE,
+    @Column(unique = true) var code: String,
     var residential: String,
     var naturalFrom: String,
-    var emittedIn: String,
+    var emittedFrom: String,
     var emittedAt: LocalDate,
     var validAt: LocalDate,
+    @Enumerated(EnumType.STRING) var maritalStatus: MaritalStatus = MaritalStatus.SINGLE,
+    @ManyToOne var person: Person,
 ): ConcreteModel() {
 
-    constructor(): this(Person(),MaritalStatus.SINGLE,"","","",LocalDate.now(),LocalDate.now())
+    constructor(): this("","","","",LocalDate.now(),LocalDate.now(), MaritalStatus.SINGLE, Person())
 
     override fun toString(): String {
-        return "IdentityCard(${setToString("person=$person, maritalStatus=$maritalStatus, residential='$residential', naturalFrom='$naturalFrom', emittedIn='$emittedIn', emittedAt=$emittedAt, validAt=$validAt")})"
+        return "IdentityCard(${setToString("code='$code', person=$person, maritalStatus=$maritalStatus, residential='$residential', naturalFrom='$naturalFrom', emittedFrom='$emittedFrom', emittedAt=$emittedAt, validAt=$validAt")})"
     }
 
     override fun equals(other: Any?): Boolean {
@@ -38,6 +40,6 @@ class IdentityCard(
 
     override fun hashCode(): Int = person.hashCode() + emittedAt.hashCode() + validAt.hashCode()
 
-    fun toIdentityCardRequest(): IdentityCardRequest = IdentityCardRequest(person.id, maritalStatus, residential, naturalFrom, emittedIn, emittedAt, validAt)
+    fun toIdentityCardRequest(): IdentityCardRequest = IdentityCardRequest(person.id, maritalStatus, residential, naturalFrom, emittedFrom, emittedAt, validAt)
 
 }

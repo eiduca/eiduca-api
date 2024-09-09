@@ -10,9 +10,9 @@ class PermissionFactory {
     companion object{
 
         fun build(name: String, description: String, entity: EntityEnum = EntityEnum.NONE) : Permission = PermissionBuilder()
+            .entity(entity.name)
             .name("PERMISSION_$name")
             .description(description)
-            .entity(entity.name)
             .registerType(RegisterType.SYSTEM)
             .build()
 

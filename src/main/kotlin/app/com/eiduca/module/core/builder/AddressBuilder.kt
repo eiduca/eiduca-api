@@ -1,10 +1,11 @@
 package app.com.eiduca.module.core.builder
 
-import app.com.eiduca.module.core.common.ConcreteBuilder
+import app.com.eiduca.module.core.common.general.ConcreteBuilder
 import app.com.eiduca.module.core.model.concrect.Address
 
 class AddressBuilder: ConcreteBuilder<Address>(){
 
+    private var code: String = ""
     private var streetName: String = ""
     private var houseNumber: String = ""
     private var neighborhood: String = ""
@@ -14,6 +15,8 @@ class AddressBuilder: ConcreteBuilder<Address>(){
     private var postalCode: String? = null
     private var latitude: Double? = null
     private var longitude: Double? = null
+
+    fun code(code: String) = apply{ this.code = code }
 
     fun streetName(streetName: String) = apply{ this.streetName = streetName }
 
@@ -34,7 +37,7 @@ class AddressBuilder: ConcreteBuilder<Address>(){
     fun longitude(longitude: Double? = null) = apply{ this.longitude = longitude }
 
     override fun build(): Address {
-        val address = Address(streetName, houseNumber, neighborhood, city, stateOrProvince, country,postalCode, latitude, longitude)
+        val address = Address(code, streetName, houseNumber, neighborhood, city, stateOrProvince, country,postalCode, latitude, longitude)
         return withDefaultValues(address)
     }
 }

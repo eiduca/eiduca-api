@@ -1,9 +1,9 @@
 package app.com.eiduca.module.core.interfaces
 
-import com.aventrix.jnanoid.jnanoid.NanoIdUtils
+import app.com.eiduca.module.core.util.GeneratorNanoID
 
 interface IUniqueAttributeModifier {
     fun updateUniqueAttributes()
 
-    fun nanoId(): String = "#${NanoIdUtils.randomNanoId()}"
+    fun nanoId(): String = "#${GeneratorNanoID.random()}"
 }

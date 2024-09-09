@@ -1,11 +1,12 @@
 package app.com.eiduca.module.core.controller.concrect
 
 import app.com.eiduca.configuration.annotation.HasPermission
-import app.com.eiduca.module.core.common.ConcreteController
+import app.com.eiduca.configuration.constant.ProjectConst
+import app.com.eiduca.module.core.common.general.ConcreteController
 import app.com.eiduca.module.core.constant.MessageDoc
 import app.com.eiduca.module.core.constant.ReturnStatus
 import app.com.eiduca.module.core.model.concrect.Role
-import app.com.eiduca.module.core.request.body.RoleRequest
+import app.com.eiduca.module.core.request.RoleRequest
 import app.com.eiduca.module.core.seed.PermissionSeed
 import app.com.eiduca.module.core.service.concrect.RoleService
 import io.swagger.v3.oas.annotations.Operation
@@ -28,17 +29,17 @@ import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
-@CrossOrigin("*")
+@CrossOrigin(ProjectConst.CROSS_ORIGIN)
 @RequestMapping("\${apiPrefix}/roles")
 class RoleController(
     val roleService: RoleService
-): ConcreteController() {
+): ConcreteController<Role, RoleRequest>() {
 
     @GetMapping
     @HasPermission(PermissionSeed.ROLE_VIEW)
     @Operation(tags = ["role"], summary = MessageDoc.SUMMARY_FIND_ALL, description = MessageDoc.DESCRIPTION_FIND_ALL)
     @ApiResponses(value = [ ApiResponse(responseCode = MessageDoc.STATUS_PERMISSION_DENIED, description = MessageDoc.PERMISSION_DENIED) ])
-    fun findAll(@ParameterObject pageable: Pageable): ResponseEntity<Page<Role>> {
+    override fun findAll(@ParameterObject pageable: Pageable): ResponseEntity<Page<Role>> {
         return ResponseEntity(roleService.findAll(pageable), ReturnStatus.OK)
     }
 
@@ -46,7 +47,7 @@ class RoleController(
     @HasPermission(PermissionSeed.ROLE_VIEW)
     @Operation(tags = ["role"], summary = MessageDoc.SUMMARY_FIND_BY_ID, description = MessageDoc.DESCRIPTION_FIND_BY_ID)
     @ApiResponses(value = [ ApiResponse(responseCode = MessageDoc.STATUS_PERMISSION_DENIED, description = MessageDoc.PERMISSION_DENIED) ])
-    fun findById(@PathVariable id: String): ResponseEntity<Role> {
+    override fun findById(@PathVariable id: String): ResponseEntity<Role> {
         return ResponseEntity(roleService.findById(id), ReturnStatus.OK)
     }
 
@@ -59,8 +60,8 @@ class RoleController(
         ApiResponse(responseCode = MessageDoc.STATUS_FAILED, description = MessageDoc.FAILED),
         ApiResponse(responseCode = MessageDoc.STATUS_PERMISSION_DENIED, description = MessageDoc.PERMISSION_DENIED)
     ])
-    fun save(@Valid @RequestBody roleRequest: RoleRequest): ResponseEntity<Role> {
-        return ResponseEntity(roleService.save(roleRequest.toRole()), ReturnStatus.CREATED)
+    override fun save(@Valid @RequestBody request: RoleRequest): ResponseEntity<Role> {
+        return ResponseEntity(roleService.save(request.toModel()), ReturnStatus.CREATED)
     }
 
     @Transactional
@@ -73,8 +74,8 @@ class RoleController(
         ApiResponse(responseCode = MessageDoc.STATUS_NOT_FOUND, description = MessageDoc.NOT_FOUND),
         ApiResponse(responseCode = MessageDoc.STATUS_PERMISSION_DENIED, description = MessageDoc.PERMISSION_DENIED)
     ])
-    fun update(@Valid @RequestBody roleRequest: RoleRequest, @PathVariable id: String): ResponseEntity<Role> {
-        return ResponseEntity(roleService.update(roleRequest.toRole(),id), ReturnStatus.UPDATED)
+    override fun update(@Valid @RequestBody request: RoleRequest, @PathVariable id: String): ResponseEntity<Role> {
+        return ResponseEntity(roleService.update(request.toModel(),id), ReturnStatus.UPDATED)
     }
 
     @Transactional
@@ -86,7 +87,7 @@ class RoleController(
         ApiResponse(responseCode = MessageDoc.STATUS_NOT_FOUND, description = MessageDoc.NOT_FOUND),
         ApiResponse(responseCode = MessageDoc.STATUS_PERMISSION_DENIED, description = MessageDoc.PERMISSION_DENIED)
     ])
-    fun deleteById(@PathVariable id: String): ResponseEntity<Unit> {
+    override fun deleteById(@PathVariable id: String): ResponseEntity<Unit> {
         return ResponseEntity(roleService.deleteById(id), ReturnStatus.DELETED)
     }
 }

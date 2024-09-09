@@ -1,10 +1,9 @@
 package app.com.eiduca.module.core.model.concrect
 
-import app.com.eiduca.module.core.common.ConcreteModel
+import app.com.eiduca.module.core.common.general.ConcreteModel
 import app.com.eiduca.module.core.enums.Gender
 import app.com.eiduca.module.core.interfaces.IUniqueAttributeModifier
-import app.com.eiduca.module.core.request.post.PersonRequestPost
-import app.com.eiduca.module.core.request.put.PersonRequestPut
+import app.com.eiduca.module.core.request.PersonRequest
 import jakarta.persistence.Column
 import jakarta.persistence.Entity
 import jakarta.persistence.EnumType
@@ -46,17 +45,12 @@ class Person(
     }
 
     override fun equals(other: Any?): Boolean {
-        return if(other is Person) other.identityCardNumber == identityCardNumber else false
+        return other is Person && other.identityCardNumber == identityCardNumber
     }
 
     override fun hashCode(): Int = identityCardNumber.hashCode()
 
-    fun toPersonRequestPost(): PersonRequestPost{
-        return PersonRequestPost(fullname,fullnameFather,fullnameMother, username, email, identityCardNumber, gender, password, birthday)
+    fun toRequest(): PersonRequest {
+        return PersonRequest(fullname,fullnameFather,fullnameMother, username, email, identityCardNumber, gender, "", birthday)
     }
-
-    fun toPersonRequestPut(): PersonRequestPut{
-        return PersonRequestPut(id, fullname, fullnameFather, fullnameMother, username, email, identityCardNumber, gender, birthday)
-    }
-
 }

@@ -1,6 +1,6 @@
 package app.com.eiduca.module.core.service.concrect
 
-import app.com.eiduca.module.core.common.ConcreteService
+import app.com.eiduca.module.core.common.general.ConcreteService
 import app.com.eiduca.module.core.exception.NotFoundException
 import app.com.eiduca.module.core.model.concrect.Role
 import app.com.eiduca.module.core.repository.concrect.RoleRepository

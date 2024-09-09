@@ -1,7 +1,7 @@
 package app.com.eiduca.module.academic.model.pivot
 
 import app.com.eiduca.module.academic.model.concrete.Institution
-import app.com.eiduca.module.core.common.PivotModel
+import app.com.eiduca.module.core.common.general.PivotModel
 import app.com.eiduca.module.core.model.concrect.Address
 import jakarta.persistence.Entity
 import jakarta.persistence.ManyToOne
@@ -12,4 +12,21 @@ import jakarta.persistence.Table
 class InstitutionAddress (
     @ManyToOne var institution: Institution,
     @ManyToOne var address: Address
-): PivotModel()
+): PivotModel() {
+
+    constructor() : this(Institution(), Address())
+
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (other !is InstitutionAddress) return false
+        if (institution != other.institution) return false
+        if (address != other.address) return false
+        return true
+    }
+
+    override fun hashCode(): Int {
+        var result = institution.hashCode()
+        result = 31 * result + address.hashCode()
+        return result
+    }
+}

@@ -3,11 +3,9 @@ package app.com.eiduca.module.academic.repository.concrete
 import app.com.eiduca.module.academic.common.company.CompanyRepositoryTest
 import app.com.eiduca.module.academic.create.concrete.InstitutionCreate
 import app.com.eiduca.module.academic.model.concrete.Institution
-import app.com.eiduca.module.academic.model.concrete.University
-import app.com.eiduca.module.core.exception.NotFoundException
+import app.com.eiduca.module.core.util.AssertUtil
 import org.junit.jupiter.api.Test
 
-import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.DisplayName
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest
@@ -20,64 +18,35 @@ class InstitutionRepositoryTest(
 ): CompanyRepositoryTest<Institution>(institutionRepository,InstitutionCreate.INSTITUTION_SAVE) {
 
     @Test
-    @DisplayName("Find institution by type when successful")
-    fun findByType_WhenSuccessful() {
-        assertDoesNotThrow {
-            val institution = createInstitution(InstitutionCreate.INSTITUTION_SAVE)
-            institutionRepository.findByType(institution.type).ifPresentOrElse({
-                assertEquals(it.id, institution.id)
-            },{throw NotFoundException("Not found institution by type") })
-        }
+    @DisplayName("Find institution by type when successful, return list")
+    fun findByType_ReturnList_WhenSuccessful() {
+        runner()
+        persistModel()
+        AssertUtil.assert(institutionRepository.findByType(model.type))
     }
 
     @Test
-    @DisplayName("Find institution by name when successful")
-    fun findByName_WhenSuccessful() {
-        model.university = createUniversity(model)
-        findByName()
+    @DisplayName("Find institution by type when successful, return list pageable")
+    fun findByType_ReturnPage_WhenSuccessful() {
+        runner()
+        persistModel()
+        AssertUtil.assert(institutionRepository.findByType(model.type, AssertUtil.PAGEABLE))
     }
 
     @Test
-    @DisplayName("Find institution by email when successful")
-    fun findByEmail_WhenSuccessful(){
-        model.university = createUniversity(model)
-        findByEmail()
+    @DisplayName("Find institution by university and name when successful")
+    fun findByNameAndUniversity_WhenSuccessful(){
+        runner()
+        persistModel()
+        AssertUtil.assert(institutionRepository.findByNameAndUniversity(model.name, model.university))
     }
 
-    @Test
-    @DisplayName("Find institution by acronym when successful")
-    fun findByAcronym_WhenSuccessful(){
-        model.university = createUniversity(model)
-        findByAcronym()
+    override fun persistModel() {
+        val university = model.university
+        model.university =  universityRepository.findByName(university.name)
+                                                .orElse(universityRepository.save(university))
+        institutionRepository.findByName(model.name).orElse(institutionRepository.save(model))
     }
 
-    @Test
-    @DisplayName("Find institution by contact when successful")
-    fun findByContact_WhenSuccessful(){
-        model.university = createUniversity(model)
-        findByContact()
-    }
-
-    @Test
-    @DisplayName("Find institution by website when successful")
-    fun findByWebsite_WhenSuccessful(){
-        model.university = createUniversity(model)
-        findByWebsite()
-    }
-
-    @Test
-    @DisplayName("Find institution by foundingDate when successful")
-    fun findByFoundingDate_WhenSuccessful(){
-        model.university = createUniversity(model)
-        findByFoundingDate()
-    }
-
-    private fun createUniversity(institution: Institution): University {
-        return universityRepository.save(institution.university)
-    }
-
-    private fun createInstitution(institution: Institution): Institution{
-        institution.university = createUniversity(institution)
-        return institutionRepository.save(institution)
-    }
+    override fun runner() = institutionRepository.deleteAll()
 }

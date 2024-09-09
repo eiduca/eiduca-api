@@ -1,6 +1,6 @@
 package app.com.eiduca.module.core.builder
 
-import app.com.eiduca.module.core.common.ConcreteBuilder
+import app.com.eiduca.module.core.common.general.ConcreteBuilder
 import app.com.eiduca.module.core.enums.Gender
 import app.com.eiduca.module.core.model.concrect.Person
 import java.time.LocalDate

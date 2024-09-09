@@ -19,28 +19,26 @@ class AcademicYearRepositoryTest(
     @Test
     @DisplayName("Find academicYear by name when successful")
     fun findByName_WhenSuccessful(){
-        val academicYear = AcademicYearCreate.ACADEMIC_YEAR_SAVE
-        academicYearRepository.save(academicYear)
-        academicYearRepository.findByName(academicYear.name).ifPresentOrElse({
-            assert(it.name == academicYear.name)
+        runner()
+        persistModel()
+        academicYearRepository.findByName(model.name).ifPresentOrElse({
+            assert(it.name == model.name)
         }, {throw NotFoundException("Not found academicYear by name") })
     }
 
     @Test
     @DisplayName("Find academicYear by code when successful")
     fun findByCode_WhenSuccessful() {
-        val academicYear = AcademicYearCreate.ACADEMIC_YEAR_SAVE
-        academicYearRepository.save(academicYear)
-        academicYearRepository.findByCode(academicYear.code).ifPresentOrElse({
-            assert(it.code == academicYear.code)
+        runner()
+        persistModel()
+        academicYearRepository.findByCode(model.code).ifPresentOrElse({
+            assert(it.code == model.code)
         }, {throw NotFoundException("Not found academicYear by code") })
     }
 
-    @Test
-    @DisplayName("Find academicYear by startDate when successful")
-    fun findByStartDate_WhenSuccessful() = findByStartDate()
+    override fun persistModel() {
+        model = academicYearRepository.findByName(model.name).orElse(academicYearRepository.save(model))
+    }
 
-    @Test
-    @DisplayName("Find academicYear by endDate when successful")
-    fun findByEndDate_WhenSuccessful() = findByEndDate()
+    override fun runner() = academicYearRepository.deleteAll()
 }

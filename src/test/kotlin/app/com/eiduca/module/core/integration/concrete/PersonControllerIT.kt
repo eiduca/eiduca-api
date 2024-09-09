@@ -54,7 +54,7 @@ class PersonControllerIT {
     @DisplayName("Create person when successful")
     fun save_WhenSuccessful() {
         val person = PersonCreate.PERSON_NOT_EXIST
-        val exchange = testRestTemplate.postForEntity("$apiPrefix/$endpoint", person.toPersonRequestPost(), Person::class.java)
+        val exchange = testRestTemplate.postForEntity("$apiPrefix/$endpoint", person.toRequest(), Person::class.java)
         assertPerson(exchange, person, ReturnStatus.CREATED)
     }
 
@@ -62,7 +62,7 @@ class PersonControllerIT {
     @DisplayName("Update person when successful")
     fun update_WhenSuccessful() {
         val person = personService.saveOrUpdate(PersonCreate.PERSON_UPDATE)
-        val exchange = testRestTemplate.exchange("$apiPrefix/$endpoint",HttpMethod.PUT, HttpEntity(person.toPersonRequestPut()), Person::class.java)
+        val exchange = testRestTemplate.exchange("$apiPrefix/$endpoint",HttpMethod.PUT, HttpEntity(person.toRequest()), Person::class.java)
         assertPerson(exchange, person, ReturnStatus.UPDATED)
     }
 
