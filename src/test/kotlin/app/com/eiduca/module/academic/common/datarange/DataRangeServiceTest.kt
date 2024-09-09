@@ -6,6 +6,7 @@ import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 import org.mockito.BDDMockito
 import org.springframework.data.domain.PageImpl
+
 abstract class DataRangeServiceTest <T: DataRangeModel>: ConcreteServiceTest<T>(){
 
     private lateinit var dataRangeService: DataRangeService<T>

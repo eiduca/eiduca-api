@@ -39,15 +39,11 @@ class InstitutionServiceTest: CompanyServiceTest<Institution>() {
 
         BDDMockito.`when`(institutionRepository.findByType(model.type)).thenReturn(list)
         BDDMockito.`when`(institutionRepository.findByType(model.type, AssertUtil.PAGEABLE)).thenReturn(page)
-
         BDDMockito.`when`(institutionRepository.findByUniversity(model.university)).thenReturn(list)
         BDDMockito.`when`(institutionRepository.findByUniversity(model.university, AssertUtil.PAGEABLE )).thenReturn(page)
-
         BDDMockito.`when`(universityRepository.save(model.university)).thenReturn(model.university)
-
         model.university = universityRepository.findByName(model.university.name)
             .orElse(universityRepository.save(model.university))
-
         BDDMockito.`when`(institutionRepository.findByNameAndUniversity(model.name, model.university)).thenReturn(Optional.of(model))
     }
 

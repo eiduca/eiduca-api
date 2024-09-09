@@ -14,7 +14,7 @@ abstract class CodeNamedDescriptionRepositoryTest<T: CodeNamedDescriptionModel>(
 ):ConcreteRepositoryTest<T>(codeNamedDescriptionRepository, model) {
 
     @Test
-    @Transactional
+    @DisplayName("Find model[codeNamedDescription] by code when successful")
     fun findByCode_WhenSuccessful() {
         runner()
         persistModel()
@@ -25,7 +25,7 @@ abstract class CodeNamedDescriptionRepositoryTest<T: CodeNamedDescriptionModel>(
     }
 
     @Test
-    @DisplayName("Find model codeNamedDescription by name when successful, return list")
+    @DisplayName("Find model[codeNamedDescription] by name when successful, return list")
     fun findByName_ReturnList_WhenSuccessful() {
         runner()
         persistModel()
@@ -33,7 +33,7 @@ abstract class CodeNamedDescriptionRepositoryTest<T: CodeNamedDescriptionModel>(
     }
 
     @Test
-    @DisplayName("Find model codeNamedDescription by name when successful, return list pageable")
+    @DisplayName("Find model[codeNamedDescription] by name when successful, return list pageable")
     fun findByName_ReturnPage_WhenSuccessful() {
         runner()
         persistModel()
@@ -41,7 +41,7 @@ abstract class CodeNamedDescriptionRepositoryTest<T: CodeNamedDescriptionModel>(
     }
 
     @Test
-    @DisplayName("Find model codeNamedDescription by name when successful, return list")
+    @DisplayName("Find model[codeNamedDescription] by name when successful, return list")
     fun findByDescription_ReturnList_WhenSuccessful() {
         runner()
         persistModel()
@@ -49,7 +49,7 @@ abstract class CodeNamedDescriptionRepositoryTest<T: CodeNamedDescriptionModel>(
     }
 
     @Test
-    @DisplayName("Find model codeNamedDescription by name when successful, return list pageable")
+    @DisplayName("Find model[codeNamedDescription] by name when successful, return list pageable")
     fun findByDescription_ReturnPage_WhenSuccessful() {
         runner()
         persistModel()
