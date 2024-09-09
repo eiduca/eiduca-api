@@ -1,6 +1,6 @@
 package app.com.eiduca.module.core.repository.concrect
 
-import app.com.eiduca.module.academic.query.IdentityCardJPQL
+import app.com.eiduca.module.core.query.IdentityCardJPQL
 import app.com.eiduca.module.core.common.general.ConcreteRepository
 import app.com.eiduca.module.core.enums.MaritalStatus
 import app.com.eiduca.module.core.model.concrect.IdentityCard

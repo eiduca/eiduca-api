@@ -96,7 +96,7 @@ class PersonAddressControllerIT {
 
     private fun createPersonAddress(personAddress: PersonAddress): PersonAddress{
         personAddress.person = personService.saveOrUpdate(personAddress.person)
-        personAddress.address = addressService.save(personAddress.address)
+        personAddress.address = addressService.saveOrUpdate(personAddress.address)
         return personAddressService.save(personAddress)
     }
 

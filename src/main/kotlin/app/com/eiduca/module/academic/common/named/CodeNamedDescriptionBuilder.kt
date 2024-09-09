@@ -4,9 +4,9 @@ import app.com.eiduca.module.core.common.general.ConcreteBuilder
 
 abstract class CodeNamedDescriptionBuilder<T: CodeNamedDescriptionModel> : ConcreteBuilder<T>(){
 
-    private var code: String = ""
-    private var name: String = ""
-    private var description: String? = null
+    protected var code: String = ""
+    protected var name: String = ""
+    protected var description: String? = null
 
     fun code(code: String) = apply { this.code = code }
 
@@ -18,7 +18,7 @@ abstract class CodeNamedDescriptionBuilder<T: CodeNamedDescriptionModel> : Concr
         obj.code = code
         obj.name = name
         obj.description = description
-        return  super.withDefaultValues(obj)
+        return super.withDefaultValues(obj)
     }
 
 }

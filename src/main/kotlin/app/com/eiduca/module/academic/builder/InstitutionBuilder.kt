@@ -16,7 +16,6 @@ class InstitutionBuilder: CompanyBuilder<Institution>() {
     fun university(university: University) = apply{ this.university = university }
 
     override fun build(): Institution {
-        val university = Institution(name, acronym, email, contact, website, foundingDate, university, type, latitude, longitude)
-        return withDefaultValues(university)
+        return withDefaultValues(Institution(name, acronym, email, contact, website, foundingDate, university, type, latitude, longitude))
     }
 }

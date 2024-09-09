@@ -14,8 +14,7 @@ class AcademicYearBuilder: DataRangeBuilder<AcademicYear>() {
     fun code(code: String) = apply{ this.code = code }
 
     override fun build(): AcademicYear {
-        val academicYear = AcademicYear(name,code, startDate, endDate)
-        return withDefaultValues(academicYear)
+        return withDefaultValues(AcademicYear(name,code, startDate, endDate))
     }
 
 }

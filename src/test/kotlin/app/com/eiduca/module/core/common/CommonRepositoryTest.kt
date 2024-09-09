@@ -5,12 +5,15 @@ import app.com.eiduca.module.core.common.general.CommonRepository
 import app.com.eiduca.module.core.common.general.ConcreteModel
 import app.com.eiduca.module.core.common.general.ConcreteRepository
 import app.com.eiduca.module.core.exception.NotFoundException
+import app.com.eiduca.module.core.util.AssertUtil
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.data.domain.Pageable
+import org.springframework.transaction.annotation.Transactional
 
+@Transactional
 abstract class CommonRepositoryTest <T: CommonModel>(
     var repository: CommonRepository<T>,
     var model: T
@@ -31,7 +34,7 @@ abstract class CommonRepositoryTest <T: CommonModel>(
     fun findByAll_WhenSuccessful() {
         runner()
         persistModel()
-        assertFalse(repository.findAll(Pageable.ofSize(15)).isEmpty)
+        AssertUtil.assert(repository.findAll(AssertUtil.PAGEABLE))
     }
 
     @Test
@@ -60,6 +63,6 @@ abstract class CommonRepositoryTest <T: CommonModel>(
 }
 
 abstract class ConcreteRepositoryTest <T: ConcreteModel>(
-    @Autowired repository: ConcreteRepository<T>,
+    repository: ConcreteRepository<T>,
     model: T,
 ): CommonRepositoryTest<T>(repository, model)

@@ -1,20 +1,60 @@
 package app.com.eiduca.module.academic.common.named
 
+import app.com.eiduca.module.core.common.ConcreteRepositoryTest
+import app.com.eiduca.module.core.exception.NotFoundException
+import app.com.eiduca.module.core.util.AssertUtil
+import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
+import org.springframework.transaction.annotation.Transactional
 
-import org.junit.jupiter.api.Assertions.*
-
-class CodeNamedDescriptionRepositoryTest {
+@Transactional
+abstract class CodeNamedDescriptionRepositoryTest<T: CodeNamedDescriptionModel>(
+    private val codeNamedDescriptionRepository: CodeNamedDescriptionRepository<T>,
+    model: T,
+):ConcreteRepositoryTest<T>(codeNamedDescriptionRepository, model) {
 
     @Test
-    fun findByCode() {
+    @Transactional
+    fun findByCode_WhenSuccessful() {
+        runner()
+        persistModel()
+        codeNamedDescriptionRepository.findByCode(model.code).ifPresentOrElse(
+            { assert(it == model) },
+            { throw NotFoundException("Not found model codeNamedDescription by code") }
+        )
     }
 
     @Test
-    fun findByName() {
+    @DisplayName("Find model codeNamedDescription by name when successful, return list")
+    fun findByName_ReturnList_WhenSuccessful() {
+        runner()
+        persistModel()
+        AssertUtil.assert(codeNamedDescriptionRepository.findByName(model.name))
     }
 
     @Test
-    fun findByDescription() {
+    @DisplayName("Find model codeNamedDescription by name when successful, return list pageable")
+    fun findByName_ReturnPage_WhenSuccessful() {
+        runner()
+        persistModel()
+        AssertUtil.assert(codeNamedDescriptionRepository.findByName(model.name, AssertUtil.PAGEABLE))
     }
+
+    @Test
+    @DisplayName("Find model codeNamedDescription by name when successful, return list")
+    fun findByDescription_ReturnList_WhenSuccessful() {
+        runner()
+        persistModel()
+        AssertUtil.assert(codeNamedDescriptionRepository.findByDescription(model.description))
+    }
+
+    @Test
+    @DisplayName("Find model codeNamedDescription by name when successful, return list pageable")
+    fun findByDescription_ReturnPage_WhenSuccessful() {
+        runner()
+        persistModel()
+        AssertUtil.assert(codeNamedDescriptionRepository.findByDescription(model.description, AssertUtil.PAGEABLE))
+    }
+
+    override fun runner() = codeNamedDescriptionRepository.deleteAll()
 }

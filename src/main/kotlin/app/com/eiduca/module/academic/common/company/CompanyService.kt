@@ -31,4 +31,9 @@ abstract class CompanyService <T: CompanyModel> (
 
     fun findByLongitude(longitude: Double?): List<T> = companyRepository.findByLongitude(longitude)
     fun findByLongitude(longitude: Double?, pageable: Pageable): Page<T> = companyRepository.findByLongitude(longitude, pageable)
+
+    override fun saveOrUpdate(obj: T): T{
+        companyRepository.findByName(obj.name).ifPresent { obj.id = it.id }
+        return companyRepository.save(obj)
+    }
 }

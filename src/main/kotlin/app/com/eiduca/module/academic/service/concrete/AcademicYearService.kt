@@ -15,4 +15,8 @@ class AcademicYearService(
 
     fun findByCode(code: String): AcademicYear = academicYearRepository.findByCode(code).orElseThrow { NotFoundException("Not found academicYear by code [$code]") }
 
+    override fun saveOrUpdate(obj: AcademicYear): AcademicYear {
+        academicYearRepository.findByName(obj.name).ifPresent { obj.id = it.id }
+        return academicYearRepository.save(obj)
+    }
 }

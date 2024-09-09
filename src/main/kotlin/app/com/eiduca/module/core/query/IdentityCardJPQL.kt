@@ -1,4 +1,4 @@
-package app.com.eiduca.module.academic.query
+package app.com.eiduca.module.core.query
 
 class IdentityCardJPQL {
     companion object{

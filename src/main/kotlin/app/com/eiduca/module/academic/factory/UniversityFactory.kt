@@ -6,9 +6,7 @@ import app.com.eiduca.module.academic.model.concrete.University
 import java.time.LocalDate
 
 class UniversityFactory {
-
     companion object{
-
         fun build(name: String, acronym: String) : University = UniversityBuilder()
             .type(UniversityType.EAD)
             .website("https://eiduca.com")
@@ -19,7 +17,5 @@ class UniversityFactory {
             .latitude(0.0)
             .longitude(0.0)
             .build()
-
     }
-
 }

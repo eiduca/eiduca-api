@@ -28,6 +28,7 @@ class PersonControllerIT {
 
     @Value("\${apiPrefix}")
     lateinit var apiPrefix: String
+
     val endpoint = "persons"
 
     @Test
@@ -85,5 +86,4 @@ class PersonControllerIT {
             }
         }
     }
-
 }

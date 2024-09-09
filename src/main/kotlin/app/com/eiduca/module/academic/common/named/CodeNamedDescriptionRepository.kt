@@ -14,11 +14,14 @@ interface CodeNamedDescriptionRepository<T: CodeNamedDescriptionModel>  : Concre
     fun findByCode(code: String): Optional<T>
 
     @Query(name = "ModelConcrete.findByName")
-    fun findByName(name: String): Optional<T>
+    fun findByName(name: String): List<T>
+
+    @Query(name = "ModelConcrete.findByName", countName = "ModelConcrete.findByNameCount")
+    fun findByName(name: String, pageable: Pageable): Page<T>
 
     @Query(name = "ModelConcrete.findByDescription")
-    fun findByDescription(description: String): List<T>
+    fun findByDescription(description: String?): List<T>
 
     @Query(name = "ModelConcrete.findByDescription", countName = "ModelConcrete.findByDescriptionCount")
-    fun findByDescription(description: String, pageable: Pageable): Page<T>
+    fun findByDescription(description: String?, pageable: Pageable): Page<T>
 }

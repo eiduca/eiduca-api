@@ -55,4 +55,6 @@ abstract class ConcreteService<T: ConcreteModel> (
         entity.deletedAt = LocalDateTime.now()
         repositoryConcrete.save(entity)
     }
+
+    abstract fun saveOrUpdate(obj: T): T
 }

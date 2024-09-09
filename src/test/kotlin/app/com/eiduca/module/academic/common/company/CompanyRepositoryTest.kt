@@ -4,12 +4,13 @@ import app.com.eiduca.module.core.exception.NotFoundException
 import app.com.eiduca.module.core.util.AssertUtil
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
+import org.springframework.transaction.annotation.Transactional
 
+@Transactional
 abstract class CompanyRepositoryTest <T: CompanyModel>(
     var repository: CompanyRepository<T>,
     var model: T
 ){
-
     @Test
     @DisplayName("Find company by name when successful")
     fun findByName_WhenSuccessful() {
@@ -126,9 +127,9 @@ abstract class CompanyRepositoryTest <T: CompanyModel>(
         AssertUtil.assert(repository.findByLongitude(model.longitude, AssertUtil.PAGEABLE))
     }
 
-    open fun persistModel(){
+    fun persistModel(){
         model = repository.save(model)
     }
 
-    open fun runner(){}
+    fun runner(){}
 }

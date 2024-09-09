@@ -15,9 +15,8 @@ class PermissionService(
 
     fun findByDescription(description: String): Permission = permissionRepository.findByDescription(description).orElseThrow { NotFoundException("Not found permission by description [$description]") }
 
-    fun saveOrUpdate(permission: Permission): Permission {
-        permissionRepository.findByName(permission.name).ifPresent { permission.id = it.id }
-        return  permissionRepository.save(permission)
+    override fun saveOrUpdate(obj: Permission): Permission {
+        permissionRepository.findByName(obj.name).ifPresent { obj.id = it.id }
+        return  permissionRepository.save(obj)
     }
-
 }

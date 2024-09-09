@@ -11,9 +11,6 @@ class IdentityCardCreate {
         val IDENTITY_CARD_SAVE = IdentityCardSeed.PERSON_SUPER.identityCard.apply { person = PersonCreate.PERSON_NOT_EXIST }
 
         val IDENTITY_CARD_UPDATE = IDENTITY_CARD_SAVE.apply { id = GeneratorUUID.v7toString() }
-
-        val IDENTITY_CARD_NOT_EXIST = IdentityCardFactory.build(PersonCreate.PERSON_NOT_EXIST, "3ed5abc5")
-
     }
 
 }

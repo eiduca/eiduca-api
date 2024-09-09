@@ -47,7 +47,7 @@ class IdentityCardService(
 
     fun findByMaritalStatus(maritalStatus: MaritalStatus, pageable: Pageable): Page<IdentityCard> = identityCardRepository.findByMaritalStatus(maritalStatus, pageable)
 
-    fun saveOrUpdate(identityCard: IdentityCard): IdentityCard {
+    override fun saveOrUpdate(identityCard: IdentityCard): IdentityCard {
         identityCardRepository.findByCode(identityCard.code).ifPresent { identityCard.id = it.id }
         return  identityCardRepository.save(identityCard)
     }
