@@ -14,6 +14,8 @@ class PersonCreate {
 
         val PERSON_NOT_EXIST = PersonFactory.build("TEST", "008610433SG0390")
 
+        val PERSON_TEST_IT = PersonFactory.build("TEST_IT", "005610433SG0322")
+
     }
 
 }

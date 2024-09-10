@@ -1,5 +1,6 @@
 package app.com.eiduca.module.core.integration.concrete
 
+import app.com.eiduca.annotation.EiConfigureTestIT
 import app.com.eiduca.module.core.constant.ReturnStatus
 import app.com.eiduca.module.core.create.concrete.AddressCreate
 import app.com.eiduca.module.core.model.concrect.Address
@@ -10,7 +11,6 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertDoesNotThrow
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.beans.factory.annotation.Value
-import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.boot.test.web.client.TestRestTemplate
 import org.springframework.core.ParameterizedTypeReference
 import org.springframework.http.HttpEntity
@@ -20,7 +20,7 @@ import org.springframework.http.ResponseEntity
 import kotlin.test.assertEquals
 import kotlin.test.assertNotNull
 
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@EiConfigureTestIT
 class AddressControllerIT {
 
     @Autowired lateinit var testRestTemplate: TestRestTemplate
@@ -41,7 +41,7 @@ class AddressControllerIT {
     @Test
     @DisplayName("Find address by id when successful")
     fun findById_WhenSuccessful() {
-        val address = addressService.save(AddressCreate.ADDRESS_SAVE)
+        val address = addressService.saveOrUpdate(AddressCreate.ADDRESS_NOT_EXIST)
         val exchange = testRestTemplate.getForEntity("$apiPrefix/$endpoint/{id}",Address::class.java, address.id)
         assertDoesNotThrow {
             assertEquals(exchange.statusCode, ReturnStatus.OK)
@@ -52,7 +52,7 @@ class AddressControllerIT {
     @Test
     @DisplayName("Create address when successful")
     fun save_WhenSuccessful() {
-        val address = AddressCreate.ADDRESS_SAVE
+        val address = addressService.saveOrUpdate(AddressCreate.ADDRESS_SAVE)
         val exchange = testRestTemplate.postForEntity("$apiPrefix/$endpoint", address.toAddressRequest(), Address::class.java)
         assertAddress(exchange, address, ReturnStatus.CREATED)
     }

@@ -1,7 +1,7 @@
 package app.com.eiduca.module.core.integration.pivot
 
+import app.com.eiduca.annotation.EiConfigureTestIT
 import app.com.eiduca.module.core.constant.ReturnStatus
-import app.com.eiduca.module.core.create.concrete.AddressCreate
 import app.com.eiduca.module.core.create.pivot.PersonAddressCreate
 import app.com.eiduca.module.core.model.pivot.PersonAddress
 import app.com.eiduca.module.core.service.concrect.AddressService
@@ -13,17 +13,17 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertDoesNotThrow
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.beans.factory.annotation.Value
-import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.boot.test.web.client.TestRestTemplate
 import org.springframework.core.ParameterizedTypeReference
 import org.springframework.http.HttpEntity
 import org.springframework.http.HttpMethod
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
+import org.springframework.test.annotation.DirtiesContext
 import kotlin.test.assertEquals
 import kotlin.test.assertNotNull
 
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@EiConfigureTestIT
 class PersonAddressControllerIT {
 
     @Autowired

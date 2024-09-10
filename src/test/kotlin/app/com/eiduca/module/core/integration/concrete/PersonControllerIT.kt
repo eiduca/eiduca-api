@@ -1,5 +1,6 @@
 package app.com.eiduca.module.core.integration.concrete
 
+import app.com.eiduca.annotation.EiConfigureTestIT
 import app.com.eiduca.module.core.constant.ReturnStatus
 import app.com.eiduca.module.core.create.concrete.PersonCreate
 import app.com.eiduca.module.core.model.concrect.Person
@@ -10,7 +11,6 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertDoesNotThrow
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.beans.factory.annotation.Value
-import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.boot.test.web.client.TestRestTemplate
 import org.springframework.core.ParameterizedTypeReference
 import org.springframework.http.HttpEntity
@@ -20,7 +20,7 @@ import org.springframework.http.ResponseEntity
 import kotlin.test.assertEquals
 import kotlin.test.assertNotNull
 
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@EiConfigureTestIT
 class PersonControllerIT {
 
     @Autowired lateinit var testRestTemplate: TestRestTemplate
@@ -54,7 +54,7 @@ class PersonControllerIT {
     @Test
     @DisplayName("Create person when successful")
     fun save_WhenSuccessful() {
-        val person = PersonCreate.PERSON_NOT_EXIST
+        val person = PersonCreate.PERSON_TEST_IT
         val exchange = testRestTemplate.postForEntity("$apiPrefix/$endpoint", person.toRequest(), Person::class.java)
         assertPerson(exchange, person, ReturnStatus.CREATED)
     }
@@ -63,7 +63,7 @@ class PersonControllerIT {
     @DisplayName("Update person when successful")
     fun update_WhenSuccessful() {
         val person = personService.saveOrUpdate(PersonCreate.PERSON_UPDATE)
-        val exchange = testRestTemplate.exchange("$apiPrefix/$endpoint",HttpMethod.PUT, HttpEntity(person.toRequest()), Person::class.java)
+        val exchange = testRestTemplate.exchange("$apiPrefix/$endpoint/{id}",HttpMethod.PUT, HttpEntity(person.toRequest()), Person::class.java, person.id)
         assertPerson(exchange, person, ReturnStatus.UPDATED)
     }
 

@@ -1,9 +1,9 @@
 package app.com.eiduca
 
+import app.com.eiduca.annotation.EiConfigureTestIT
 import org.junit.jupiter.api.Test
-import org.springframework.boot.test.context.SpringBootTest
 
-@SpringBootTest
+@EiConfigureTestIT
 class EiducaApplicationTests {
 
 	@Test

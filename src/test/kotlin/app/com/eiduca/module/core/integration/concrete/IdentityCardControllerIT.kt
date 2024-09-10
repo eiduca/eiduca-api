@@ -1,5 +1,6 @@
 package app.com.eiduca.module.core.integration.concrete
 
+import app.com.eiduca.annotation.EiConfigureTestIT
 import app.com.eiduca.module.core.constant.ReturnStatus
 import app.com.eiduca.module.core.create.concrete.IdentityCardCreate
 import app.com.eiduca.module.core.model.concrect.IdentityCard
@@ -11,7 +12,6 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertDoesNotThrow
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.beans.factory.annotation.Value
-import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.boot.test.web.client.TestRestTemplate
 import org.springframework.core.ParameterizedTypeReference
 import org.springframework.http.HttpEntity
@@ -21,7 +21,7 @@ import org.springframework.http.ResponseEntity
 import kotlin.test.assertEquals
 import kotlin.test.assertNotNull
 
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@EiConfigureTestIT
 class IdentityCardControllerIT {
 
     @Autowired lateinit var testRestTemplate: TestRestTemplate

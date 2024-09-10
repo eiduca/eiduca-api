@@ -8,8 +8,6 @@ import app.com.eiduca.module.core.request.IdentityCardRequest
 import app.com.eiduca.module.core.seed.PermissionSeed
 import app.com.eiduca.module.core.service.concrect.IdentityCardService
 import io.swagger.v3.oas.annotations.Operation
-import io.swagger.v3.oas.annotations.responses.ApiResponse
-import io.swagger.v3.oas.annotations.responses.ApiResponses
 import jakarta.validation.Valid
 import org.springdoc.core.annotations.ParameterObject
 import org.springframework.data.domain.Page
@@ -27,13 +25,12 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 @RequestMapping("\${apiPrefix}/identity-cards")
 class IdentityCardController(
-    val identityCardService: IdentityCardService
+    identityCardService: IdentityCardService
 ): ConcreteController<IdentityCard, IdentityCardRequest>(identityCardService){
 
     @GetMapping
     @HasPermission(PermissionSeed.IDENTITY_CARD_VIEW)
     @Operation(tags = ["identity-card"], summary = MessageDoc.SUMMARY_FIND_ALL, description = MessageDoc.DESCRIPTION_FIND_ALL)
-    @ApiResponses(value = [ ApiResponse(responseCode = MessageDoc.STATUS_PERMISSION_DENIED, description = MessageDoc.PERMISSION_DENIED) ])
     override fun findAll(@ParameterObject pageable: Pageable): ResponseEntity<Page<IdentityCard>> = super.findAll(pageable)
 
     @GetMapping("/{id}")
