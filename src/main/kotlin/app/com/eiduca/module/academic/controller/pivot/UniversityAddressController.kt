@@ -3,7 +3,7 @@ package app.com.eiduca.module.academic.controller.pivot
 import app.com.eiduca.configuration.annotation.HasPermission
 import app.com.eiduca.configuration.constant.ProjectConst
 import app.com.eiduca.module.academic.model.pivot.UniversityAddress
-import app.com.eiduca.module.academic.request.UniversityAddressRequest
+import app.com.eiduca.module.academic.request.pivot.UniversityAddressRequest
 import app.com.eiduca.module.academic.service.pivot.UniversityAddressService
 import app.com.eiduca.module.core.common.general.PivotController
 import app.com.eiduca.module.core.constant.MessageDoc
@@ -25,7 +25,7 @@ import org.springframework.web.bind.annotation.*
 @RequestMapping("\${apiPrefix}/university-address")
 class UniversityAddressController(
     val universityAddressService: UniversityAddressService
-): PivotController<UniversityAddress, UniversityAddressRequest>() {
+): PivotController<UniversityAddress, UniversityAddressRequest>(universityAddressService) {
 
     @GetMapping
     @HasPermission(PermissionSeed.UNIVERSITY_ADDRESS_VIEW)

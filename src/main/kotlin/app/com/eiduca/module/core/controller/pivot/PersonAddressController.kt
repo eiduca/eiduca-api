@@ -25,7 +25,7 @@ import org.springframework.web.bind.annotation.*
 @RequestMapping("\${apiPrefix}/person-address")
 class PersonAddressController(
     val personAddressService: PersonAddressService
-): PivotController<PersonAddress, PersonAddressRequest>() {
+): PivotController<PersonAddress, PersonAddressRequest>(personAddressService) {
 
     @GetMapping
     @HasPermission(PermissionSeed.PERSON_ADDRESS_VIEW)

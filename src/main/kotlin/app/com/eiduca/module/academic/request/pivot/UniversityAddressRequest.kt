@@ -1,4 +1,4 @@
-package app.com.eiduca.module.academic.request
+package app.com.eiduca.module.academic.request.pivot
 
 import app.com.eiduca.module.academic.builder.UniversityBuilder
 import app.com.eiduca.module.academic.model.pivot.UniversityAddress

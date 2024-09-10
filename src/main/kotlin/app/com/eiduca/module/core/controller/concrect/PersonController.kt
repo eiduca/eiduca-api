@@ -33,7 +33,7 @@ import org.springframework.web.bind.annotation.RestController
 @RequestMapping("\${apiPrefix}/persons")
 class PersonController(
     val personService: PersonService,
-): ConcreteController<Person, PersonRequest>() {
+): ConcreteController<Person, PersonRequest>(personService) {
 
     @GetMapping
     @HasPermission(PermissionSeed.PERSON_VIEW)

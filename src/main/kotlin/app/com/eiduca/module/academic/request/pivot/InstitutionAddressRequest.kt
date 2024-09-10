@@ -1,4 +1,4 @@
-package app.com.eiduca.module.academic.request
+package app.com.eiduca.module.academic.request.pivot
 
 import app.com.eiduca.module.academic.builder.InstitutionBuilder
 import app.com.eiduca.module.academic.model.pivot.InstitutionAddress
@@ -12,12 +12,10 @@ data class InstitutionAddressRequest (
     @Schema(description = "Address id")
     var address: String,
 ): IConvertModel<InstitutionAddress> {
-
     override fun toModel(): InstitutionAddress {
         return InstitutionAddress(
             InstitutionBuilder().id(institution).build(),
             AddressBuilder().id(address).build()
         )
     }
-
 }

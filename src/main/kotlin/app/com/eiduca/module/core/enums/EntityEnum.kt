@@ -19,6 +19,7 @@ enum class EntityEnum(
     IDENTITY_CARD(IdentityCard::class),
     PERSON_ADDRESS(PersonAddress::class),
 
+    COURSE(Course::class),
     UNIVERSITY(University::class),
     INSTITUTION(Institution::class),
     ACADEMIC_YEAR(AcademicYear::class),

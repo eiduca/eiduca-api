@@ -33,7 +33,7 @@ import org.springframework.web.bind.annotation.RestController
 @RequestMapping("\${apiPrefix}/roles")
 class RoleController(
     val roleService: RoleService
-): ConcreteController<Role, RoleRequest>() {
+): ConcreteController<Role, RoleRequest>(roleService) {
 
     @GetMapping
     @HasPermission(PermissionSeed.ROLE_VIEW)

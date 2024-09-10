@@ -65,4 +65,8 @@ import app.com.eiduca.module.core.model.concrect.Permission
      INSTITUTION_ADDRESS_UPDATE(PermissionFactory.build("UPDATE_INSTITUTION_ADDRESS", "Edit address of institution", EntityEnum.INSTITUTION_ADDRESS)),
      INSTITUTION_ADDRESS_DELETE(PermissionFactory.build("DELETE_INSTITUTION_ADDRESS", "Delete address of institution", EntityEnum.INSTITUTION_ADDRESS)),
 
+     COURSE_VIEW(PermissionFactory.build("VIEW_COURSE", "View course", EntityEnum.COURSE)),
+     COURSE_SAVE(PermissionFactory.build("SAVE_COURSE", "Save course", EntityEnum.COURSE)),
+     COURSE_UPDATE(PermissionFactory.build("UPDATE_COURSE", "Edit course", EntityEnum.COURSE)),
+     COURSE_DELETE(PermissionFactory.build("DELETE_COURSE", "Delete course", EntityEnum.COURSE)),
  }

@@ -33,23 +33,17 @@ import org.springframework.web.bind.annotation.RestController
 @RequestMapping("\${apiPrefix}/permissions")
 class PermissionController(
     val permissionService: PermissionService
-): ConcreteController<Permission, PermissionRequest>() {
+): ConcreteController<Permission, PermissionRequest>(permissionService) {
 
     @GetMapping
     @HasPermission(PermissionSeed.PERMISSION_VIEW)
     @Operation(tags = ["permission"], summary = MessageDoc.SUMMARY_FIND_ALL, description = MessageDoc.DESCRIPTION_FIND_ALL)
-    @ApiResponses(value = [ ApiResponse(responseCode = MessageDoc.STATUS_PERMISSION_DENIED, description = MessageDoc.PERMISSION_DENIED) ])
-    override fun findAll(@ParameterObject pageable: Pageable): ResponseEntity<Page<Permission>> {
-        return ResponseEntity(permissionService.findAll(pageable), ReturnStatus.OK)
-    }
+    override fun findAll(@ParameterObject pageable: Pageable): ResponseEntity<Page<Permission>> = super.findAll(pageable)
 
     @GetMapping("/{id}")
     @HasPermission(PermissionSeed.PERMISSION_VIEW)
     @Operation(tags = ["permission"], summary = MessageDoc.SUMMARY_FIND_BY_ID, description = MessageDoc.DESCRIPTION_FIND_BY_ID)
-    @ApiResponses(value = [ ApiResponse(responseCode = MessageDoc.STATUS_PERMISSION_DENIED, description = MessageDoc.PERMISSION_DENIED) ])
-    override fun findById(@PathVariable id: String): ResponseEntity<Permission> {
-        return ResponseEntity(permissionService.findById(id), ReturnStatus.OK)
-    }
+    override fun findById(@PathVariable id: String): ResponseEntity<Permission> = super.findById(id)
 
     @Transactional
     @PostMapping

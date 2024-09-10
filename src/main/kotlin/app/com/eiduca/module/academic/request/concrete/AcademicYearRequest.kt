@@ -1,4 +1,4 @@
-package app.com.eiduca.module.academic.request
+package app.com.eiduca.module.academic.request.concrete
 
 import app.com.eiduca.module.academic.builder.AcademicYearBuilder
 import app.com.eiduca.module.academic.model.concrete.AcademicYear
@@ -11,12 +11,10 @@ data class AcademicYearRequest(
     val startDate: LocalDate,
     val endDate: LocalDate,
 ): IConvertModel<AcademicYear>{
-
     override fun toModel() : AcademicYear = AcademicYearBuilder()
         .name(name)
         .code(code)
         .startDate(startDate)
         .endDate(endDate)
         .build()
-
 }
