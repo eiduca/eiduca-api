@@ -1,6 +1,6 @@
 package app.com.eiduca.module.academic.common.company
 
-import app.com.eiduca.module.core.common.ConcreteServiceTest
+import app.com.eiduca.module.core.common.general.ConcreteServiceTest
 import app.com.eiduca.module.core.util.AssertUtil
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.DisplayName

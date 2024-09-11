@@ -1,22 +1,18 @@
 package app.com.eiduca.module.core.service.concrect
 
-import app.com.eiduca.module.core.common.general.ConcreteService
-import app.com.eiduca.module.core.exception.NotFoundException
+import app.com.eiduca.module.core.common.named.NamedDescriptionService
 import app.com.eiduca.module.core.model.concrect.Permission
 import app.com.eiduca.module.core.repository.concrect.PermissionRepository
+import org.springframework.data.domain.Page
+import org.springframework.data.domain.Pageable
 import org.springframework.stereotype.Service
 
 @Service
 class PermissionService(
     val permissionRepository: PermissionRepository
-): ConcreteService<Permission>(permissionRepository) {
+): NamedDescriptionService<Permission>(permissionRepository) {
 
-    fun findByName(name: String): Permission = permissionRepository.findByName(name).orElseThrow { NotFoundException("Not found permission by name [$name]") }
+    fun findByEntity(entity: String): List<Permission> = permissionRepository.findByEntity(entity)
 
-    fun findByDescription(description: String): Permission = permissionRepository.findByDescription(description).orElseThrow { NotFoundException("Not found permission by description [$description]") }
-
-    override fun saveOrUpdate(obj: Permission): Permission {
-        permissionRepository.findByName(obj.name).ifPresent { obj.id = it.id }
-        return  permissionRepository.save(obj)
-    }
+    fun findByEntity(entity: String, pageable: Pageable): Page<Permission> = permissionRepository.findByEntity(entity, pageable)
 }

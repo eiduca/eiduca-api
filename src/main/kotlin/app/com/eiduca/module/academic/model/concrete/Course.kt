@@ -1,6 +1,7 @@
 package app.com.eiduca.module.academic.model.concrete
 
 import app.com.eiduca.module.academic.common.named.CodeNamedDescriptionModel
+import app.com.eiduca.module.academic.request.concrete.CourseRequest
 import jakarta.persistence.Column
 import jakarta.persistence.Entity
 import jakarta.persistence.ManyToOne
@@ -18,4 +19,5 @@ class Course(
 
     constructor(): this("","",null, Institution(), AcademicYear())
 
+    fun toCourseRequest(): CourseRequest = CourseRequest(code, name, description, institution.id, academicYear.id)
 }

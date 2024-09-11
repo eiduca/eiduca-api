@@ -1,6 +1,6 @@
 package app.com.eiduca.module.core.service.concrect
 
-import app.com.eiduca.module.core.common.ConcreteServiceTest
+import app.com.eiduca.module.core.common.general.ConcreteServiceTest
 import app.com.eiduca.module.core.create.concrete.IdentityCardCreate
 import app.com.eiduca.module.core.model.concrect.IdentityCard
 import app.com.eiduca.module.core.repository.concrect.IdentityCardRepository

@@ -1,12 +1,7 @@
-package app.com.eiduca.module.core.common
+package app.com.eiduca.module.core.common.general
 
-import app.com.eiduca.module.core.common.general.CommonModel
-import app.com.eiduca.module.core.common.general.CommonService
-import app.com.eiduca.module.core.common.general.ConcreteModel
-import app.com.eiduca.module.core.common.general.ConcreteService
 import app.com.eiduca.module.core.constant.ReturnStatus
-import app.com.eiduca.module.core.create.concrete.AddressCreate
-import app.com.eiduca.module.core.model.concrect.Address
+import app.com.eiduca.module.core.interfaces.IConvertModel
 import app.com.eiduca.module.core.wrapper.PageableResponse
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
@@ -55,7 +50,8 @@ abstract class CommonControllerItTest<T: CommonModel>(
     @Test
     @DisplayName("Create common when successful")
     fun save_WhenSuccessful() {
-        val exchange = testRestTemplate.postForEntity("$apiPrefix/$endpoint", requestModel() , model::class.java)
+        runnerSave()
+        val exchange = testRestTemplate.exchange("$apiPrefix/$endpoint", HttpMethod.POST, HttpEntity(requestModel()), model::class.java)
         assertDoesNotThrow {
             assertEquals(exchange.statusCode, ReturnStatus.CREATED)
             exchange.body?.let { assertNotNull(it) }
@@ -85,18 +81,19 @@ abstract class CommonControllerItTest<T: CommonModel>(
 
     open fun createModel(): T = commonService.save(model)
 
-    open fun requestModel(): T = model
+    open fun runnerSave() = commonService.deleteIfExist(model)
 
+    abstract fun requestModel(): IConvertModel<T>
 }
 
 abstract class ConcreteControllerItTest<T: ConcreteModel>(
-    val concreteService: ConcreteService<T>,
+    private val concreteService: ConcreteService<T>,
     model: T,
     endpoint: String,
 ): CommonControllerItTest<T>(
     concreteService, model, endpoint
 ){
-
     override fun createModel(): T = concreteService.saveOrUpdate(model)
 
+    override fun runnerSave() = concreteService.deleteIfExist(model)
 }

@@ -1,6 +1,6 @@
 package app.com.eiduca.module.core.controller.concrect
 
-import app.com.eiduca.module.core.common.ConcreteControllerTest
+import app.com.eiduca.module.core.common.general.ConcreteControllerTest
 import app.com.eiduca.module.core.create.concrete.PersonCreate
 import app.com.eiduca.module.core.model.concrect.Person
 import app.com.eiduca.module.core.request.PersonRequest

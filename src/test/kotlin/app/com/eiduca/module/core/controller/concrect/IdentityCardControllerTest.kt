@@ -1,6 +1,6 @@
 package app.com.eiduca.module.core.controller.concrect
 
-import app.com.eiduca.module.core.common.ConcreteControllerTest
+import app.com.eiduca.module.core.common.general.ConcreteControllerTest
 import app.com.eiduca.module.core.create.concrete.IdentityCardCreate
 import app.com.eiduca.module.core.model.concrect.IdentityCard
 import app.com.eiduca.module.core.request.IdentityCardRequest
@@ -16,7 +16,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension
 
 @ExtendWith(SpringExtension::class)
 @DisplayName("Test of identity card controller")
-class IdentityCardControllerTest: ConcreteControllerTest<IdentityCard, IdentityCardRequest> (){
+class IdentityCardControllerTest: ConcreteControllerTest<IdentityCard, IdentityCardRequest>(){
 
     @InjectMocks
     lateinit var identityCardController: IdentityCardController

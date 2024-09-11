@@ -7,8 +7,8 @@ import jakarta.persistence.MappedSuperclass
 
 @MappedSuperclass
 abstract class NamedDescriptionModel(
-    @Column(unique = true) var name: String,
-    @Column(unique = true) var description: String,
+    @Column(unique = true) var name: String = "",
+    @Column(unique = true) var description: String = "",
 ): ConcreteModel(), IUniqueAttributeModifier {
 
     constructor(): this("","")
@@ -32,5 +32,5 @@ abstract class NamedDescriptionModel(
         return result
     }
 
-    override fun setToString(fields: String): String = super.setToString("name='$name', description='$description'")
+    override fun setToString(fields: String): String = super.setToString("name='$name', $fields, description='$description'")
 }

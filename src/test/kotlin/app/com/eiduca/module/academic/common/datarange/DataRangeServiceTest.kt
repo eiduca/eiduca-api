@@ -1,6 +1,6 @@
 package app.com.eiduca.module.academic.common.datarange
 
-import app.com.eiduca.module.core.common.ConcreteServiceTest
+import app.com.eiduca.module.core.common.general.ConcreteServiceTest
 import app.com.eiduca.module.core.util.AssertUtil
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test

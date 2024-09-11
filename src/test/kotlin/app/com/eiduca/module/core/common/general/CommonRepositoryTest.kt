@@ -1,16 +1,10 @@
-package app.com.eiduca.module.core.common
+package app.com.eiduca.module.core.common.general
 
-import app.com.eiduca.module.core.common.general.CommonModel
-import app.com.eiduca.module.core.common.general.CommonRepository
-import app.com.eiduca.module.core.common.general.ConcreteModel
-import app.com.eiduca.module.core.common.general.ConcreteRepository
 import app.com.eiduca.module.core.exception.NotFoundException
 import app.com.eiduca.module.core.util.AssertUtil
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
-import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.data.domain.Pageable
 import org.springframework.transaction.annotation.Transactional
 
 @Transactional
@@ -55,11 +49,11 @@ abstract class CommonRepositoryTest <T: CommonModel>(
         assertTrue(repository.findById(model.id).isEmpty)
     }
 
-    open fun persistModel() {
+    fun persistModel() {
         model = repository.save(model)
     }
 
-    open fun runner(){}
+    fun runner(){}
 }
 
 abstract class ConcreteRepositoryTest <T: ConcreteModel>(

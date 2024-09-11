@@ -1,6 +1,6 @@
 package app.com.eiduca.module.academic.common.named
 
-import app.com.eiduca.module.core.common.ConcreteRepositoryTest
+import app.com.eiduca.module.core.common.general.ConcreteRepositoryTest
 import app.com.eiduca.module.core.exception.NotFoundException
 import app.com.eiduca.module.core.util.AssertUtil
 import org.junit.jupiter.api.DisplayName
@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional
 abstract class CodeNamedDescriptionRepositoryTest<T: CodeNamedDescriptionModel>(
     private val codeNamedDescriptionRepository: CodeNamedDescriptionRepository<T>,
     model: T,
-):ConcreteRepositoryTest<T>(codeNamedDescriptionRepository, model) {
+): ConcreteRepositoryTest<T>(codeNamedDescriptionRepository, model) {
 
     @Test
     @DisplayName("Find model[codeNamedDescription] by code when successful")

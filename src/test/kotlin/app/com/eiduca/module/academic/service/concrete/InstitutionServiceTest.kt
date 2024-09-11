@@ -42,43 +42,37 @@ class InstitutionServiceTest: CompanyServiceTest<Institution>() {
         BDDMockito.`when`(institutionRepository.findByUniversity(model.university)).thenReturn(list)
         BDDMockito.`when`(institutionRepository.findByUniversity(model.university, AssertUtil.PAGEABLE )).thenReturn(page)
         BDDMockito.`when`(universityRepository.save(model.university)).thenReturn(model.university)
-        model.university = universityRepository.findByName(model.university.name)
-            .orElse(universityRepository.save(model.university))
+        model.university = universityRepository.findByName(model.university.name).orElse(universityRepository.save(model.university))
         BDDMockito.`when`(institutionRepository.findByNameAndUniversity(model.name, model.university)).thenReturn(Optional.of(model))
     }
 
     @Test
     @DisplayName("Find institution by type when successful, return list")
     fun findByType_ReturnList_WhenSuccessful() {
-        institutionService.save(model)
         AssertUtil.assert(institutionService.findByType(model.type))
     }
 
     @Test
     @DisplayName("Find institution by type when successful, return list pageable")
     fun findByType_ReturnPage_WhenSuccessful() {
-        institutionService.save(model)
         AssertUtil.assert(institutionService.findByType(model.type, AssertUtil.PAGEABLE))
     }
 
     @Test
     @DisplayName("Find institution by university when successful, return list")
     fun findByUniversity_ReturnList_WhenSuccessful() {
-        institutionService.save(model)
         AssertUtil.assert( institutionService.findByUniversity(model.university))
     }
 
     @Test
     @DisplayName("Find institution by university when successful, return list pageable")
     fun findByUniversity_ReturnPage_WhenSuccessful() {
-        institutionService.save(model)
         AssertUtil.assert( institutionService.findByUniversity(model.university, AssertUtil.PAGEABLE))
     }
 
     @Test
     @DisplayName("Find institution by name and university when successful")
     fun findByNameAndUniversity_WhenSuccessful(){
-        institutionService.save(model)
         AssertUtil.assert(institutionService.findByNameAndUniversity(model.name, model.university))
     }
 }

@@ -1,6 +1,6 @@
 package app.com.eiduca.module.core.service.concrect
 
-import app.com.eiduca.module.core.common.ConcreteServiceTest
+import app.com.eiduca.module.core.common.general.ConcreteServiceTest
 import app.com.eiduca.module.core.create.concrete.PersonCreate
 import app.com.eiduca.module.core.model.concrect.Person
 import app.com.eiduca.module.core.repository.concrect.PersonRepository

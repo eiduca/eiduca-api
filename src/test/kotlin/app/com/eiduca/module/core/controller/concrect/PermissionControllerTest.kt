@@ -2,7 +2,7 @@ package app.com.eiduca.module.core.controller.concrect
 
 import app.com.eiduca.module.core.service.concrect.PermissionService
 import app.com.eiduca.module.core.create.concrete.PermissionCreate
-import app.com.eiduca.module.core.common.ConcreteControllerTest
+import app.com.eiduca.module.core.common.general.ConcreteControllerTest
 import app.com.eiduca.module.core.model.concrect.Permission
 import app.com.eiduca.module.core.request.PermissionRequest
 
@@ -34,7 +34,7 @@ class PermissionControllerTest: ConcreteControllerTest<Permission, PermissionReq
         BDDMockito.`when`(permissionService.saveOrUpdate(model)).thenReturn(model)
     }
 
-    override fun createModel(): ResponseEntity<Permission> = permissionController.save(model.toRequest())
+    override fun createModel(): ResponseEntity<Permission> = permissionController.save(model.toPermissionRequest())
 
-    override fun updateModel(): ResponseEntity<Permission> = permissionController.update(model.toRequest(), model.id)
+    override fun updateModel(): ResponseEntity<Permission> = permissionController.update(model.toPermissionRequest(), model.id)
 }

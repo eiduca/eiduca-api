@@ -1,6 +1,6 @@
 package app.com.eiduca.module.academic.common.named
 
-import app.com.eiduca.module.core.common.ConcreteServiceTest
+import app.com.eiduca.module.core.common.general.ConcreteServiceTest
 import app.com.eiduca.module.core.util.AssertUtil
 import org.junit.jupiter.api.Assertions.assertDoesNotThrow
 import org.junit.jupiter.api.Assertions.assertEquals
@@ -74,10 +74,10 @@ abstract class CodeNamedDescriptionServiceTest <T: CodeNamedDescriptionModel>: C
     @Test
     @DisplayName("Create or update model[codeNamedDescription] when successful")
     fun saveOrUpdate() {
-        org.junit.jupiter.api.assertDoesNotThrow {
+        assertDoesNotThrow {
             val response = codeNamedDescriptionService.saveOrUpdate(model)
             assertNotNull(response.id)
-            kotlin.test.assertEquals(response.code, model.code)
+            assertEquals(response.code, model.code)
         }
     }
 }

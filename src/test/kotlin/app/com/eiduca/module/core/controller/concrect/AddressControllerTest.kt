@@ -1,7 +1,6 @@
 package app.com.eiduca.module.core.controller.concrect
 
-import app.com.eiduca.module.core.common.ConcreteControllerTest
-import app.com.eiduca.module.core.constant.ReturnStatus
+import app.com.eiduca.module.core.common.general.ConcreteControllerTest
 import app.com.eiduca.module.core.create.concrete.AddressCreate
 import app.com.eiduca.module.core.model.concrect.Address
 import app.com.eiduca.module.core.request.AddressRequest
@@ -18,10 +17,8 @@ import org.springframework.test.context.junit.jupiter.SpringExtension
 @ExtendWith(SpringExtension::class)
 @DisplayName("Test of address controller")
 class AddressControllerTest: ConcreteControllerTest<Address, AddressRequest>() {
-
     @InjectMocks
     lateinit var addressController: AddressController
-
     @Mock
     lateinit var addressService: AddressService
 

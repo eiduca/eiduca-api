@@ -1,6 +1,6 @@
 package app.com.eiduca.module.core.repository.pivot
 
-import app.com.eiduca.module.core.common.CommonRepositoryTest
+import app.com.eiduca.module.core.common.general.CommonRepositoryTest
 import app.com.eiduca.module.core.create.pivot.PersonAddressCreate
 import app.com.eiduca.module.core.model.pivot.PersonAddress
 import app.com.eiduca.module.core.repository.concrect.AddressRepository

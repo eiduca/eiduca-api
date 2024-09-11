@@ -1,6 +1,5 @@
-package app.com.eiduca.module.core.common
+package app.com.eiduca.module.core.common.general
 
-import app.com.eiduca.module.core.common.general.*
 import app.com.eiduca.module.core.constant.ReturnStatus
 import app.com.eiduca.module.core.interfaces.IConvertModel
 import app.com.eiduca.module.core.util.AssertUtil

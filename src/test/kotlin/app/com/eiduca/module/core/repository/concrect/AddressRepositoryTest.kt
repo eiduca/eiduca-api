@@ -1,6 +1,6 @@
 package app.com.eiduca.module.core.repository.concrect
 
-import app.com.eiduca.module.core.common.ConcreteRepositoryTest
+import app.com.eiduca.module.core.common.general.ConcreteRepositoryTest
 import app.com.eiduca.module.core.create.concrete.AddressCreate
 import app.com.eiduca.module.core.exception.NotFoundException
 import app.com.eiduca.module.core.model.concrect.Address

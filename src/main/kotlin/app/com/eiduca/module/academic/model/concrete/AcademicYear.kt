@@ -1,6 +1,7 @@
 package app.com.eiduca.module.academic.model.concrete
 
 import app.com.eiduca.module.academic.common.datarange.DataRangeModel
+import app.com.eiduca.module.academic.request.concrete.AcademicYearRequest
 import jakarta.persistence.Column
 import jakarta.persistence.Entity
 import jakarta.persistence.Table
@@ -31,5 +32,7 @@ class AcademicYear(
         result = 31 * result + code.hashCode()
         return result
     }
+
+    fun toAcademicYearRequest(): AcademicYearRequest = AcademicYearRequest(name, code, startDate, endDate)
 
 }

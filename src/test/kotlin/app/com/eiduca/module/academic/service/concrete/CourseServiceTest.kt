@@ -15,7 +15,6 @@ import org.mockito.InjectMocks
 import org.mockito.Mock
 import org.springframework.data.domain.PageImpl
 import org.springframework.test.context.junit.jupiter.SpringExtension
-import java.util.*
 
 @ExtendWith(SpringExtension::class)
 @DisplayName("Test of course service")
@@ -33,7 +32,6 @@ class CourseServiceTest: CodeNamedDescriptionServiceTest<Course>() {
         val list = mutableListOf(model)
         val page = PageImpl(list)
 
-        BDDMockito.`when`(courseRepository.findByCode(model.code)).thenReturn(Optional.of(model))
         BDDMockito.`when`(courseRepository.findByInstitution(model.institution)).thenReturn(list)
         BDDMockito.`when`(courseRepository.findByInstitution(model.institution, AssertUtil.PAGEABLE)).thenReturn(page)
         BDDMockito.`when`(courseRepository.findByAcademicYear(model.academicYear)).thenReturn(list)
@@ -43,20 +41,24 @@ class CourseServiceTest: CodeNamedDescriptionServiceTest<Course>() {
     @Test
     @DisplayName("Find course by institution when successful, return list")
     fun findByInstitution_ReturnList_WhenSuccessful() {
+        AssertUtil.assert(courseService.findByInstitution(model.institution))
     }
 
     @Test
     @DisplayName("Find course by institution when successful, return list pageable")
     fun findByInstitution_ReturnPage_WhenSuccessful() {
+        AssertUtil.assert(courseService.findByInstitution(model.institution, AssertUtil.PAGEABLE))
     }
 
     @Test
     @DisplayName("Find course by academicYear when successful, return list")
     fun findByAcademicYear_ReturnList_WhenSuccessful() {
+        AssertUtil.assert(courseService.findByAcademicYear(model.academicYear))
     }
 
     @Test
     @DisplayName("Find course by academicYear when successful, return list pageable")
     fun findByAcademicYear_ReturnPage_WhenSuccessful() {
+        AssertUtil.assert(courseService.findByAcademicYear(model.academicYear, AssertUtil.PAGEABLE))
     }
 }

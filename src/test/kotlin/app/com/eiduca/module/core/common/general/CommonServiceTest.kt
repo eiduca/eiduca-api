@@ -1,6 +1,5 @@
-package app.com.eiduca.module.core.common
+package app.com.eiduca.module.core.common.general
 
-import app.com.eiduca.module.core.common.general.*
 import org.junit.jupiter.api.*
 import org.junit.jupiter.api.Assertions.*
 import org.mockito.ArgumentMatchers

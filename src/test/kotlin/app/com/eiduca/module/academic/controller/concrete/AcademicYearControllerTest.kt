@@ -1,28 +1,32 @@
 package app.com.eiduca.module.academic.controller.concrete
 
-import org.junit.jupiter.api.Test
+import app.com.eiduca.module.academic.create.concrete.AcademicYearCreate
+import app.com.eiduca.module.academic.model.concrete.AcademicYear
+import app.com.eiduca.module.academic.request.concrete.AcademicYearRequest
+import app.com.eiduca.module.academic.service.concrete.AcademicYearService
+import app.com.eiduca.module.core.common.general.ConcreteControllerTest
+import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.DisplayName
+import org.junit.jupiter.api.extension.ExtendWith
+import org.mockito.InjectMocks
+import org.mockito.Mock
+import org.springframework.http.ResponseEntity
+import org.springframework.test.context.junit.jupiter.SpringExtension
 
-import org.junit.jupiter.api.Assertions.*
+@ExtendWith(SpringExtension::class)
+@DisplayName("Test of academicYear controller")
+class AcademicYearControllerTest: ConcreteControllerTest<AcademicYear, AcademicYearRequest>() {
+    @InjectMocks
+    lateinit var academicYearController: AcademicYearController
+    @Mock
+    lateinit var academicYearService: AcademicYearService
 
-class AcademicYearControllerTest {
-
-    @Test
-    fun findAll() {
+    @BeforeEach
+    fun setUp() {
+        setUpConcrete(academicYearController, academicYearService, AcademicYearCreate.ACADEMIC_YEAR_SAVE)
     }
 
-    @Test
-    fun findById() {
-    }
+    override fun createModel(): ResponseEntity<AcademicYear> = academicYearController.save(model.toAcademicYearRequest())
 
-    @Test
-    fun save() {
-    }
-
-    @Test
-    fun update() {
-    }
-
-    @Test
-    fun deleteById() {
-    }
+    override fun updateModel(): ResponseEntity<AcademicYear> = academicYearController.update(model.toAcademicYearRequest(), model.id)
 }

@@ -34,6 +34,7 @@ abstract class CommonService<T: CommonModel>(
         commonRepository.deleteById(id)
     }
 
+    open fun deleteIfExist(obj: T) = delete(obj)
 }
 
 abstract class ConcreteService<T: ConcreteModel> (
@@ -44,17 +45,17 @@ abstract class ConcreteService<T: ConcreteModel> (
 
     override fun findById(id: String): T = repositoryConcrete.findById(id).orElseThrow { NotFoundException("Not found ${javaClass.simpleName} by id ($id)") }
 
-    override fun delete(obj: T) {
-        findById(obj.id)
-        deleteById(obj.id)
-    }
+    override fun delete(obj: T) = deleteById(obj.id)
 
-    override fun deleteById(id: String) {
-        val entity = findById(id)
+    override fun deleteById(id: String) = hidden(findById(id))
+
+    override fun deleteIfExist(obj: T) = hidden(findById(obj.id))
+
+    abstract fun saveOrUpdate(obj: T): T
+
+    protected fun hidden(entity: T){
         if(entity is IUniqueAttributeModifier) entity.updateUniqueAttributes()
         entity.deletedAt = LocalDateTime.now()
         repositoryConcrete.save(entity)
     }
-
-    abstract fun saveOrUpdate(obj: T): T
 }

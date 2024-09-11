@@ -1,65 +1,46 @@
 package app.com.eiduca.module.core.service.concrect
 
-import app.com.eiduca.module.core.common.ConcreteServiceTest
+import app.com.eiduca.module.core.common.named.NamedDescriptionServiceTest
 import app.com.eiduca.module.core.create.concrete.PermissionCreate
 import app.com.eiduca.module.core.model.concrect.Permission
 import app.com.eiduca.module.core.repository.concrect.PermissionRepository
-import org.junit.jupiter.api.Test
+import app.com.eiduca.module.core.util.AssertUtil
 
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.DisplayName
-import org.junit.jupiter.api.assertDoesNotThrow
+import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
 import org.mockito.BDDMockito
 import org.mockito.InjectMocks
 import org.mockito.Mock
+import org.springframework.data.domain.PageImpl
 import org.springframework.test.context.junit.jupiter.SpringExtension
-import java.util.*
-import kotlin.test.assertEquals
-import kotlin.test.assertNotNull
 
 @ExtendWith(SpringExtension::class)
 @DisplayName("Test of permission service")
-class PermissionServiceTest: ConcreteServiceTest<Permission>() {
-
+class PermissionServiceTest: NamedDescriptionServiceTest<Permission>() {
     @InjectMocks
     lateinit var permissionService: PermissionService
-
     @Mock
     lateinit var permissionRepository: PermissionRepository
 
     @BeforeEach
     fun setUp() {
-        setUpConcrete(permissionService, permissionRepository, PermissionCreate.PERMISSION_SAVE)
-        BDDMockito.`when`(permissionRepository.findByName(model.name)).thenReturn(Optional.of(model))
-        BDDMockito.`when`(permissionRepository.findByDescription(model.description)).thenReturn(Optional.of(model))
+        setUpNamedDescription(permissionService, permissionRepository, PermissionCreate.PERMISSION_SAVE)
+        val list = mutableListOf(model)
+        BDDMockito.`when`(permissionRepository.findByEntity(model.entity)).thenReturn(list)
+        BDDMockito.`when`(permissionRepository.findByEntity(model.entity, AssertUtil.PAGEABLE)).thenReturn(PageImpl(list))
     }
 
     @Test
-    @DisplayName("Find permission by name when successful")
-    fun findByName_WhenSuccessful() {
-        assertDoesNotThrow {
-            val response = permissionService.findByName(model.name)
-            assertEquals(response.name, model.name)
-        }
+    @DisplayName("Find permission by entity when successful, return list")
+    fun findByEntity_ReturnList_WhenSuccessful() {
+        AssertUtil.assert(permissionService.findByEntity(model.entity))
     }
 
     @Test
-    @DisplayName("Find permission by description when successful")
-    fun findByDescription_WhenSuccessful() {
-        assertDoesNotThrow {
-            val response = permissionService.findByDescription(model.description)
-            assertEquals(response.description, model.description)
-        }
-    }
-
-    @Test
-    @DisplayName("Create or update permission when successful")
-    fun saveOrUpdate_WhenSuccessful() {
-        assertDoesNotThrow {
-            val response = permissionService.saveOrUpdate(model)
-            assertNotNull(response.id)
-            assertEquals(response.name, model.name)
-        }
+    @DisplayName("Find permission by entity when successful, return list pageable")
+    fun findByEntity_ReturnPage_WhenSuccessful() {
+        AssertUtil.assert(permissionService.findByEntity(model.entity, AssertUtil.PAGEABLE))
     }
 }
