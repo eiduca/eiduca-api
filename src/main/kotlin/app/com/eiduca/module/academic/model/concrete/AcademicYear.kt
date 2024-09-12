@@ -2,6 +2,7 @@ package app.com.eiduca.module.academic.model.concrete
 
 import app.com.eiduca.module.academic.common.datarange.DataRangeModel
 import app.com.eiduca.module.academic.request.concrete.AcademicYearRequest
+import app.com.eiduca.module.core.interfaces.IUniqueAttributeModifier
 import jakarta.persistence.Column
 import jakarta.persistence.Entity
 import jakarta.persistence.Table
@@ -14,11 +15,17 @@ class AcademicYear(
     @Column(unique = true) var code: String,
     startDate: LocalDate,
     endDate: LocalDate,
-): DataRangeModel(startDate, endDate) {
+): DataRangeModel(startDate, endDate), IUniqueAttributeModifier {
 
     constructor(): this("","", LocalDate.now(), LocalDate.now())
 
-    override fun toString(): String = "Institution(${setToString("name='$name', code='$code'")})"
+    override fun updateUniqueAttributes() {
+        val concat = nanoId()
+        name += concat
+        code += concat
+    }
+
+    override fun toString(): String = "AcademicYear(${setToString("name='$name', code='$code'")})"
 
     override fun equals(other: Any?): Boolean {
         if (other !is AcademicYear) return false
@@ -34,5 +41,4 @@ class AcademicYear(
     }
 
     fun toAcademicYearRequest(): AcademicYearRequest = AcademicYearRequest(name, code, startDate, endDate)
-
 }

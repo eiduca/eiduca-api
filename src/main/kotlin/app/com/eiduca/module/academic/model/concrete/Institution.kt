@@ -2,6 +2,7 @@ package app.com.eiduca.module.academic.model.concrete
 
 import app.com.eiduca.module.academic.common.company.CompanyModel
 import app.com.eiduca.module.academic.enums.InstitutionType
+import app.com.eiduca.module.academic.request.concrete.InstitutionRequest
 import app.com.eiduca.module.core.interfaces.IUniqueAttributeModifier
 import jakarta.persistence.*
 import java.time.LocalDate
@@ -36,4 +37,6 @@ class Institution (
         result = 31 * result + university.hashCode()
         return result
     }
+
+    fun toInstitutionRequest(): InstitutionRequest = InstitutionRequest(university.id, name, acronym, email, contact, website, foundingDate, latitude, longitude)
 }

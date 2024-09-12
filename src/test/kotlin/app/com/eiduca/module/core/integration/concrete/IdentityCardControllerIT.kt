@@ -8,9 +8,11 @@ import app.com.eiduca.module.core.model.concrect.IdentityCard
 import app.com.eiduca.module.core.request.IdentityCardRequest
 import app.com.eiduca.module.core.service.concrect.IdentityCardService
 import app.com.eiduca.module.core.service.concrect.PersonService
+import org.junit.jupiter.api.DisplayName
 import org.springframework.beans.factory.annotation.Autowired
 
 @EiConfigureTestIT
+@DisplayName("Test integration of identity card")
 class IdentityCardControllerIT(
     @Autowired val identityCardService: IdentityCardService,
     @Autowired val personService: PersonService,

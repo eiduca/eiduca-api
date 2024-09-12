@@ -35,6 +35,7 @@ abstract class CommonControllerTest <T: CommonModel, R: IConvertModel<T> >{
     @Test
     @DisplayName("List pageable of common when successful")
     fun findAll_WhenSuccessful() {
+        runner()
         val response = commonController.findAll(AssertUtil.PAGEABLE)
         assertTrue(response.statusCode == ReturnStatus.OK)
         response.body?.isEmpty?.let { assertFalse(it) }
@@ -43,6 +44,7 @@ abstract class CommonControllerTest <T: CommonModel, R: IConvertModel<T> >{
     @Test
     @DisplayName("Find common by id when successful")
     fun findById_WhenSuccessful() {
+        runner()
         val response = commonController.findById(model.id)
         assertTrue(response.statusCode == ReturnStatus.OK)
         response.body?.let { assert(model.id == it.id) }
@@ -51,6 +53,7 @@ abstract class CommonControllerTest <T: CommonModel, R: IConvertModel<T> >{
     @Test
     @DisplayName("Create common when successful")
     fun save_WhenSuccessful() {
+        runner()
         val response = createModel()
         assertTrue(response.statusCode == ReturnStatus.CREATED)
         response.body?.let { assert(model == it) }
@@ -59,6 +62,7 @@ abstract class CommonControllerTest <T: CommonModel, R: IConvertModel<T> >{
     @Test
     @DisplayName("Update common when successful")
     fun update_WhenSuccessful() {
+        runner()
         val response = updateModel()
         assertTrue(response.statusCode == ReturnStatus.UPDATED)
         response.body?.let { assert(model == it) }
@@ -67,9 +71,12 @@ abstract class CommonControllerTest <T: CommonModel, R: IConvertModel<T> >{
     @Test
     @DisplayName("Delete common by id when successful")
     fun deleteById_WhenSuccessful() {
+        runner()
         val response = commonController.deleteById(model.id)
         assertTrue(response.statusCode == ReturnStatus.DELETED)
     }
+
+    fun runner(){}
 
     abstract fun createModel(): ResponseEntity<T>
 

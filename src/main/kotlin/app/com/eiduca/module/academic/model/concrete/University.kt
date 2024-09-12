@@ -2,6 +2,7 @@ package app.com.eiduca.module.academic.model.concrete
 
 import app.com.eiduca.module.academic.common.company.CompanyModel
 import app.com.eiduca.module.academic.enums.UniversityType
+import app.com.eiduca.module.academic.request.concrete.UniversityRequest
 import jakarta.persistence.Entity
 import jakarta.persistence.EnumType
 import jakarta.persistence.Enumerated
@@ -38,4 +39,6 @@ class University(
         result = 31 * result + type.hashCode()
         return result
     }
+
+    fun toUniversityRequest(): UniversityRequest = UniversityRequest(name, acronym, email, contact, website, foundingDate, type)
 }

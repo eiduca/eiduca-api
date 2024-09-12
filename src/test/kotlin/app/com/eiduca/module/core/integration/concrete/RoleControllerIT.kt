@@ -6,9 +6,11 @@ import app.com.eiduca.module.core.create.concrete.RoleCreate
 import app.com.eiduca.module.core.model.concrect.Role
 import app.com.eiduca.module.core.request.RoleRequest
 import app.com.eiduca.module.core.service.concrect.RoleService
+import org.junit.jupiter.api.DisplayName
 import org.springframework.beans.factory.annotation.Autowired
 
 @EiConfigureTestIT
+@DisplayName("Test integration of role")
 class RoleControllerIT(
     @Autowired val roleService: RoleService
 ): ConcreteControllerItTest<Role>(

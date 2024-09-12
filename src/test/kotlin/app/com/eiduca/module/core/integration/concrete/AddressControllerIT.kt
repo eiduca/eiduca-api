@@ -6,9 +6,11 @@ import app.com.eiduca.module.core.create.concrete.AddressCreate
 import app.com.eiduca.module.core.model.concrect.Address
 import app.com.eiduca.module.core.request.AddressRequest
 import app.com.eiduca.module.core.service.concrect.AddressService
+import org.junit.jupiter.api.DisplayName
 import org.springframework.beans.factory.annotation.Autowired
 
 @EiConfigureTestIT
+@DisplayName("Test integration of address")
 class AddressControllerIT(
     @Autowired val addressService: AddressService
 ): ConcreteControllerItTest<Address>(

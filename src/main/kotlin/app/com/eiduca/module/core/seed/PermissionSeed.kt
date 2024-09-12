@@ -55,6 +55,16 @@ import app.com.eiduca.module.core.model.concrect.Permission
      INSTITUTION_UPDATE(PermissionFactory.build("UPDATE_INSTITUTION", "Edit institution", EntityEnum.INSTITUTION)),
      INSTITUTION_DELETE(PermissionFactory.build("DELETE_INSTITUTION", "Delete institution", EntityEnum.INSTITUTION)),
 
+     COURSE_VIEW(PermissionFactory.build("VIEW_COURSE", "View course", EntityEnum.COURSE)),
+     COURSE_SAVE(PermissionFactory.build("SAVE_COURSE", "Save course", EntityEnum.COURSE)),
+     COURSE_UPDATE(PermissionFactory.build("UPDATE_COURSE", "Edit course", EntityEnum.COURSE)),
+     COURSE_DELETE(PermissionFactory.build("DELETE_COURSE", "Delete course", EntityEnum.COURSE)),
+
+     DISCIPLINE_VIEW(PermissionFactory.build("VIEW_DISCIPLINE", "View discipline", EntityEnum.DISCIPLINE)),
+     DISCIPLINE_SAVE(PermissionFactory.build("SAVE_DISCIPLINE", "Save discipline", EntityEnum.DISCIPLINE)),
+     DISCIPLINE_UPDATE(PermissionFactory.build("UPDATE_DISCIPLINE", "Edit discipline", EntityEnum.DISCIPLINE)),
+     DISCIPLINE_DELETE(PermissionFactory.build("DELETE_DISCIPLINE", "Delete discipline", EntityEnum.DISCIPLINE)),
+
      UNIVERSITY_ADDRESS_VIEW(PermissionFactory.build("VIEW_UNIVERSITY_ADDRESS", "View address of university", EntityEnum.UNIVERSITY_ADDRESS)),
      UNIVERSITY_ADDRESS_SAVE(PermissionFactory.build("SAVE_UNIVERSITY_ADDRESS", "Save address of university", EntityEnum.UNIVERSITY_ADDRESS)),
      UNIVERSITY_ADDRESS_UPDATE(PermissionFactory.build("UPDATE_UNIVERSITY_ADDRESS", "Edit address of university", EntityEnum.UNIVERSITY_ADDRESS)),
@@ -64,9 +74,4 @@ import app.com.eiduca.module.core.model.concrect.Permission
      INSTITUTION_ADDRESS_SAVE(PermissionFactory.build("SAVE_INSTITUTION_ADDRESS", "Save address of institution", EntityEnum.INSTITUTION_ADDRESS)),
      INSTITUTION_ADDRESS_UPDATE(PermissionFactory.build("UPDATE_INSTITUTION_ADDRESS", "Edit address of institution", EntityEnum.INSTITUTION_ADDRESS)),
      INSTITUTION_ADDRESS_DELETE(PermissionFactory.build("DELETE_INSTITUTION_ADDRESS", "Delete address of institution", EntityEnum.INSTITUTION_ADDRESS)),
-
-     COURSE_VIEW(PermissionFactory.build("VIEW_COURSE", "View course", EntityEnum.COURSE)),
-     COURSE_SAVE(PermissionFactory.build("SAVE_COURSE", "Save course", EntityEnum.COURSE)),
-     COURSE_UPDATE(PermissionFactory.build("UPDATE_COURSE", "Edit course", EntityEnum.COURSE)),
-     COURSE_DELETE(PermissionFactory.build("DELETE_COURSE", "Delete course", EntityEnum.COURSE)),
  }

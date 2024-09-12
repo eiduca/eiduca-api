@@ -14,6 +14,8 @@ data class InstitutionRequest(
     val contact: String,
     val website: String,
     val foundingDate: LocalDate,
+    val latitude: Double? = null,
+    val longitude: Double? = null,
 ): IConvertModel<Institution>{
 
     override fun toModel() : Institution = InstitutionBuilder()

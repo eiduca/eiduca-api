@@ -42,5 +42,4 @@ abstract class CompanyModel(
         result = 31 * result + acronym.hashCode()
         return result
     }
-
 }

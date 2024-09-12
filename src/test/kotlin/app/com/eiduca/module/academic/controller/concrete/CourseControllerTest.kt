@@ -1,8 +1,6 @@
 package app.com.eiduca.module.academic.controller.concrete
 
-import app.com.eiduca.module.academic.create.concrete.AcademicYearCreate
 import app.com.eiduca.module.academic.create.concrete.CourseCreate
-import app.com.eiduca.module.academic.model.concrete.AcademicYear
 import app.com.eiduca.module.academic.model.concrete.Course
 import app.com.eiduca.module.academic.request.concrete.CourseRequest
 import app.com.eiduca.module.academic.service.concrete.CourseService

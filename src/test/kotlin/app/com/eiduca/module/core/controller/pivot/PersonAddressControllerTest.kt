@@ -29,5 +29,4 @@ class PersonAddressControllerTest: CommonControllerTest<PersonAddress, PersonAdd
     override fun createModel(): ResponseEntity<PersonAddress> = personAddressController.save(model.toPersonAddressRequest())
 
     override fun updateModel(): ResponseEntity<PersonAddress> = personAddressController.update(model.toPersonAddressRequest(), model.id)
-
 }

@@ -7,5 +7,5 @@ import org.springframework.stereotype.Service
 
 @Service
 class InstitutionAddressService (
-    val institutionAddressRepository: InstitutionAddressRepository
+    institutionAddressRepository: InstitutionAddressRepository
 ): CommonService<InstitutionAddress>(institutionAddressRepository)

@@ -29,11 +29,18 @@ abstract class CommonModel(
     @PreUpdate
     protected fun preUpdate(){ concatValuesFields() }
 
-    fun concatValuesFields(){
+    private fun concatValuesFields(){
         concatFields = toString()
     }
 
     override fun toString(): String = "ModelCommon(id='$id', createdAt=$createdAt, updatedAt=$updatedAt, createdBy=$createdBy, updatedBy=$updatedBy, concatFields='$concatFields')"
+
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        return other is CommonModel &&  id == other.id
+    }
+
+    override fun hashCode(): Int = id.hashCode()
 }
 
 @MappedSuperclass

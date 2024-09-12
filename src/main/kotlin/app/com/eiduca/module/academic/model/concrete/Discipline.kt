@@ -1,6 +1,7 @@
 package app.com.eiduca.module.academic.model.concrete
 
 import app.com.eiduca.module.academic.common.named.CodeNamedDescriptionModel
+import app.com.eiduca.module.academic.request.concrete.DisciplineRequest
 import jakarta.persistence.Entity
 import jakarta.persistence.Table
 
@@ -14,4 +15,5 @@ class Discipline(
 
     constructor(): this("","",null)
 
+    fun toDisciplineRequest(): DisciplineRequest = DisciplineRequest(code, name, description)
 }

@@ -6,9 +6,11 @@ import app.com.eiduca.module.core.create.concrete.PermissionCreate
 import app.com.eiduca.module.core.model.concrect.Permission
 import app.com.eiduca.module.core.request.PermissionRequest
 import app.com.eiduca.module.core.service.concrect.PermissionService
+import org.junit.jupiter.api.DisplayName
 import org.springframework.beans.factory.annotation.Autowired
 
 @EiConfigureTestIT
+@DisplayName("Test integration of permission")
 class PermissionControllerIT(
     @Autowired var permissionService: PermissionService
 ): ConcreteControllerItTest<Permission>(

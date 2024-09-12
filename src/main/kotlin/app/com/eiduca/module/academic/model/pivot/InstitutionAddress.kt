@@ -1,6 +1,7 @@
 package app.com.eiduca.module.academic.model.pivot
 
 import app.com.eiduca.module.academic.model.concrete.Institution
+import app.com.eiduca.module.academic.request.pivot.InstitutionAddressRequest
 import app.com.eiduca.module.core.common.general.PivotModel
 import app.com.eiduca.module.core.model.concrect.Address
 import jakarta.persistence.Entity
@@ -29,4 +30,6 @@ class InstitutionAddress (
         result = 31 * result + address.hashCode()
         return result
     }
+
+    fun toInstitutionAddressRequest(): InstitutionAddressRequest = InstitutionAddressRequest(institution.id, address.id)
 }

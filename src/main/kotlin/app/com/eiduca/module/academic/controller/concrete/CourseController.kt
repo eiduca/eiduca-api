@@ -38,8 +38,8 @@ class CourseController(
 
     @PutMapping("/{id}")
     @HasPermission(PermissionSeed.COURSE_UPDATE)
-    @Operation(tags = ["university"], summary = MessageDoc.SUMMARY_UPDATE, description = MessageDoc.DESCRIPTION_UPDATE)
-    override fun update(@Valid @RequestBody request: CourseRequest, id: String): ResponseEntity<Course> = super.update(request, id)
+    @Operation(tags = ["course"], summary = MessageDoc.SUMMARY_UPDATE, description = MessageDoc.DESCRIPTION_UPDATE)
+    override fun update(@Valid @RequestBody request: CourseRequest, @PathVariable id: String): ResponseEntity<Course> = super.update(request, id)
 
     @DeleteMapping("/{id}")
     @HasPermission(PermissionSeed.COURSE_DELETE)

@@ -12,5 +12,5 @@ abstract class DataRangeModel(
 
     constructor(): this(LocalDate.now(), LocalDate.now())
 
-    override fun setToString(fields: String): String = super.setToString("startDate=$startDate, endDate=$endDate, $fields")
+    override fun setToString(fields: String): String = super.setToString("$fields, startDate=$startDate, endDate=$endDate")
 }

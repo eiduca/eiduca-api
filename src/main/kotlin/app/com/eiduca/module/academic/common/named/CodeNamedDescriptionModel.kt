@@ -22,7 +22,7 @@ abstract class CodeNamedDescriptionModel(
         return other is CodeNamedDescriptionModel && code == other.code
     }
 
-    override fun hashCode(): Int = name.hashCode()
+    override fun hashCode(): Int = code.hashCode()
 
     override fun setToString(fields: String): String {
         return super.setToString("code='$code', name='$name', description=$description")

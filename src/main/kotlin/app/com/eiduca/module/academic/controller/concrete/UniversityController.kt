@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.*
 @RestController
 @RequestMapping("\${apiPrefix}/universities")
 class UniversityController(
-    val universityService: UniversityService
+    universityService: UniversityService
 ): ConcreteController<University, UniversityRequest>(universityService) {
 
     @GetMapping

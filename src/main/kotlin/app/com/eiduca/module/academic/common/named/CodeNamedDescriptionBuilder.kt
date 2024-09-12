@@ -15,9 +15,9 @@ abstract class CodeNamedDescriptionBuilder<T: CodeNamedDescriptionModel> : Concr
     fun description(description: String?) = apply { this.description = description }
 
     protected fun <T : CodeNamedDescriptionModel> withDefaultValues(obj: T): T {
+        obj.description = description
         obj.code = code
         obj.name = name
-        obj.description = description
         return super.withDefaultValues(obj)
     }
 

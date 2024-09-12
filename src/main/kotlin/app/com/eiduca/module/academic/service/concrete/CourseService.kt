@@ -21,5 +21,4 @@ class CourseService(
     fun findByAcademicYear(academicYear: AcademicYear): List<Course> = courseRepository.findByAcademicYear(academicYear)
 
     fun findByAcademicYear(academicYear: AcademicYear, pageable: Pageable): Page<Course> = courseRepository.findByAcademicYear(academicYear, pageable)
-
 }

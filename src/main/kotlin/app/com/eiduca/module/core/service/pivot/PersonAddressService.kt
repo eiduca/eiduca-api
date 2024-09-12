@@ -7,5 +7,5 @@ import org.springframework.stereotype.Service
 
 @Service
 class PersonAddressService(
-    val personAddressRepository: PersonAddressRepository
+    personAddressRepository: PersonAddressRepository
 ): CommonService<PersonAddress>(personAddressRepository)

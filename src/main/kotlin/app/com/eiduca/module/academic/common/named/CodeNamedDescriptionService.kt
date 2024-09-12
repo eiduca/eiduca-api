@@ -19,6 +19,8 @@ abstract class CodeNamedDescriptionService<T: CodeNamedDescriptionModel>(
 
     fun findByDescription(description: String?, pageable: Pageable): Page<T> = codeNamedDescriptionRepository.findByDescription(description, pageable)
 
+    override fun deleteIfExist(obj: T) = codeNamedDescriptionRepository.findByCode(obj.code).ifPresent { hidden(it) }
+
     override fun saveOrUpdate(obj: T): T {
         codeNamedDescriptionRepository.findByCode(obj.code).ifPresent { obj.id = it.id }
         return codeNamedDescriptionRepository.save(obj)

@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.*
 @RestController
 @RequestMapping("\${apiPrefix}/university-address")
 class UniversityAddressController(
-    val universityAddressService: UniversityAddressService
+    universityAddressService: UniversityAddressService
 ): PivotController<UniversityAddress, UniversityAddressRequest>(universityAddressService) {
 
     @GetMapping

@@ -18,7 +18,8 @@ class EiducaRunner(
     val identityCardService: IdentityCardService,
     val universityService: UniversityService,
     val institutionService: InstitutionService,
-    val academicYearService: AcademicYearService
+    val academicYearService: AcademicYearService,
+    val disciplineService: DisciplineService,
 ): ApplicationRunner {
 
     override fun run(args: ApplicationArguments?) {
@@ -26,6 +27,7 @@ class EiducaRunner(
         val roles: MutableList<Role> = mutableListOf()
         val persons: MutableList<Person> = mutableListOf()
         val permissions: MutableList<Permission> = mutableListOf()
+        val disciplines: MutableList<Discipline> = mutableListOf()
         val universities: MutableList<University> = mutableListOf()
         val institutions: MutableList<Institution> = mutableListOf()
         val academicYears: MutableList<AcademicYear> = mutableListOf()
@@ -44,6 +46,7 @@ class EiducaRunner(
             institutions.addLast(institutionService.saveOrUpdate(it.institution))
         }
         AcademicYearSeed.entries.forEach { academicYears.addLast(academicYearService.saveOrUpdate(it.academicYear)) }
+        DisciplineSeed.entries.forEach { disciplines.addLast(disciplineService.saveOrUpdate(it.discipline)) }
     }
 
 }
