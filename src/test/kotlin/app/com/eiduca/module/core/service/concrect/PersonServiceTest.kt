@@ -34,7 +34,6 @@ class PersonServiceTest: ConcreteServiceTest<Person>(){
         setUpConcrete(personService, personRepository, PersonCreate.PERSON_SAVE)
         BDDMockito.`when`(personRepository.findByUsername(model.username)).thenReturn(Optional.of(model))
         BDDMockito.`when`(personRepository.findByEmail(model.email)).thenReturn(Optional.of(model))
-
         BDDMockito.`when`(personRepository.findByGender(model.gender, AssertUtil.PAGEABLE)).thenReturn(PageImpl(mutableListOf(model)))
         BDDMockito.`when`(personRepository.findByBirthday(model.birthday, AssertUtil.PAGEABLE)).thenReturn(PageImpl(mutableListOf(model)))
     }

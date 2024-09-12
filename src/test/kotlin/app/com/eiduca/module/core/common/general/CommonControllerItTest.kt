@@ -30,6 +30,7 @@ abstract class CommonControllerItTest<T: CommonModel>(
     @Test
     @DisplayName("List pageable of common when successful")
     fun findAll_WhenSuccessful() {
+        runner()
         val exchange = testRestTemplate.exchange("$apiPrefix/$endpoint", HttpMethod.GET,null,
             ParameterizedTypeReference.forType<PageableResponse<T>>(PageableResponse::class.java)
         )
@@ -39,6 +40,7 @@ abstract class CommonControllerItTest<T: CommonModel>(
     @Test
     @DisplayName("Find common by id when successful")
     fun findById_WhenSuccessful() {
+        runner()
         model = createModel()
         val exchange = testRestTemplate.getForEntity("$apiPrefix/$endpoint/{id}",model::class.java, model.id)
         assertDoesNotThrow {
@@ -50,6 +52,7 @@ abstract class CommonControllerItTest<T: CommonModel>(
     @Test
     @DisplayName("Create common when successful")
     fun save_WhenSuccessful() {
+        runner()
         runnerSave()
         val exchange = testRestTemplate.exchange("$apiPrefix/$endpoint", HttpMethod.POST, HttpEntity(requestModel()), model::class.java)
         assertDoesNotThrow {
@@ -61,6 +64,7 @@ abstract class CommonControllerItTest<T: CommonModel>(
     @Test
     @DisplayName("Update common when successful")
     fun update_WhenSuccessful() {
+        runner()
         model = createModel()
         val exchange = testRestTemplate.exchange("$apiPrefix/$endpoint/{id}",HttpMethod.PUT, HttpEntity(requestModel()), model::class.java, model.id)
         assertDoesNotThrow {
@@ -72,6 +76,7 @@ abstract class CommonControllerItTest<T: CommonModel>(
     @Test
     @DisplayName("Delete common by id when successful")
     fun deleteById_WhenSuccessful() {
+        runner()
         model = createModel()
         val exchange = testRestTemplate.exchange("$apiPrefix/$endpoint/{id}",HttpMethod.DELETE, null, Void::class.java, model.id)
         assertDoesNotThrow {
@@ -82,6 +87,8 @@ abstract class CommonControllerItTest<T: CommonModel>(
     open fun createModel(): T = commonService.save(model)
 
     open fun runnerSave() = commonService.deleteIfExist(model)
+
+    open fun runner(){}
 
     abstract fun requestModel(): IConvertModel<T>
 }

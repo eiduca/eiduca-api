@@ -47,9 +47,9 @@ abstract class ConcreteService<T: ConcreteModel> (
 
     override fun delete(obj: T) = deleteById(obj.id)
 
-    override fun deleteById(id: String) = hidden(findById(id))
+    override fun deleteById(id: String) = repositoryConcrete.findById(id).ifPresent { hidden(it) }
 
-    override fun deleteIfExist(obj: T) = hidden(findById(obj.id))
+    override fun deleteIfExist(obj: T) = repositoryConcrete.findById(obj.id).ifPresent { hidden(it) }
 
     abstract fun saveOrUpdate(obj: T): T
 

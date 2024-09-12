@@ -29,7 +29,7 @@ class PersonControllerTest: ConcreteControllerTest<Person, PersonRequest>() {
         setUpConcrete(personController, personService, PersonCreate.PERSON_SAVE)
     }
 
-    override fun createModel(): ResponseEntity<Person> = personController.save(model.toRequest())
+    override fun createModel(): ResponseEntity<Person> = personController.save(model.toPersonRequest())
 
-    override fun updateModel(): ResponseEntity<Person> = personController.update(model.toRequest(), model.id)
+    override fun updateModel(): ResponseEntity<Person> = personController.update(model.toPersonRequest(), model.id)
 }

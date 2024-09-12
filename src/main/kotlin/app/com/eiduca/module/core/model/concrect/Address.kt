@@ -1,6 +1,7 @@
 package app.com.eiduca.module.core.model.concrect
 
 import app.com.eiduca.module.core.common.general.ConcreteModel
+import app.com.eiduca.module.core.interfaces.IUniqueAttributeModifier
 import app.com.eiduca.module.core.request.AddressRequest
 import app.com.eiduca.module.core.util.GeneratorNanoID
 import jakarta.persistence.Column
@@ -25,13 +26,17 @@ class Address (
     var latitude: Double? = null,
     @Column(nullable = true)
     var longitude: Double? = null,
-): ConcreteModel(){
+): ConcreteModel(), IUniqueAttributeModifier{
 
     constructor(): this("","","","","","","")
 
     @PrePersist
     fun setUpAddress(){
         code = GeneratorNanoID.random()
+    }
+
+    override fun updateUniqueAttributes() {
+        code += nanoId()
     }
 
     override fun equals(other: Any?): Boolean {

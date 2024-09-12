@@ -50,7 +50,7 @@ class Person(
 
     override fun hashCode(): Int = identityCardNumber.hashCode()
 
-    fun toRequest(): PersonRequest {
+    fun toPersonRequest(): PersonRequest {
         return PersonRequest(fullname,fullnameFather,fullnameMother, username, email, identityCardNumber, gender, "", birthday)
     }
 }

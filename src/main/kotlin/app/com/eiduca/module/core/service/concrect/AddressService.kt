@@ -42,6 +42,10 @@ class AddressService(
     fun findByLongitude(longitude: Double?): List<Address> = addressRepository.findByLongitude(longitude)
     fun findByLongitude(longitude: Double?, pageable: Pageable): Page<Address> = addressRepository.findByLongitude(longitude, pageable)
 
+    override fun deleteIfExist(obj: Address) {
+        addressRepository.findByCode(obj.code).ifPresent { hidden(it) }
+    }
+
     override fun saveOrUpdate(obj: Address): Address {
         addressRepository.findByCode(obj.code).ifPresent { obj.id = it.id }
         return  addressRepository.save(obj)
