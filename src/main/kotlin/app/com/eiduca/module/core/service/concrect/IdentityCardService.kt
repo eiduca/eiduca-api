@@ -47,6 +47,8 @@ class IdentityCardService(
 
     fun findByMaritalStatus(maritalStatus: MaritalStatus, pageable: Pageable): Page<IdentityCard> = identityCardRepository.findByMaritalStatus(maritalStatus, pageable)
 
+    override fun findOrSave(obj: IdentityCard): IdentityCard = identityCardRepository.findByCode(obj.code).orElse(identityCardRepository.save(obj))
+
     override fun deleteIfExist(obj: IdentityCard) = identityCardRepository.findByCode(obj.code).ifPresent { hidden(it) }
 
     override fun saveOrUpdate(obj: IdentityCard): IdentityCard {

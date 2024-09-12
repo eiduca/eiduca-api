@@ -35,6 +35,8 @@ abstract class CommonService<T: CommonModel>(
     }
 
     open fun deleteIfExist(obj: T) = delete(obj)
+
+    abstract fun saveOrUpdate(obj: T): T
 }
 
 abstract class ConcreteService<T: ConcreteModel> (
@@ -51,11 +53,11 @@ abstract class ConcreteService<T: ConcreteModel> (
 
     override fun deleteIfExist(obj: T) = repositoryConcrete.findById(obj.id).ifPresent { hidden(it) }
 
-    abstract fun saveOrUpdate(obj: T): T
-
     protected fun hidden(entity: T){
         if(entity is IUniqueAttributeModifier) entity.updateUniqueAttributes()
         entity.deletedAt = LocalDateTime.now()
         repositoryConcrete.save(entity)
     }
+
+    abstract fun findOrSave(obj: T): T
 }

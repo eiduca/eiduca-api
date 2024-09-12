@@ -7,5 +7,12 @@ import org.springframework.stereotype.Service
 
 @Service
 class InstitutionAddressService (
-    institutionAddressRepository: InstitutionAddressRepository
-): CommonService<InstitutionAddress>(institutionAddressRepository)
+    val institutionAddressRepository: InstitutionAddressRepository
+): CommonService<InstitutionAddress>(institutionAddressRepository){
+
+    override fun saveOrUpdate(obj: InstitutionAddress): InstitutionAddress {
+        return institutionAddressRepository.findByInstitutionAndAddress(obj.institution, obj.address)
+            .orElse(institutionAddressRepository.save(obj))
+    }
+
+}

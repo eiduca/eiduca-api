@@ -11,6 +11,8 @@ abstract class NamedDescriptionService<T: NamedDescriptionModel> (
 
     fun findByDescription(description: String): T = namedDescriptionRepository.findByDescription(description).orElseThrow { NotFoundException("Not found namedDescription by description [$description]") }
 
+    override fun findOrSave(obj: T): T = namedDescriptionRepository.findByName(obj.name).orElse(namedDescriptionRepository.save(obj))
+
     override fun deleteIfExist(obj: T) = hidden(findByName(obj.name))
 
     override fun saveOrUpdate(obj: T): T {

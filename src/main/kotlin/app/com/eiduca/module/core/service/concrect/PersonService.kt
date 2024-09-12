@@ -23,6 +23,8 @@ class PersonService(
 
     fun findByBirthday(birthday: LocalDate, pageable: Pageable): Page<Person> = personRepository.findByBirthday(birthday, pageable)
 
+    override fun findOrSave(obj: Person): Person = personRepository.findByUsername(obj.username).orElse(personRepository.save(obj))
+
     override fun deleteIfExist(obj: Person) = personRepository.findByUsername(obj.username).ifPresent { hidden(it) }
 
     override fun saveOrUpdate(obj: Person): Person {

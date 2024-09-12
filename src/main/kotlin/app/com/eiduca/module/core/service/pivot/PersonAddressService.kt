@@ -7,5 +7,12 @@ import org.springframework.stereotype.Service
 
 @Service
 class PersonAddressService(
-    personAddressRepository: PersonAddressRepository
-): CommonService<PersonAddress>(personAddressRepository)
+    val personAddressRepository: PersonAddressRepository
+): CommonService<PersonAddress>(personAddressRepository){
+
+    override fun saveOrUpdate(obj: PersonAddress): PersonAddress {
+        return personAddressRepository.findByPersonAndAddress(obj.person, obj.address)
+            .orElse(personAddressRepository.save(obj))
+    }
+
+}
