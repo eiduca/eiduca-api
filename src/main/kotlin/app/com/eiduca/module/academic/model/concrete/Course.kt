@@ -2,7 +2,7 @@ package app.com.eiduca.module.academic.model.concrete
 
 import app.com.eiduca.module.academic.common.named.CodeNamedDescriptionModel
 import app.com.eiduca.module.academic.request.concrete.CourseRequest
-import jakarta.persistence.Column
+import app.com.eiduca.module.core.interfaces.IConvertRequest
 import jakarta.persistence.Entity
 import jakarta.persistence.ManyToOne
 import jakarta.persistence.Table
@@ -15,9 +15,9 @@ class Course(
     description: String?,
     @ManyToOne var institution: Institution,
     @ManyToOne var academicYear: AcademicYear,
-): CodeNamedDescriptionModel(code, name, description) {
+): CodeNamedDescriptionModel(code, name, description), IConvertRequest<Course> {
 
     constructor(): this("","",null, Institution(), AcademicYear())
 
-    fun toCourseRequest(): CourseRequest = CourseRequest(code, name, description, institution.id, academicYear.id)
+    override fun toRequest(): CourseRequest = CourseRequest(code, name, description, institution.id, academicYear.id)
 }

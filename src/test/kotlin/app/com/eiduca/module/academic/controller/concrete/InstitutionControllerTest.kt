@@ -26,7 +26,7 @@ class InstitutionControllerTest: ConcreteControllerTest<Institution, Institution
         setUpConcrete(institutionController, institutionService, InstitutionCreate.INSTITUTION_SAVE)
     }
 
-    override fun createModel(): ResponseEntity<Institution> = institutionController.save(model.toInstitutionRequest())
+    override fun createModel(): ResponseEntity<Institution> = institutionController.save(model.toRequest())
 
-    override fun updateModel(): ResponseEntity<Institution> = institutionController.update(model.toInstitutionRequest(), model.id)
+    override fun updateModel(): ResponseEntity<Institution> = institutionController.update(model.toRequest(), model.id)
 }

@@ -1,6 +1,7 @@
 package app.com.eiduca.module.core.model.concrect
 
 import app.com.eiduca.module.core.common.general.ConcreteModel
+import app.com.eiduca.module.core.interfaces.IConvertRequest
 import app.com.eiduca.module.core.interfaces.IUniqueAttributeModifier
 import app.com.eiduca.module.core.request.AddressRequest
 import app.com.eiduca.module.core.util.GeneratorNanoID
@@ -26,7 +27,7 @@ class Address (
     var latitude: Double? = null,
     @Column(nullable = true)
     var longitude: Double? = null,
-): ConcreteModel(), IUniqueAttributeModifier{
+): ConcreteModel(), IUniqueAttributeModifier, IConvertRequest<Address> {
 
     constructor(): this("","","","","","","")
 
@@ -74,7 +75,5 @@ class Address (
         return "Address(${setToString("code='$code', streetName='$streetName', houseNumber='$houseNumber', neighborhood='$neighborhood', city='$city', province='$province', country='$country', postalCode=$postalCode, latitude=$latitude, longitude=$longitude")})"
     }
 
-    fun toAddressRequest(): AddressRequest = AddressRequest(streetName, houseNumber, neighborhood, city, province, country, postalCode, latitude, longitude)
-
-
+    override fun toRequest(): AddressRequest = AddressRequest(streetName, houseNumber, neighborhood, city, province, country, postalCode, latitude, longitude)
 }

@@ -9,7 +9,6 @@ import java.time.LocalDateTime
 abstract class CommonService<T: CommonModel>(
     private val commonRepository: CommonRepository<T>
 ){
-
     open  fun findAll(pageable: Pageable): Page<T> = commonRepository.findAll(pageable)
 
     open fun findById(id: String): T = commonRepository.findById(id).orElseThrow { NotFoundException("Not found ${javaClass.simpleName} by id") }
@@ -36,28 +35,39 @@ abstract class CommonService<T: CommonModel>(
 
     open fun deleteIfExist(obj: T) = delete(obj)
 
+    fun deleteAll() = commonRepository.deleteAll()
+
+    abstract fun findOrSave(obj: T): T
+
     abstract fun saveOrUpdate(obj: T): T
 }
 
 abstract class ConcreteService<T: ConcreteModel> (
-    private val repositoryConcrete: ConcreteRepository<T>
-): CommonService<T>(repositoryConcrete){
+    private val concreteRepository: ConcreteRepository<T>
+): CommonService<T>(concreteRepository){
 
-    override fun findAll(pageable: Pageable): Page<T> = repositoryConcrete.findAll(pageable)
+    override fun findAll(pageable: Pageable): Page<T> = concreteRepository.findAll(pageable)
 
-    override fun findById(id: String): T = repositoryConcrete.findById(id).orElseThrow { NotFoundException("Not found ${javaClass.simpleName} by id ($id)") }
+    override fun findById(id: String): T = concreteRepository.findById(id).orElseThrow { NotFoundException("Not found ${javaClass.simpleName} by id ($id)") }
 
     override fun delete(obj: T) = deleteById(obj.id)
 
-    override fun deleteById(id: String) = repositoryConcrete.findById(id).ifPresent { hidden(it) }
+    override fun deleteById(id: String) = concreteRepository.findById(id).ifPresent { hidden(it) }
 
-    override fun deleteIfExist(obj: T) = repositoryConcrete.findById(obj.id).ifPresent { hidden(it) }
+    override fun deleteIfExist(obj: T) = concreteRepository.findById(obj.id).ifPresent { hidden(it) }
 
     protected fun hidden(entity: T){
         if(entity is IUniqueAttributeModifier) entity.updateUniqueAttributes()
         entity.deletedAt = LocalDateTime.now()
-        repositoryConcrete.save(entity)
+        concreteRepository.save(entity)
     }
+}
 
-    abstract fun findOrSave(obj: T): T
+abstract class PivotService<T: PivotModel> (
+    pivotRepository: PivotRepository<T>
+): CommonService<T>(pivotRepository){
+
+    override fun saveOrUpdate(obj: T): T = findOrSave(obj)
+
+    override fun save(obj: T): T = saveOrUpdate(obj)
 }

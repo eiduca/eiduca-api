@@ -2,6 +2,7 @@ package app.com.eiduca.module.core.model.concrect
 
 import app.com.eiduca.module.core.common.general.ConcreteModel
 import app.com.eiduca.module.core.enums.Gender
+import app.com.eiduca.module.core.interfaces.IConvertRequest
 import app.com.eiduca.module.core.interfaces.IUniqueAttributeModifier
 import app.com.eiduca.module.core.request.PersonRequest
 import jakarta.persistence.Column
@@ -29,7 +30,7 @@ class Person(
     @JvmField var isAccountNonLocked: Boolean? = true,
     @JvmField var isCredentialsNonExpired: Boolean? = true,
     @JvmField var isEnabled: Boolean? = true,
-): ConcreteModel(), IUniqueAttributeModifier {
+): ConcreteModel(), IUniqueAttributeModifier, IConvertRequest<Person> {
 
     constructor(): this("",null,null,"","","","",LocalDate.now(), Gender.MALE)
 
@@ -50,7 +51,7 @@ class Person(
 
     override fun hashCode(): Int = identityCardNumber.hashCode()
 
-    fun toPersonRequest(): PersonRequest {
+    override fun toRequest(): PersonRequest {
         return PersonRequest(fullname,fullnameFather,fullnameMother, username, email, identityCardNumber, gender, "", birthday)
     }
 }

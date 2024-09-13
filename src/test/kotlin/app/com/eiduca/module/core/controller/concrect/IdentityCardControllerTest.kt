@@ -29,7 +29,7 @@ class IdentityCardControllerTest: ConcreteControllerTest<IdentityCard, IdentityC
         setUpConcrete(identityCardController, identityCardService, IdentityCardCreate.IDENTITY_CARD_SAVE)
     }
 
-    override fun createModel(): ResponseEntity<IdentityCard> = identityCardController.save(model.toIdentityCardRequest())
+    override fun createModel(): ResponseEntity<IdentityCard> = identityCardController.save(model.toRequest())
 
-    override fun updateModel(): ResponseEntity<IdentityCard> = identityCardController.update(model.toIdentityCardRequest(), model.id)
+    override fun updateModel(): ResponseEntity<IdentityCard> = identityCardController.update(model.toRequest(), model.id)
 }

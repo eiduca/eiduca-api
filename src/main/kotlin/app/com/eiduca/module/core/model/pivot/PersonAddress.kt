@@ -1,6 +1,7 @@
 package app.com.eiduca.module.core.model.pivot
 
 import app.com.eiduca.module.core.common.general.PivotModel
+import app.com.eiduca.module.core.interfaces.IConvertRequest
 import app.com.eiduca.module.core.model.concrect.Address
 import app.com.eiduca.module.core.model.concrect.Person
 import app.com.eiduca.module.core.request.PersonAddressRequest
@@ -13,7 +14,7 @@ import jakarta.persistence.Table
 class PersonAddress(
     @ManyToOne var person: Person,
     @ManyToOne var address: Address
-): PivotModel(){
+): PivotModel(), IConvertRequest<PersonAddress> {
 
     constructor(): this(Person(), Address())
 
@@ -32,6 +33,5 @@ class PersonAddress(
         return result
     }
 
-    fun toPersonAddressRequest(): PersonAddressRequest = PersonAddressRequest(person.id, address.id)
-
+    override fun toRequest(): PersonAddressRequest = PersonAddressRequest(person.id, address.id)
 }

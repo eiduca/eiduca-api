@@ -3,6 +3,7 @@ package app.com.eiduca.module.academic.model.concrete
 import app.com.eiduca.module.academic.common.company.CompanyModel
 import app.com.eiduca.module.academic.enums.UniversityType
 import app.com.eiduca.module.academic.request.concrete.UniversityRequest
+import app.com.eiduca.module.core.interfaces.IConvertRequest
 import jakarta.persistence.Entity
 import jakarta.persistence.EnumType
 import jakarta.persistence.Enumerated
@@ -21,7 +22,7 @@ class University(
     @Enumerated(EnumType.STRING) var type: UniversityType = UniversityType.INDEFINITE,
     latitude: Double? = null,
     longitude: Double? = null,
-): CompanyModel(name, acronym, email, contact, website, foundingDate, latitude, longitude) {
+): CompanyModel(name, acronym, email, contact, website, foundingDate, latitude, longitude), IConvertRequest<University> {
 
     constructor(): this("", "", "", "", "", LocalDate.now(), UniversityType.INDEFINITE)
 
@@ -40,5 +41,5 @@ class University(
         return result
     }
 
-    fun toUniversityRequest(): UniversityRequest = UniversityRequest(name, acronym, email, contact, website, foundingDate, type)
+    override fun toRequest(): UniversityRequest = UniversityRequest(name, acronym, email, contact, website, foundingDate, type)
 }

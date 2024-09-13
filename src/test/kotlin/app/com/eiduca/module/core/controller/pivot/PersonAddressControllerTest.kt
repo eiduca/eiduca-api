@@ -26,7 +26,7 @@ class PersonAddressControllerTest: CommonControllerTest<PersonAddress, PersonAdd
         setUpCommon(personAddressController, personAddressService, PersonAddressCreate.PERSON_ADDRESS_SAVE)
     }
 
-    override fun createModel(): ResponseEntity<PersonAddress> = personAddressController.save(model.toPersonAddressRequest())
+    override fun createModel(): ResponseEntity<PersonAddress> = personAddressController.save(model.toRequest())
 
-    override fun updateModel(): ResponseEntity<PersonAddress> = personAddressController.update(model.toPersonAddressRequest(), model.id)
+    override fun updateModel(): ResponseEntity<PersonAddress> = personAddressController.update(model.toRequest(), model.id)
 }

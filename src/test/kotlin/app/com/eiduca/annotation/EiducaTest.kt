@@ -7,4 +7,4 @@ import java.lang.annotation.Inherited
 @Inherited
 @AutoConfigureTestDatabase
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-annotation class EiConfigureTestIT
+annotation class EiducaTest

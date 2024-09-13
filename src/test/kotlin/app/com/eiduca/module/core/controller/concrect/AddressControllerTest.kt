@@ -27,7 +27,7 @@ class AddressControllerTest: ConcreteControllerTest<Address, AddressRequest>() {
         setUpConcrete(addressController, addressService, AddressCreate.ADDRESS_SAVE)
     }
 
-    override fun createModel(): ResponseEntity<Address> = addressController.save(model.toAddressRequest())
+    override fun createModel(): ResponseEntity<Address> = addressController.save(model.toRequest())
 
-    override fun updateModel(): ResponseEntity<Address> = addressController.update(model.toAddressRequest(), model.id)
+    override fun updateModel(): ResponseEntity<Address> = addressController.update(model.toRequest(), model.id)
 }

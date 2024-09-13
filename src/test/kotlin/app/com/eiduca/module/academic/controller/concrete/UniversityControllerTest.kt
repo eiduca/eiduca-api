@@ -26,7 +26,7 @@ class UniversityControllerTest: ConcreteControllerTest<University, UniversityReq
         setUpConcrete(universityController, universityService, UniversityCreate.UNIVERSITY_SAVE)
     }
 
-    override fun createModel(): ResponseEntity<University> = universityController.save(model.toUniversityRequest())
+    override fun createModel(): ResponseEntity<University> = universityController.save(model.toRequest())
 
-    override fun updateModel(): ResponseEntity<University> = universityController.update(model.toUniversityRequest(), model.id)
+    override fun updateModel(): ResponseEntity<University> = universityController.update(model.toRequest(), model.id)
 }

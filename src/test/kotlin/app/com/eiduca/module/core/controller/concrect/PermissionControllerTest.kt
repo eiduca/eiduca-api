@@ -34,7 +34,7 @@ class PermissionControllerTest: ConcreteControllerTest<Permission, PermissionReq
         BDDMockito.`when`(permissionService.saveOrUpdate(model)).thenReturn(model)
     }
 
-    override fun createModel(): ResponseEntity<Permission> = permissionController.save(model.toPermissionRequest())
+    override fun createModel(): ResponseEntity<Permission> = permissionController.save(model.toRequest())
 
-    override fun updateModel(): ResponseEntity<Permission> = permissionController.update(model.toPermissionRequest(), model.id)
+    override fun updateModel(): ResponseEntity<Permission> = permissionController.update(model.toRequest(), model.id)
 }

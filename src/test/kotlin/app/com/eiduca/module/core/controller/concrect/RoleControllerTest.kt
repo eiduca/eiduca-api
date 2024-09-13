@@ -32,7 +32,7 @@ class RoleControllerTest: ConcreteControllerTest<Role, RoleRequest>() {
         BDDMockito.`when`(roleService.saveOrUpdate(model)).thenReturn(model)
     }
 
-    override fun createModel(): ResponseEntity<Role> = roleController.save(model.toRoleRequest())
+    override fun createModel(): ResponseEntity<Role> = roleController.save(model.toRequest())
 
-    override fun updateModel(): ResponseEntity<Role> = roleController.update(model.toRoleRequest(), model.id)
+    override fun updateModel(): ResponseEntity<Role> = roleController.update(model.toRequest(), model.id)
 }

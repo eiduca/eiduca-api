@@ -20,6 +20,7 @@ enum class EntityEnum(
     PERSON_ADDRESS(PersonAddress::class),
 
     COURSE(Course::class),
+    DAY_PERIOD(DayPeriod::class),
     DISCIPLINE(Discipline::class),
     UNIVERSITY(University::class),
     INSTITUTION(Institution::class),

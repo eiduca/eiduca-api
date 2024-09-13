@@ -1,6 +1,6 @@
 package app.com.eiduca.module.core.service.pivot
 
-import app.com.eiduca.module.core.common.general.CommonService
+import app.com.eiduca.module.core.common.general.PivotService
 import app.com.eiduca.module.core.model.pivot.PersonAddress
 import app.com.eiduca.module.core.repository.pivot.PersonAddressRepository
 import org.springframework.stereotype.Service
@@ -8,11 +8,13 @@ import org.springframework.stereotype.Service
 @Service
 class PersonAddressService(
     val personAddressRepository: PersonAddressRepository
-): CommonService<PersonAddress>(personAddressRepository){
+): PivotService<PersonAddress>(personAddressRepository){
 
-    override fun saveOrUpdate(obj: PersonAddress): PersonAddress {
-        return personAddressRepository.findByPersonAndAddress(obj.person, obj.address)
-            .orElse(personAddressRepository.save(obj))
+    override fun findOrSave(obj: PersonAddress): PersonAddress {
+       return personAddressRepository.findByPersonAndAddress(obj.person, obj.address).orElse(personAddressRepository.save(obj))
     }
 
+    override fun deleteIfExist(obj: PersonAddress) {
+        personAddressRepository.findByPersonAndAddress(obj.person, obj.address).ifPresent { delete(it) }
+    }
 }

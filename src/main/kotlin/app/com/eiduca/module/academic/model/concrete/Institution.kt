@@ -3,7 +3,7 @@ package app.com.eiduca.module.academic.model.concrete
 import app.com.eiduca.module.academic.common.company.CompanyModel
 import app.com.eiduca.module.academic.enums.InstitutionType
 import app.com.eiduca.module.academic.request.concrete.InstitutionRequest
-import app.com.eiduca.module.core.interfaces.IUniqueAttributeModifier
+import app.com.eiduca.module.core.interfaces.IConvertRequest
 import jakarta.persistence.*
 import java.time.LocalDate
 
@@ -20,7 +20,8 @@ class Institution (
     @Enumerated(EnumType.STRING) var type: InstitutionType = InstitutionType.FACULTY,
     latitude: Double? = null,
     longitude: Double? = null,
-): CompanyModel(name, acronym, email, contact, website, foundingDate, latitude, longitude), IUniqueAttributeModifier {
+): CompanyModel(name, acronym, email, contact, website, foundingDate, latitude, longitude),
+    IConvertRequest<Institution> {
 
     constructor(): this("","","","","",LocalDate.now(), University())
 
@@ -38,5 +39,5 @@ class Institution (
         return result
     }
 
-    fun toInstitutionRequest(): InstitutionRequest = InstitutionRequest(university.id, name, acronym, email, contact, website, foundingDate, latitude, longitude)
+    override fun toRequest(): InstitutionRequest = InstitutionRequest(university.id, name, acronym, email, contact, website, foundingDate, latitude, longitude)
 }

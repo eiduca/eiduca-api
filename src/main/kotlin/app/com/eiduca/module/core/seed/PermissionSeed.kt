@@ -65,6 +65,11 @@ import app.com.eiduca.module.core.model.concrect.Permission
      DISCIPLINE_UPDATE(PermissionFactory.build("UPDATE_DISCIPLINE", "Edit discipline", EntityEnum.DISCIPLINE)),
      DISCIPLINE_DELETE(PermissionFactory.build("DELETE_DISCIPLINE", "Delete discipline", EntityEnum.DISCIPLINE)),
 
+     DAY_PERIOD_VIEW(PermissionFactory.build("VIEW_DAY_PERIOD", "View day period", EntityEnum.DAY_PERIOD)),
+     DAY_PERIOD_SAVE(PermissionFactory.build("SAVE_DAY_PERIOD", "Save day period", EntityEnum.DAY_PERIOD)),
+     DAY_PERIOD_UPDATE(PermissionFactory.build("UPDATE_DAY_PERIOD", "Edit day period", EntityEnum.DAY_PERIOD)),
+     DAY_PERIOD_DELETE(PermissionFactory.build("DELETE_DAY_PERIOD", "Delete day period", EntityEnum.DAY_PERIOD)),
+
      UNIVERSITY_ADDRESS_VIEW(PermissionFactory.build("VIEW_UNIVERSITY_ADDRESS", "View address of university", EntityEnum.UNIVERSITY_ADDRESS)),
      UNIVERSITY_ADDRESS_SAVE(PermissionFactory.build("SAVE_UNIVERSITY_ADDRESS", "Save address of university", EntityEnum.UNIVERSITY_ADDRESS)),
      UNIVERSITY_ADDRESS_UPDATE(PermissionFactory.build("UPDATE_UNIVERSITY_ADDRESS", "Edit address of university", EntityEnum.UNIVERSITY_ADDRESS)),

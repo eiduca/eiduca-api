@@ -26,7 +26,7 @@ class AcademicYearControllerTest: ConcreteControllerTest<AcademicYear, AcademicY
         setUpConcrete(academicYearController, academicYearService, AcademicYearCreate.ACADEMIC_YEAR_SAVE)
     }
 
-    override fun createModel(): ResponseEntity<AcademicYear> = academicYearController.save(model.toAcademicYearRequest())
+    override fun createModel(): ResponseEntity<AcademicYear> = academicYearController.save(model.toRequest())
 
-    override fun updateModel(): ResponseEntity<AcademicYear> = academicYearController.update(model.toAcademicYearRequest(), model.id)
+    override fun updateModel(): ResponseEntity<AcademicYear> = academicYearController.update(model.toRequest(), model.id)
 }

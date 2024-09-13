@@ -31,25 +31,25 @@ class PersonController(
     @GetMapping
     @HasPermission(PermissionSeed.PERSON_VIEW)
     @Operation(tags = ["person"], summary = MessageDoc.SUMMARY_FIND_ALL, description = MessageDoc.DESCRIPTION_FIND_ALL)
-    override fun findAll(@ParameterObject pageable: Pageable): ResponseEntity<Page<Person>> = super.findAll(pageable)
+    override fun findAll(@ParameterObject pageable: Pageable) = super.findAll(pageable)
 
     @GetMapping("/{id}")
     @HasPermission(PermissionSeed.PERSON_VIEW)
     @Operation(tags = ["person"], summary = MessageDoc.SUMMARY_FIND_BY_ID, description = MessageDoc.DESCRIPTION_FIND_BY_ID)
-    override fun findById(@PathVariable id: String): ResponseEntity<Person> = super.findById(id)
+    override fun findById(@PathVariable id: String) = super.findById(id)
 
     @PostMapping
     @HasPermission(PermissionSeed.PERSON_SAVE)
     @Operation(tags = ["person"], summary = MessageDoc.SUMMARY_SAVE, description = MessageDoc.DESCRIPTION_SAVE)
-    override fun save(@Valid @RequestBody request: PersonRequest): ResponseEntity<Person> = super.save(request)
+    override fun save(@Valid @RequestBody request: PersonRequest) = super.save(request)
 
     @PutMapping("/{id}")
     @HasPermission(PermissionSeed.PERSON_UPDATE)
     @Operation(tags = ["person"], summary = MessageDoc.SUMMARY_UPDATE, description = MessageDoc.DESCRIPTION_UPDATE)
-    override fun update(@Valid @RequestBody request: PersonRequest, @PathVariable id: String): ResponseEntity<Person> = super.update(request, id)
+    override fun update(@Valid @RequestBody request: PersonRequest, @PathVariable id: String) = super.update(request, id)
 
     @DeleteMapping("/{id}")
     @HasPermission(PermissionSeed.PERSON_DELETE)
     @Operation(tags = ["person"], summary = MessageDoc.SUMMARY_DELETE, description = MessageDoc.DESCRIPTION_DELETE)
-    override fun deleteById(@PathVariable id: String): ResponseEntity<Unit> = super.deleteById(id)
+    override fun deleteById(@PathVariable id: String) = super.deleteById(id)
 }

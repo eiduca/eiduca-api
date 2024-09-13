@@ -2,6 +2,7 @@ package app.com.eiduca.module.academic.model.concrete
 
 import app.com.eiduca.module.academic.common.named.CodeNamedDescriptionModel
 import app.com.eiduca.module.academic.request.concrete.DisciplineRequest
+import app.com.eiduca.module.core.interfaces.IConvertRequest
 import jakarta.persistence.Entity
 import jakarta.persistence.Table
 
@@ -11,9 +12,9 @@ class Discipline(
     code: String,
     name: String,
     description: String?
-): CodeNamedDescriptionModel(code, name, description){
+): CodeNamedDescriptionModel(code, name, description), IConvertRequest<Discipline> {
 
     constructor(): this("","",null)
 
-    fun toDisciplineRequest(): DisciplineRequest = DisciplineRequest(code, name, description)
+    override fun toRequest(): DisciplineRequest = DisciplineRequest(code, name, description)
 }

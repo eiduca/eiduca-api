@@ -19,3 +19,6 @@ interface  ConcreteRepository <T: ConcreteModel> : CommonRepository<T> {
     @Query(name = "ModelConcrete.findById")
     override fun findById(id: String): Optional<T>
 }
+
+@NoRepositoryBean
+interface PivotRepository <T: PivotModel> : CommonRepository<T>

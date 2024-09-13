@@ -26,7 +26,7 @@ class DisciplineControllerTest: ConcreteControllerTest<Discipline, DisciplineReq
         setUpConcrete(disciplineController, disciplineService, DisciplineCreate.DISCIPLINE_SAVE)
     }
 
-    override fun createModel(): ResponseEntity<Discipline> = disciplineController.save(model.toDisciplineRequest())
+    override fun createModel(): ResponseEntity<Discipline> = disciplineController.save(model.toRequest())
 
-    override fun updateModel(): ResponseEntity<Discipline> = disciplineController.update(model.toDisciplineRequest(), model.id)
+    override fun updateModel(): ResponseEntity<Discipline> = disciplineController.update(model.toRequest(), model.id)
 }

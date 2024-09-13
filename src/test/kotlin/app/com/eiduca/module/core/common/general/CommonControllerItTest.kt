@@ -104,3 +104,11 @@ abstract class ConcreteControllerItTest<T: ConcreteModel>(
 
     override fun runnerSave() = concreteService.deleteIfExist(model)
 }
+
+abstract class PivotControllerItTest<T: PivotModel>(
+    pivotService: PivotService<T>,
+    model: T,
+    endpoint: String,
+): CommonControllerItTest<T>(
+    pivotService, model, endpoint
+)

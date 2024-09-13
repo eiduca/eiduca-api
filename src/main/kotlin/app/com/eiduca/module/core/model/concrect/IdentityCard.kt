@@ -2,6 +2,7 @@ package app.com.eiduca.module.core.model.concrect
 
 import app.com.eiduca.module.core.common.general.ConcreteModel
 import app.com.eiduca.module.core.enums.MaritalStatus
+import app.com.eiduca.module.core.interfaces.IConvertRequest
 import app.com.eiduca.module.core.request.IdentityCardRequest
 import jakarta.persistence.Column
 import jakarta.persistence.Entity
@@ -24,7 +25,7 @@ class IdentityCard(
     var validAt: LocalDate,
     @Enumerated(EnumType.STRING) var maritalStatus: MaritalStatus = MaritalStatus.SINGLE,
     @ManyToOne var person: Person,
-): ConcreteModel() {
+): ConcreteModel(), IConvertRequest<IdentityCard> {
 
     constructor(): this("","","","",LocalDate.now(),LocalDate.now(), MaritalStatus.SINGLE, Person())
 
@@ -40,6 +41,5 @@ class IdentityCard(
 
     override fun hashCode(): Int = person.hashCode() + emittedAt.hashCode() + validAt.hashCode()
 
-    fun toIdentityCardRequest(): IdentityCardRequest = IdentityCardRequest(person.id, maritalStatus, residential, naturalFrom, emittedFrom, emittedAt, validAt)
-
+    override fun toRequest(): IdentityCardRequest = IdentityCardRequest(person.id, maritalStatus, residential, naturalFrom, emittedFrom, emittedAt, validAt)
 }
