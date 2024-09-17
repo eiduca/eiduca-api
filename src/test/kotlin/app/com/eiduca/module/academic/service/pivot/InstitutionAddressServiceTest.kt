@@ -20,7 +20,7 @@ class InstitutionAddressServiceTest: CommonServiceTest<InstitutionAddress>() {
     lateinit var institutionAddressRepository: InstitutionAddressRepository
 
     @BeforeEach
-    fun setUpInstitutionAddress() {
+    fun setUp() {
         setUpCommon(institutionAddressService, institutionAddressRepository, InstitutionAddressCreate.INSTITUTION_ADDRESS_SAVE)
     }
 }

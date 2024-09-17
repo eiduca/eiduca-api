@@ -19,15 +19,13 @@ import java.util.*
 @ExtendWith(SpringExtension::class)
 @DisplayName("Test of academicYear service")
 class AcademicYearServiceTest: DataRangeServiceTest<AcademicYear >() {
-
     @InjectMocks
     lateinit var academicYearService: AcademicYearService
-
     @Mock
     lateinit var academicYearRepository: AcademicYearRepository
 
     @BeforeEach
-    fun setUpAcademicYear() {
+    fun setUp() {
         setUpDateRange(academicYearService, academicYearRepository, AcademicYearCreate.ACADEMIC_YEAR_SAVE)
         BDDMockito.`when`(academicYearRepository.findByName(model.name)).thenReturn(Optional.of(model))
         BDDMockito.`when`(academicYearRepository.findByCode(model.code )).thenReturn(Optional.of(model))

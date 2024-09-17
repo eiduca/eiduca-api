@@ -7,7 +7,6 @@ import app.com.eiduca.module.core.model.concrect.Permission
 import app.com.eiduca.module.core.request.PermissionRequest
 
 import org.junit.jupiter.api.extension.ExtendWith
-import org.springframework.http.ResponseEntity
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.BeforeEach
 import org.mockito.ArgumentMatchers
@@ -28,13 +27,13 @@ class PermissionControllerTest: ConcreteControllerTest<Permission, PermissionReq
     lateinit var permissionService: PermissionService
 
     @BeforeEach
-    fun setUpPermission() {
+    fun setUp() {
         setUpConcrete(permissionController, permissionService, PermissionCreate.PERMISSION_SAVE)
         BDDMockito.`when`(permissionService.findByName(ArgumentMatchers.anyString())).thenReturn(model)
         BDDMockito.`when`(permissionService.saveOrUpdate(model)).thenReturn(model)
     }
 
-    override fun createModel(): ResponseEntity<Permission> = permissionController.save(model.toRequest())
+    override fun createModel() = permissionController.save(model.toRequest())
 
-    override fun updateModel(): ResponseEntity<Permission> = permissionController.update(model.toRequest(), model.id)
+    override fun updateModel() = permissionController.update(model.toRequest(), model.id)
 }

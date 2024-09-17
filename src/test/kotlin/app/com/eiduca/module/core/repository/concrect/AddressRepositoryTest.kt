@@ -19,8 +19,7 @@ class AddressRepositoryTest(
 ){
 
     @Test
-    @DisplayName("Find model address by code when successful")
-    fun findByCode_WhenSuccessful() {
+    fun findByCode_ReturnObject_WhenSuccessful() {
         runner()
         persistModel()
         addressRepository.findByCode(model.code).ifPresentOrElse(
@@ -30,126 +29,108 @@ class AddressRepositoryTest(
     }
 
     @Test
-    @DisplayName("Find model address by streetName when successful, return list")
     fun findByStreetName_ReturnList_WhenSuccessful() {
         persistModel()
         AssertUtil.assert(addressRepository.findByStreetName(model.streetName))
     }
 
     @Test
-    @DisplayName("Find model address by streetName when successful, return list pageable")
     fun findByStreetName_ReturnPage_WhenSuccessful() {
         persistModel()
         AssertUtil.assert(addressRepository.findByStreetName(model.streetName, AssertUtil.PAGEABLE))
     }
 
     @Test
-    @DisplayName("Find model address by houseNumber when successful, return list")
     fun findByHouseNumber_ReturnList_WhenSuccessful() {
         persistModel()
         AssertUtil.assert(addressRepository.findByHouseNumber(model.houseNumber))
     }
 
     @Test
-    @DisplayName("Find model address by houseNumber when successful, return list pageable")
     fun findByHouseNumber_ReturnPage_WhenSuccessful() {
         persistModel()
         AssertUtil.assert(addressRepository.findByHouseNumber(model.houseNumber, AssertUtil.PAGEABLE))
     }
 
     @Test
-    @DisplayName("Find model address by neighborhood when successful, return list")
     fun findByNeighborhood_ReturnList_WhenSuccessful() {
         persistModel()
         AssertUtil.assert(addressRepository.findByNeighborhood(model.neighborhood))
     }
 
     @Test
-    @DisplayName("Find model address by neighborhood when successful, return list pageable")
     fun findByNeighborhood_ReturnPage_WhenSuccessful() {
         persistModel()
         AssertUtil.assert(addressRepository.findByNeighborhood(model.neighborhood, AssertUtil.PAGEABLE))
     }
 
     @Test
-    @DisplayName("Find model address by city when successful, return list")
     fun findByCity_ReturnList_WhenSuccessful() {
         persistModel()
         AssertUtil.assert(addressRepository.findByCity(model.city))
     }
 
     @Test
-    @DisplayName("Find model address by city when successful, return list pageable")
     fun findByCity_ReturnPage_WhenSuccessful() {
         persistModel()
         AssertUtil.assert(addressRepository.findByCity(model.city, AssertUtil.PAGEABLE))
     }
 
     @Test
-    @DisplayName("Find model address by city when successful, return list")
     fun findByProvince_ReturnList_WhenSuccessful() {
         persistModel()
         AssertUtil.assert(addressRepository.findByProvince(model.province))
     }
 
     @Test
-    @DisplayName("Find model address by city when successful, return list pageable")
     fun findByProvince_ReturnPage_WhenSuccessful() {
         persistModel()
         AssertUtil.assert(addressRepository.findByProvince(model.province, AssertUtil.PAGEABLE))
     }
 
     @Test
-    @DisplayName("Find model address by country when successful, return list")
     fun findByCountry_ReturnList_WhenSuccessful() {
         persistModel()
         AssertUtil.assert(addressRepository.findByCountry(model.country))
     }
 
     @Test
-    @DisplayName("Find model address by country when successful, return list pageable")
     fun findByCountry_ReturnPage_WhenSuccessful() {
         persistModel()
         AssertUtil.assert(addressRepository.findByCountry(model.country, AssertUtil.PAGEABLE))
     }
 
     @Test
-    @DisplayName("Find model address by postalCode when successful, return list")
     fun findByPostalCode_ReturnList_WhenSuccessful() {
         persistModel()
         AssertUtil.assert(addressRepository.findByPostalCode(model.postalCode))
     }
 
     @Test
-    @DisplayName("Find model address by postalCode when successful, return list pageable")
     fun findByPostalCode_ReturnPage_WhenSuccessful() {
         persistModel()
         AssertUtil.assert(addressRepository.findByPostalCode(model.postalCode, AssertUtil.PAGEABLE))
     }
 
     @Test
-    @DisplayName("Find model address by latitude when successful, return list")
     fun findByLatitude_ReturnList_WhenSuccessful() {
         persistModel()
         AssertUtil.assert(addressRepository.findByLatitude(model.latitude))
     }
 
     @Test
-    @DisplayName("Find model address by latitude when successful, return list pageable")
     fun findByLatitude_ReturnPage_WhenSuccessful() {
         persistModel()
         AssertUtil.assert(addressRepository.findByLatitude(model.latitude, AssertUtil.PAGEABLE))
     }
 
     @Test
-    @DisplayName("Find model address by longitude when successful, return list")
     fun findByLongitude_ReturnList_WhenSuccessful() {
         persistModel()
         AssertUtil.assert(addressRepository.findByLongitude(model.longitude))
     }
 
     @Test
-    @DisplayName("Find model address by longitude when successful, return list pageable")
     fun findByLongitude_ReturnPage_WhenSuccessful() {
         persistModel()
         AssertUtil.assert(addressRepository.findByLongitude(model.longitude, AssertUtil.PAGEABLE))

@@ -6,14 +6,14 @@ import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 import kotlin.test.assertEquals
 
+@DisplayName("Test namedDescription repository")
 abstract class NamedDescriptionRepositoryTest<T: NamedDescriptionModel>(
     var namedDescriptionRepository: NamedDescriptionRepository<T>,
     model: T
 ): ConcreteRepositoryTest<T>(namedDescriptionRepository,model) {
 
     @Test
-    @DisplayName("Find namedDescription by name when successful")
-    fun findByName_WhenSuccessful(){
+    fun findByName_ReturnObject_WhenSuccessful(){
         runner()
         persistModel()
         namedDescriptionRepository.findByName(model.name).ifPresentOrElse(
@@ -23,8 +23,7 @@ abstract class NamedDescriptionRepositoryTest<T: NamedDescriptionModel>(
     }
 
     @Test
-    @DisplayName("Find namedDescription by description when successful")
-    fun findByDescription_WhenSuccessful(){
+    fun findByDescription_ReturnObject_WhenSuccessful(){
         runner()
         persistModel()
         namedDescriptionRepository.findByDescription(model.description).ifPresentOrElse(

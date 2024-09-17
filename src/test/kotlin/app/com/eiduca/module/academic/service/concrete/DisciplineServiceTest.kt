@@ -20,7 +20,7 @@ class DisciplineServiceTest: CodeNamedDescriptionServiceTest<Discipline>(){
     lateinit var disciplineRepository: DisciplineRepository
 
     @BeforeEach
-    fun setUpDiscipline() {
+    fun setUp() {
         setUpCodeNamedDescription(disciplineService, disciplineRepository, DisciplineCreate.DISCIPLINE_SAVE)
     }
 }

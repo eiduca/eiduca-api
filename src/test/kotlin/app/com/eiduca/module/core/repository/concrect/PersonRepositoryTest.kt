@@ -19,8 +19,7 @@ class PersonRepositoryTest(
 ){
 
     @Test
-    @DisplayName("Find person by email when successful")
-    fun findByEmail_WhenSuccessful(){
+    fun findByEmail_ReturnObject_WhenSuccessful(){
         runner()
         persistModel()
         personRepository.findByEmail(model.email).ifPresentOrElse(
@@ -30,8 +29,7 @@ class PersonRepositoryTest(
     }
 
     @Test
-    @DisplayName("Find person by username when successful")
-    fun findByUsername_WhenSuccessful(){
+    fun findByUsername_ReturnObject_WhenSuccessful(){
         runner()
         persistModel()
         personRepository.findByUsername(model.username).ifPresentOrElse(
@@ -41,8 +39,7 @@ class PersonRepositoryTest(
     }
 
     @Test
-    @DisplayName("Find person by identityCardNumber when successful")
-    fun findByIdentityCardNumber_WhenSuccessful(){
+    fun findByIdentityCardNumber_ReturnObject_WhenSuccessful(){
         runner()
         persistModel()
         personRepository.findByIdentityCardNumber(model.identityCardNumber).ifPresentOrElse(
@@ -52,16 +49,14 @@ class PersonRepositoryTest(
     }
 
     @Test
-    @DisplayName("List person pageable by birthday when successful")
-    fun findByBirthday_WhenSuccessful() {
+    fun findByBirthday_ReturnPage_WhenSuccessful() {
         runner()
         persistModel()
         AssertUtil.assert(personRepository.findByBirthday(model.birthday, AssertUtil.PAGEABLE))
     }
 
     @Test
-    @DisplayName("List person pageable by gender when successful")
-    fun findByGender_WhenSuccessful() {
+    fun findByGender_ReturnObject_WhenSuccessful() {
         runner()
         persistModel()
         AssertUtil.assert(personRepository.findByGender(model.gender, AssertUtil.PAGEABLE))

@@ -17,8 +17,7 @@ class AcademicYearRepositoryTest(
 ): DataRangeRepositoryTest<AcademicYear>(academicYearRepository, AcademicYearCreate.ACADEMIC_YEAR_SAVE) {
 
     @Test
-    @DisplayName("Find academicYear by name when successful")
-    fun findByName_WhenSuccessful(){
+    fun findByName_ReturnObject_WhenSuccessful(){
         runner()
         persistModel()
         academicYearRepository.findByName(model.name).ifPresentOrElse({
@@ -27,8 +26,7 @@ class AcademicYearRepositoryTest(
     }
 
     @Test
-    @DisplayName("Find academicYear by code when successful")
-    fun findByCode_WhenSuccessful() {
+    fun findByCode_ReturnObject_WhenSuccessful() {
         runner()
         persistModel()
         academicYearRepository.findByCode(model.code).ifPresentOrElse({

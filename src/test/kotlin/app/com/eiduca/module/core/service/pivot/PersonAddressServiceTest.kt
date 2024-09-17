@@ -20,7 +20,7 @@ class PersonAddressServiceTest: CommonServiceTest<PersonAddress>() {
     lateinit var personAddressRepository: PersonAddressRepository
 
     @BeforeEach
-    fun setUpPersonAddress() {
+    fun setUp() {
         setUpCommon(personAddressService, personAddressRepository, PersonAddressCreate.PERSON_ADDRESS_SAVE)
     }
 }

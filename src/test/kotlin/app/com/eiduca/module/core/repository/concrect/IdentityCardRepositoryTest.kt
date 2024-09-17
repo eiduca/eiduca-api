@@ -14,15 +14,13 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest
 @DisplayName("Test of identity cards repository")
 class IdentityCardRepositoryTest(
     @Autowired var identityCardRepository: IdentityCardRepository,
+    @Autowired var personRepository: PersonRepository
 ): ConcreteRepositoryTest<IdentityCard>(
     identityCardRepository, IdentityCardCreate.IDENTITY_CARD_SAVE
 ){
 
-    @Autowired lateinit var personRepository: PersonRepository
-
     @Test
-    @DisplayName("Find model identity cards by code when successful")
-    fun findByCode_WhenSuccessful() {
+    fun findByCode_ReturnObject_WhenSuccessful() {
         runner()
         persistModel()
         identityCardRepository.findByCode(model.code).ifPresentOrElse({
@@ -31,7 +29,6 @@ class IdentityCardRepositoryTest(
     }
 
     @Test
-    @DisplayName("Find model identity cards by person when successful, return list")
     fun findByPerson_ReturnList_WhenSuccessful(){
         runner()
         persistModel()
@@ -39,7 +36,6 @@ class IdentityCardRepositoryTest(
     }
 
     @Test
-    @DisplayName("Find model identity cards by person when successful, return list pageable")
     fun findByPerson_ReturnPage_WhenSuccessful(){
         runner()
         persistModel()
@@ -47,7 +43,6 @@ class IdentityCardRepositoryTest(
     }
 
     @Test
-    @DisplayName("Find model identity cards by residential when successful, return list")
     fun findByResidential_ReturnList_WhenSuccessful(){
         runner()
         persistModel()
@@ -55,7 +50,6 @@ class IdentityCardRepositoryTest(
     }
 
     @Test
-    @DisplayName("Find model identity cards by residential when successful, return list pageable")
     fun findByResidential_ReturnPage_WhenSuccessful(){
         runner()
         persistModel()
@@ -63,7 +57,6 @@ class IdentityCardRepositoryTest(
     }
 
     @Test
-    @DisplayName("Find model identity cards by naturalFrom when successful, return list")
     fun findByNaturalFrom_ReturnList_WhenSuccessful(){
         runner()
         persistModel()
@@ -71,7 +64,6 @@ class IdentityCardRepositoryTest(
     }
 
     @Test
-    @DisplayName("Find model identity cards by naturalFrom when successful, return list pageable")
     fun findByNaturalFrom_ReturnPage_WhenSuccessful(){
         runner()
         persistModel()
@@ -79,7 +71,6 @@ class IdentityCardRepositoryTest(
     }
 
     @Test
-    @DisplayName("Find model identity cards by emittedFrom when successful, return list")
     fun findByEmittedFrom_ReturnList_WhenSuccessful(){
         runner()
         persistModel()
@@ -87,7 +78,6 @@ class IdentityCardRepositoryTest(
     }
 
     @Test
-    @DisplayName("Find model identity cards by emittedFrom when successful, return list pageable")
     fun findByEmittedFrom_ReturnPage_WhenSuccessful(){
         runner()
         persistModel()
@@ -95,7 +85,6 @@ class IdentityCardRepositoryTest(
     }
 
     @Test
-    @DisplayName("Find model identity cards by emittedAt when successful, return list")
     fun findByEmittedAt_ReturnList_WhenSuccessful(){
         runner()
         persistModel()
@@ -103,7 +92,6 @@ class IdentityCardRepositoryTest(
     }
 
     @Test
-    @DisplayName("Find model identity cards by emittedAt when successful, return list pageable")
     fun findByEmittedAt_ReturnPage_WhenSuccessful(){
         runner()
         persistModel()
@@ -111,7 +99,6 @@ class IdentityCardRepositoryTest(
     }
 
     @Test
-    @DisplayName("Find model identity cards by validAt when successful, return list")
     fun findByValidAt_ReturnList_WhenSuccessful(){
         runner()
         persistModel()
@@ -119,7 +106,6 @@ class IdentityCardRepositoryTest(
     }
 
     @Test
-    @DisplayName("Find model identity cards by validAt when successful, return list pageable")
     fun findByValidAt_ReturnPage_WhenSuccessful(){
         runner()
         persistModel()
@@ -127,7 +113,6 @@ class IdentityCardRepositoryTest(
     }
 
     @Test
-    @DisplayName("Find model identity cards by maritalStatus when successful, return list")
     fun findByMaritalStatus_ReturnList_WhenSuccessful(){
         runner()
         persistModel()
@@ -135,7 +120,6 @@ class IdentityCardRepositoryTest(
     }
 
     @Test
-    @DisplayName("Find model identity cards by maritalStatus when successful, return list pageable")
     fun findByMaritalStatus_ReturnPage_WhenSuccessful(){
         runner()
         persistModel()

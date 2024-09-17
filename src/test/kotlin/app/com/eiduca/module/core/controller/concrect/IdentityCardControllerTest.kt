@@ -11,7 +11,6 @@ import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.extension.ExtendWith
 import org.mockito.InjectMocks
 import org.mockito.Mock
-import org.springframework.http.ResponseEntity
 import org.springframework.test.context.junit.jupiter.SpringExtension
 
 @ExtendWith(SpringExtension::class)
@@ -25,11 +24,11 @@ class IdentityCardControllerTest: ConcreteControllerTest<IdentityCard, IdentityC
     lateinit var identityCardService: IdentityCardService
 
     @BeforeEach
-    fun setUpIdentityCard() {
+    fun setUp() {
         setUpConcrete(identityCardController, identityCardService, IdentityCardCreate.IDENTITY_CARD_SAVE)
     }
 
-    override fun createModel(): ResponseEntity<IdentityCard> = identityCardController.save(model.toRequest())
+    override fun createModel() = identityCardController.save(model.toRequest())
 
-    override fun updateModel(): ResponseEntity<IdentityCard> = identityCardController.update(model.toRequest(), model.id)
+    override fun updateModel() = identityCardController.update(model.toRequest(), model.id)
 }

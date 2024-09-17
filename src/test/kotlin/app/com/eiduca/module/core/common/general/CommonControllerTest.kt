@@ -12,6 +12,7 @@ import org.mockito.BDDMockito
 import org.springframework.data.domain.PageImpl
 import org.springframework.http.ResponseEntity
 
+@DisplayName("Test common controller")
 abstract class CommonControllerTest <T: CommonModel, R: IConvertModel<T> >{
 
     lateinit var model: T
@@ -33,8 +34,7 @@ abstract class CommonControllerTest <T: CommonModel, R: IConvertModel<T> >{
     }
 
     @Test
-    @DisplayName("List pageable of common when successful")
-    fun findAll_WhenSuccessful() {
+    fun findAll_ReturnPage_WhenSuccessful() {
         runner()
         val response = commonController.findAll(AssertUtil.PAGEABLE)
         assertTrue(response.statusCode == ReturnStatus.OK)
@@ -42,8 +42,7 @@ abstract class CommonControllerTest <T: CommonModel, R: IConvertModel<T> >{
     }
 
     @Test
-    @DisplayName("Find common by id when successful")
-    fun findById_WhenSuccessful() {
+    fun findById_ReturnObject_WhenSuccessful() {
         runner()
         val response = commonController.findById(model.id)
         assertTrue(response.statusCode == ReturnStatus.OK)
@@ -51,8 +50,7 @@ abstract class CommonControllerTest <T: CommonModel, R: IConvertModel<T> >{
     }
 
     @Test
-    @DisplayName("Create common when successful")
-    fun save_WhenSuccessful() {
+    fun save_ReturnObject_WhenSuccessful() {
         runner()
         val response = createModel()
         assertTrue(response.statusCode == ReturnStatus.CREATED)
@@ -60,8 +58,7 @@ abstract class CommonControllerTest <T: CommonModel, R: IConvertModel<T> >{
     }
 
     @Test
-    @DisplayName("Update common when successful")
-    fun update_WhenSuccessful() {
+    fun update_ReturnObject_WhenSuccessful() {
         runner()
         val response = updateModel()
         assertTrue(response.statusCode == ReturnStatus.UPDATED)
@@ -69,8 +66,7 @@ abstract class CommonControllerTest <T: CommonModel, R: IConvertModel<T> >{
     }
 
     @Test
-    @DisplayName("Delete common by id when successful")
-    fun deleteById_WhenSuccessful() {
+    fun deleteById_ReturnVoid_WhenSuccessful() {
         runner()
         val response = commonController.deleteById(model.id)
         assertTrue(response.statusCode == ReturnStatus.DELETED)

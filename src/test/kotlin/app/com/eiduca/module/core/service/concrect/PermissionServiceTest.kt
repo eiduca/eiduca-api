@@ -33,13 +33,11 @@ class PermissionServiceTest: NamedDescriptionServiceTest<Permission>() {
     }
 
     @Test
-    @DisplayName("Find permission by entity when successful, return list")
     fun findByEntity_ReturnList_WhenSuccessful() {
         AssertUtil.assert(permissionService.findByEntity(model.entity))
     }
 
     @Test
-    @DisplayName("Find permission by entity when successful, return list pageable")
     fun findByEntity_ReturnPage_WhenSuccessful() {
         AssertUtil.assert(permissionService.findByEntity(model.entity, AssertUtil.PAGEABLE))
     }

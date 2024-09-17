@@ -19,7 +19,6 @@ class CourseRepositoryTest(
 ): CodeNamedDescriptionRepositoryTest<Course>(courseRepository, CourseCreate.COURSE_SAVE) {
 
     @Test
-    @DisplayName("Find model course by name institution successful, return list")
     fun findByInstitution_ReturnList_WhenSuccessful() {
         runner()
         persistModel()
@@ -27,7 +26,6 @@ class CourseRepositoryTest(
     }
 
     @Test
-    @DisplayName("Find model course by name institution successful, return list pageable")
     fun findByInstitution_ReturnPage_WhenSuccessful() {
         runner()
         persistModel()
@@ -35,7 +33,6 @@ class CourseRepositoryTest(
     }
 
     @Test
-    @DisplayName("Find model course by name institution successful, return list")
     fun findByAcademicYear_ReturnList_WhenSuccessful() {
         runner()
         persistModel()
@@ -43,7 +40,6 @@ class CourseRepositoryTest(
     }
 
     @Test
-    @DisplayName("Find model course by name institution successful, return list pageable")
     fun findByAcademicYear_ReturnPage_WhenSuccessful() {
         runner()
         persistModel()

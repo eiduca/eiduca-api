@@ -7,7 +7,6 @@ import app.com.eiduca.module.core.model.concrect.Role
 import app.com.eiduca.module.core.request.RoleRequest
 
 import org.junit.jupiter.api.extension.ExtendWith
-import org.springframework.http.ResponseEntity
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.BeforeEach
 import org.mockito.ArgumentMatchers
@@ -26,13 +25,13 @@ class RoleControllerTest: ConcreteControllerTest<Role, RoleRequest>() {
     lateinit var roleService: RoleService
 
     @BeforeEach
-    fun setUpRole(){
+    fun setUp(){
         setUpConcrete(roleController, roleService, RoleCreate.ROLE_SAVE)
         BDDMockito.`when`(roleService.findByName(ArgumentMatchers.anyString())).thenReturn(model)
         BDDMockito.`when`(roleService.saveOrUpdate(model)).thenReturn(model)
     }
 
-    override fun createModel(): ResponseEntity<Role> = roleController.save(model.toRequest())
+    override fun createModel() = roleController.save(model.toRequest())
 
-    override fun updateModel(): ResponseEntity<Role> = roleController.update(model.toRequest(), model.id)
+    override fun updateModel() = roleController.update(model.toRequest(), model.id)
 }

@@ -28,10 +28,10 @@ import app.com.eiduca.module.core.model.concrect.Permission
     IDENTITY_CARD_UPDATE(PermissionFactory.build("UPDATE_IDENTITY_CARD", "Edit identity card", EntityEnum.IDENTITY_CARD)),
     IDENTITY_CARD_DELETE(PermissionFactory.build("DELETE_IDENTITY_CARD", "Delete identity card", EntityEnum.IDENTITY_CARD)),
 
-    ADDRESS_VIEW(PermissionFactory.build("VIEW_ADDRESS", "View address", EntityEnum.ADDRESS)),
-    ADDRESS_SAVE(PermissionFactory.build("SAVE_ADDRESS", "Save address", EntityEnum.ADDRESS)),
-    ADDRESS_UPDATE(PermissionFactory.build("UPDATE_ADDRESS", "Edit address", EntityEnum.ADDRESS)),
-    ADDRESS_DELETE(PermissionFactory.build("DELETE_ADDRESS", "Delete address", EntityEnum.ADDRESS)),
+     ADDRESS_VIEW(PermissionFactory.build("VIEW_ADDRESS", "View address", EntityEnum.ADDRESS)),
+     ADDRESS_SAVE(PermissionFactory.build("SAVE_ADDRESS", "Save address", EntityEnum.ADDRESS)),
+     ADDRESS_UPDATE(PermissionFactory.build("UPDATE_ADDRESS", "Edit address", EntityEnum.ADDRESS)),
+     ADDRESS_DELETE(PermissionFactory.build("DELETE_ADDRESS", "Delete address", EntityEnum.ADDRESS)),
 
      PERSON_ADDRESS_VIEW(PermissionFactory.build("VIEW_PERSON_ADDRESS", "View address of user", EntityEnum.PERSON_ADDRESS)),
      PERSON_ADDRESS_SAVE(PermissionFactory.build("SAVE_PERSON_ADDRESS", "Save address of user", EntityEnum.PERSON_ADDRESS)),
@@ -69,6 +69,41 @@ import app.com.eiduca.module.core.model.concrect.Permission
      DAY_PERIOD_SAVE(PermissionFactory.build("SAVE_DAY_PERIOD", "Save day period", EntityEnum.DAY_PERIOD)),
      DAY_PERIOD_UPDATE(PermissionFactory.build("UPDATE_DAY_PERIOD", "Edit day period", EntityEnum.DAY_PERIOD)),
      DAY_PERIOD_DELETE(PermissionFactory.build("DELETE_DAY_PERIOD", "Delete day period", EntityEnum.DAY_PERIOD)),
+
+     CLASSROOM_VIEW(PermissionFactory.build("VIEW_CLASSROOM", "View classroom", EntityEnum.CLASSROOM)),
+     CLASSROOM_SAVE(PermissionFactory.build("SAVE_CLASSROOM", "Save classroom", EntityEnum.CLASSROOM)),
+     CLASSROOM_UPDATE(PermissionFactory.build("UPDATE_CLASSROOM", "Edit classroom", EntityEnum.CLASSROOM)),
+     CLASSROOM_DELETE(PermissionFactory.build("DELETE_CLASSROOM", "Delete classroom", EntityEnum.CLASSROOM)),
+
+     ACADEMIC_PERIOD_VIEW(PermissionFactory.build("VIEW_ACADEMIC_PERIOD", "View academic period", EntityEnum.ACADEMIC_PERIOD)),
+     ACADEMIC_PERIOD_SAVE(PermissionFactory.build("SAVE_ACADEMIC_PERIOD", "Save academic period", EntityEnum.ACADEMIC_PERIOD)),
+     ACADEMIC_PERIOD_UPDATE(PermissionFactory.build("UPDATE_ACADEMIC_PERIOD", "Edit academic period", EntityEnum.ACADEMIC_PERIOD)),
+     ACADEMIC_PERIOD_DELETE(PermissionFactory.build("DELETE_ACADEMIC_PERIOD", "Delete academic period", EntityEnum.ACADEMIC_PERIOD)),
+
+     REGIME_DISCIPLINE_VIEW(PermissionFactory.build("VIEW_REGIME_DISCIPLINE", "View regime of discipline", EntityEnum.REGIME_DISCIPLINE)),
+     REGIME_DISCIPLINE_SAVE(PermissionFactory.build("SAVE_REGIME_DISCIPLINE", "Save regime of discipline", EntityEnum.REGIME_DISCIPLINE)),
+     REGIME_DISCIPLINE_UPDATE(PermissionFactory.build("UPDATE_REGIME_DISCIPLINE", "Edit regime of discipline", EntityEnum.REGIME_DISCIPLINE)),
+     REGIME_DISCIPLINE_DELETE(PermissionFactory.build("DELETE_REGIME_DISCIPLINE", "Delete regime of discipline", EntityEnum.REGIME_DISCIPLINE)),
+
+     PROFILE_DISCIPLINE_VIEW(PermissionFactory.build("VIEW_PROFILE_DISCIPLINE", "View profile of discipline", EntityEnum.PROFILE_DISCIPLINE)),
+     PROFILE_DISCIPLINE_SAVE(PermissionFactory.build("SAVE_PROFILE_DISCIPLINE", "Save profile of discipline", EntityEnum.PROFILE_DISCIPLINE)),
+     PROFILE_DISCIPLINE_UPDATE(PermissionFactory.build("UPDATE_PROFILE_DISCIPLINE", "Edit profile of discipline", EntityEnum.PROFILE_DISCIPLINE)),
+     PROFILE_DISCIPLINE_DELETE(PermissionFactory.build("DELETE_PROFILE_DISCIPLINE", "Delete profile of discipline", EntityEnum.PROFILE_DISCIPLINE)),
+
+     CURRICULUM_YEAR_VIEW(PermissionFactory.build("VIEW_CURRICULUM_YEAR", "View curriculum year", EntityEnum.CURRICULUM_YEAR)),
+     CURRICULUM_YEAR_SAVE(PermissionFactory.build("SAVE_CURRICULUM_YEAR", "Save curriculum year", EntityEnum.CURRICULUM_YEAR)),
+     CURRICULUM_YEAR_UPDATE(PermissionFactory.build("UPDATE_CURRICULUM_YEAR", "Edit curriculum year", EntityEnum.CURRICULUM_YEAR)),
+     CURRICULUM_YEAR_DELETE(PermissionFactory.build("DELETE_CURRICULUM_YEAR", "Delete curriculum year", EntityEnum.CURRICULUM_YEAR)),
+
+     COURSE_DISCIPLINE_VIEW(PermissionFactory.build("VIEW_COURSE_DISCIPLINE", "View course discipline", EntityEnum.COURSE_DISCIPLINE)),
+     COURSE_DISCIPLINE_SAVE(PermissionFactory.build("SAVE_COURSE_DISCIPLINE", "Save course discipline", EntityEnum.COURSE_DISCIPLINE)),
+     COURSE_DISCIPLINE_UPDATE(PermissionFactory.build("UPDATE_COURSE_DISCIPLINE", "Edit course discipline", EntityEnum.COURSE_DISCIPLINE)),
+     COURSE_DISCIPLINE_DELETE(PermissionFactory.build("DELETE_COURSE_DISCIPLINE", "Delete course discipline", EntityEnum.COURSE_DISCIPLINE)),
+
+     CLASSROOM_DISCIPLINE_VIEW(PermissionFactory.build("VIEW_CLASSROOM_DISCIPLINE", "View classroom discipline", EntityEnum.CLASSROOM_DISCIPLINE)),
+     CLASSROOM_DISCIPLINE_SAVE(PermissionFactory.build("SAVE_CLASSROOM_DISCIPLINE", "Save classroom discipline", EntityEnum.CLASSROOM_DISCIPLINE)),
+     CLASSROOM_DISCIPLINE_UPDATE(PermissionFactory.build("UPDATE_CLASSROOM_DISCIPLINE", "Edit classroom discipline", EntityEnum.CLASSROOM_DISCIPLINE)),
+     CLASSROOM_DISCIPLINE_DELETE(PermissionFactory.build("DELETE_CLASSROOM_DISCIPLINE", "Delete classroom discipline", EntityEnum.CLASSROOM_DISCIPLINE)),
 
      UNIVERSITY_ADDRESS_VIEW(PermissionFactory.build("VIEW_UNIVERSITY_ADDRESS", "View address of university", EntityEnum.UNIVERSITY_ADDRESS)),
      UNIVERSITY_ADDRESS_SAVE(PermissionFactory.build("SAVE_UNIVERSITY_ADDRESS", "Save address of university", EntityEnum.UNIVERSITY_ADDRESS)),

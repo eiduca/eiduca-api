@@ -30,7 +30,7 @@ class AddressServiceTest: ConcreteServiceTest<Address>() {
     lateinit var addressRepository: AddressRepository
 
     @BeforeEach
-    fun setUpAddress() {
+    fun setUp() {
         setUpConcrete(addressService, addressRepository, AddressCreate.ADDRESS_SAVE)
         val list = mutableListOf(model)
         val entities = PageImpl(list)
@@ -58,8 +58,7 @@ class AddressServiceTest: ConcreteServiceTest<Address>() {
     }
 
     @Test
-    @DisplayName("Find address by code when successful")
-    fun findByCode_WhenSuccessful() {
+    fun findByCode_ReturnObject_WhenSuccessful() {
         assertDoesNotThrow {
             val response = addressService.findByCode(model.code)
             assertEquals(response.code, model.code)
@@ -67,111 +66,92 @@ class AddressServiceTest: ConcreteServiceTest<Address>() {
     }
 
     @Test
-    @DisplayName("Find address by streetName when successful, return list")
     fun findByStreetName_ReturnList_WhenSuccessful() {
         AssertUtil.assert(addressService.findByStreetName(model.streetName))
     }
 
     @Test
-    @DisplayName("Find address by streetName when successful, return list pageable")
     fun findByStreetName_ReturnPage_WhenSuccessful() {
         AssertUtil.assert(addressService.findByStreetName(model.streetName, AssertUtil.PAGEABLE))
     }
 
     @Test
-    @DisplayName("Find address by houseNumber when successful, return list")
     fun findByHouseNumber_ReturnList_WhenSuccessful() {
         AssertUtil.assert(addressService.findByHouseNumber(model.houseNumber))
     }
 
     @Test
-    @DisplayName("Find address by houseNumber when successful, return list pageable")
     fun findByHouseNumber_ReturnPage_WhenSuccessful() {
         AssertUtil.assert(addressService.findByHouseNumber(model.houseNumber, AssertUtil.PAGEABLE))
     }
 
     @Test
-    @DisplayName("Find address by houseNumber when successful, return list")
     fun findByNeighborhood_ReturnList_WhenSuccessful() {
         AssertUtil.assert(addressService.findByNeighborhood(model.neighborhood))
     }
 
     @Test
-    @DisplayName("Find address by houseNumber when successful, return list pageable")
     fun findByNeighborhood_ReturnPage_WhenSuccessful() {
         AssertUtil.assert(addressService.findByNeighborhood(model.neighborhood, AssertUtil.PAGEABLE))
     }
 
     @Test
-    @DisplayName("Find address by city when successful, return list")
     fun findByCity_ReturnList_WhenSuccessful() {
         AssertUtil.assert(addressService.findByCity(model.city))
     }
 
     @Test
-    @DisplayName("Find address by city when successful, return list pageable")
     fun findByCity_ReturnPage_WhenSuccessful() {
         AssertUtil.assert(addressService.findByCity(model.city, AssertUtil.PAGEABLE))
     }
 
     @Test
-    @DisplayName("Find address by province when successful, return list")
     fun findByProvince_ReturnList_WhenSuccessful() {
         AssertUtil.assert(addressService.findByProvince(model.province))
     }
 
     @Test
-    @DisplayName("Find address by province when successful, return list pageable")
     fun findByProvince_ReturnPage_WhenSuccessful() {
         AssertUtil.assert(addressService.findByProvince(model.province, AssertUtil.PAGEABLE))
     }
 
     @Test
-    @DisplayName("Find address by country when successful, return list")
     fun findByCountry_ReturnList_WhenSuccessful() {
         AssertUtil.assert(addressService.findByCountry(model.country))
     }
 
     @Test
-    @DisplayName("Find address by country when successful, return list pageable")
     fun findByCountry_ReturnPage_WhenSuccessful() {
         AssertUtil.assert(addressService.findByCountry(model.country, AssertUtil.PAGEABLE))
     }
 
     @Test
-    @DisplayName("Find address by postalCode when successful, return list")
     fun findByPostalCode_ReturnList_WhenSuccessful() {
         AssertUtil.assert(addressService.findByPostalCode(model.postalCode))
     }
 
     @Test
-    @DisplayName("Find address by postalCode when successful, return list pageable")
     fun findByPostalCode_ReturnPage_WhenSuccessful() {
         AssertUtil.assert(addressService.findByPostalCode(model.postalCode, AssertUtil.PAGEABLE))
     }
 
     @Test
-    @DisplayName("Find address by latitude when successful, return list")
     fun findByLatitude_ReturnList_WhenSuccessful() {
         AssertUtil.assert(addressService.findByLatitude(model.latitude))
     }
 
     @Test
-    @DisplayName("Find address by latitude when successful, return list pageable")
     fun findByLatitude_ReturnPage_WhenSuccessful() {
         AssertUtil.assert(addressService.findByLatitude(model.latitude, AssertUtil.PAGEABLE))
     }
 
     @Test
-    @DisplayName("Find address by longitude when successful, return list")
     fun findByLongitude_ReturnList_WhenSuccessful() {
         AssertUtil.assert(addressService.findByLongitude(model.longitude))
     }
 
     @Test
-    @DisplayName("Find address by longitude when successful, return list pageable")
     fun findByLongitude_ReturnPage_WhenSuccessful() {
         AssertUtil.assert(addressService.findByLongitude(model.longitude, AssertUtil.PAGEABLE))
     }
-    
 }

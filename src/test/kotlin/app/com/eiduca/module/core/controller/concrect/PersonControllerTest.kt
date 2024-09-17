@@ -11,7 +11,6 @@ import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.extension.ExtendWith
 import org.mockito.InjectMocks
 import org.mockito.Mock
-import org.springframework.http.ResponseEntity
 import org.springframework.test.context.junit.jupiter.SpringExtension
 
 @ExtendWith(SpringExtension::class)
@@ -25,11 +24,11 @@ class PersonControllerTest: ConcreteControllerTest<Person, PersonRequest>() {
     lateinit var personService: PersonService
 
     @BeforeEach
-    fun setUpPerson() {
+    fun setUp() {
         setUpConcrete(personController, personService, PersonCreate.PERSON_SAVE)
     }
 
-    override fun createModel(): ResponseEntity<Person> = personController.save(model.toRequest())
+    override fun createModel() = personController.save(model.toRequest())
 
-    override fun updateModel(): ResponseEntity<Person> = personController.update(model.toRequest(), model.id)
+    override fun updateModel() = personController.update(model.toRequest(), model.id)
 }

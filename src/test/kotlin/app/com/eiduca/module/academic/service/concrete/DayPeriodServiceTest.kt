@@ -12,7 +12,7 @@ import org.mockito.Mock
 import org.springframework.test.context.junit.jupiter.SpringExtension
 
 @ExtendWith(SpringExtension::class)
-@DisplayName("Test of dayPeriod service")
+@DisplayName("Test of day periods service")
 class DayPeriodServiceTest: CodeNamedDescriptionServiceTest<DayPeriod>(){
     @InjectMocks
     lateinit var dayPeriodService: DayPeriodService
@@ -20,7 +20,7 @@ class DayPeriodServiceTest: CodeNamedDescriptionServiceTest<DayPeriod>(){
     lateinit var dayPeriodRepository: DayPeriodRepository
 
     @BeforeEach
-    fun setUpDayPeriod() {
+    fun setUp() {
         setUpCodeNamedDescription(dayPeriodService, dayPeriodRepository, DayPeriodCreate.DAY_PERIOD_SAVE)
     }
 }

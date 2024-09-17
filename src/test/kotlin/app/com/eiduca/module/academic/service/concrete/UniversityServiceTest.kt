@@ -19,15 +19,13 @@ import org.springframework.test.context.junit.jupiter.SpringExtension
 @ExtendWith(SpringExtension::class)
 @DisplayName("Test of university service")
 class UniversityServiceTest: CompanyServiceTest<University>(){
-
     @InjectMocks
     lateinit var universityService: UniversityService
-
     @Mock
     lateinit var universityRepository: UniversityRepository
 
     @BeforeEach
-    fun setUpUniversity() {
+    fun setUp() {
         setUpCompany(universityService, universityRepository, UniversityCreate.UNIVERSITY_SAVE)
         val list = mutableListOf(model)
         val page = PageImpl(list)

@@ -3,7 +3,6 @@ package app.com.eiduca.module.academic.integration.concrete
 import app.com.eiduca.annotation.EiducaTest
 import app.com.eiduca.module.academic.create.concrete.InstitutionCreate
 import app.com.eiduca.module.academic.model.concrete.Institution
-import app.com.eiduca.module.academic.request.concrete.InstitutionRequest
 import app.com.eiduca.module.academic.service.concrete.InstitutionService
 import app.com.eiduca.module.academic.service.concrete.UniversityService
 import app.com.eiduca.module.core.common.general.ConcreteControllerItTest
@@ -20,7 +19,7 @@ class InstitutionControllerIT (
     InstitutionCreate.INSTITUTION_SAVE,
     "institutions"
 ) {
-    override fun requestModel(): InstitutionRequest = model.toRequest()
+    override fun requestModel() = model.toRequest()
 
     override fun runner() {
         model.university = universityService.saveOrUpdate(model.university)

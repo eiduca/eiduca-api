@@ -9,6 +9,7 @@ import org.mockito.BDDMockito
 import org.springframework.data.domain.PageImpl
 import java.util.*
 
+@DisplayName("Test company service")
 abstract class CompanyServiceTest <T: CompanyModel>: ConcreteServiceTest<T>(){
 
     private lateinit var companyService: CompanyService<T>
@@ -39,8 +40,7 @@ abstract class CompanyServiceTest <T: CompanyModel>: ConcreteServiceTest<T>(){
     }
 
     @Test
-    @DisplayName("Find company by name when successful")
-    fun findByName_WhenSuccessful() {
+    fun findByName_ReturnObject_WhenSuccessful() {
         assertDoesNotThrow {
             val companySave = companyService.save(model)
             val companyFound = companyService.findByName(model.name)
@@ -49,8 +49,7 @@ abstract class CompanyServiceTest <T: CompanyModel>: ConcreteServiceTest<T>(){
     }
 
     @Test
-    @DisplayName("Find company by acronym when successful")
-    fun findByAcronym_WhenSuccessful() {
+    fun findByAcronym_ReturnObject_WhenSuccessful() {
         assertDoesNotThrow {
             val companySave = companyService.save(model)
             val companyFound = companyService.findByAcronym(model.acronym)
@@ -59,87 +58,74 @@ abstract class CompanyServiceTest <T: CompanyModel>: ConcreteServiceTest<T>(){
     }
 
     @Test
-    @DisplayName("Find company by email when successful, return list")
     fun findByEmail_ReturnList_WhenSuccessful() {
         companyService.save(model)
         AssertUtil.assert(companyService.findByEmail(model.email))
     }
 
     @Test
-    @DisplayName("Find company by email when successful, return list pageable")
     fun findByEmail_ReturnPage_WhenSuccessful() {
         companyService.save(model)
         AssertUtil.assert(companyService.findByEmail(model.email, AssertUtil.PAGEABLE))
     }
 
     @Test
-    @DisplayName("Find company by contact when successful, return list")
     fun findByContact_ReturnList_WhenSuccessful() {
         companyService.save(model)
         AssertUtil.assert(companyService.findByContact(model.contact))
     }
 
     @Test
-    @DisplayName("Find company by contact when successful, return list pageable")
     fun findByContact_ReturnPage_WhenSuccessful() {
         companyService.save(model)
         AssertUtil.assert(companyService.findByContact(model.contact, AssertUtil.PAGEABLE))
     }
 
     @Test
-    @DisplayName("Find company by website when successful, return list")
     fun findByWebsite_ReturnList_WhenSuccessful() {
         companyService.save(model)
         AssertUtil.assert(companyService.findByWebsite(model.website))
     }
 
     @Test
-    @DisplayName("Find company by website when successful, return list pageable")
     fun findByWebsite_ReturnPage_WhenSuccessful() {
         companyService.save(model)
         AssertUtil.assert(companyService.findByWebsite(model.website, AssertUtil.PAGEABLE))
     }
 
     @Test
-    @DisplayName("Find company by foundingDate when successful, return list")
     fun findByFoundingDate_ReturnList_WhenSuccessful() {
         companyService.save(model)
         AssertUtil.assert(companyService.findByFoundingDate(model.foundingDate))
     }
 
     @Test
-    @DisplayName("Find company by foundingDate when successful, return list pageable")
     fun findByFoundingDate_ReturnPage_WhenSuccessful() {
         companyService.save(model)
         AssertUtil.assert(companyService.findByFoundingDate(model.foundingDate, AssertUtil.PAGEABLE))
     }
 
     @Test
-    @DisplayName("Find company by latitude when successful, return list")
     fun findByLatitude_ReturnList_WhenSuccessful() {
         companyService.save(model)
         AssertUtil.assert(companyService.findByLatitude(model.latitude))
     }
 
     @Test
-    @DisplayName("Find company by latitude when successful, return list pageable")
     fun findByLatitude_ReturnPage_WhenSuccessful() {
         companyService.save(model)
         AssertUtil.assert(companyService.findByLatitude(model.latitude, AssertUtil.PAGEABLE))
     }
 
     @Test
-    @DisplayName("Find company by longitude when successful, return list")
     fun findByLongitude_ReturnList_WhenSuccessful() {
         companyService.save(model)
         AssertUtil.assert(companyService.findByLongitude(model.longitude))
     }
 
     @Test
-    @DisplayName("Find company by longitude when successful, return list pageable")
     fun findByLongitude_ReturnPage_WhenSuccessful() {
         companyService.save(model)
         AssertUtil.assert(companyService.findByLongitude(model.longitude, AssertUtil.PAGEABLE))
     }
-
 }

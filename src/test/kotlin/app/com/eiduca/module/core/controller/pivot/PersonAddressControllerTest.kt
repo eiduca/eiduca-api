@@ -10,7 +10,6 @@ import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.extension.ExtendWith
 import org.mockito.InjectMocks
 import org.mockito.Mock
-import org.springframework.http.ResponseEntity
 import org.springframework.test.context.junit.jupiter.SpringExtension
 
 @ExtendWith(SpringExtension::class)
@@ -26,7 +25,7 @@ class PersonAddressControllerTest: CommonControllerTest<PersonAddress, PersonAdd
         setUpCommon(personAddressController, personAddressService, PersonAddressCreate.PERSON_ADDRESS_SAVE)
     }
 
-    override fun createModel(): ResponseEntity<PersonAddress> = personAddressController.save(model.toRequest())
+    override fun createModel() = personAddressController.save(model.toRequest())
 
-    override fun updateModel(): ResponseEntity<PersonAddress> = personAddressController.update(model.toRequest(), model.id)
+    override fun updateModel() = personAddressController.update(model.toRequest(), model.id)
 }

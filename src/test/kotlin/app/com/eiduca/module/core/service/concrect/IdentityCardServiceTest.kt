@@ -17,19 +17,14 @@ import org.mockito.Mock
 import org.springframework.data.domain.PageImpl
 import org.springframework.test.context.junit.jupiter.SpringExtension
 import java.util.Optional
-import kotlin.test.assertEquals
-import kotlin.test.assertNotNull
 
 @ExtendWith(SpringExtension::class)
 @DisplayName("Test of identity card service")
 class IdentityCardServiceTest: ConcreteServiceTest<IdentityCard>() {
-
     @InjectMocks
     lateinit var identityCardService: IdentityCardService
-
     @Mock
     lateinit var identityCardRepository: IdentityCardRepository
-
     @Mock
     lateinit var personRepository: PersonRepository
 
@@ -58,115 +53,92 @@ class IdentityCardServiceTest: ConcreteServiceTest<IdentityCard>() {
     }
 
     @Test
-    @DisplayName("Find identity card by person when successful, list return")
-    fun findByCode_WhenSuccessful() {
+    fun findByCode_ReturnObject_WhenSuccessful() {
         identityCardService.save(model)
         AssertUtil.assert(identityCardService.findByCode(model.code))
     }
 
     @Test
-    @DisplayName("Find identity card by person when successful, list return")
     fun findByPerson_ReturnList_WhenSuccessful() {
         identityCardService.save(model)
         AssertUtil.assert(identityCardService.findByPerson(model.person))
     }
 
     @Test
-    @DisplayName("Find identity card by person when successful, list return pageable")
     fun findByPerson_ReturnPage_WhenSuccessful() {
         identityCardService.save(model)
         AssertUtil.assert(identityCardService.findByPerson(model.person, AssertUtil.PAGEABLE))
     }
 
     @Test
-    @DisplayName("Find identity card by residential when successful, list return")
     fun findByResidential_ReturnList_WhenSuccessful() {
         identityCardService.save(model)
         AssertUtil.assert(identityCardService.findByResidential(model.residential))
     }
 
     @Test
-    @DisplayName("Find identity card by residential when successful, list return pageable")
     fun findByResidential_ReturnPage_WhenSuccessful() {
         identityCardService.save(model)
         AssertUtil.assert(identityCardService.findByResidential(model.residential, AssertUtil.PAGEABLE))
     }
 
     @Test
-    @DisplayName("Find identity card by naturalFrom when successful, list return")
     fun findByNaturalFrom_ReturnList_WhenSuccessful() {
         identityCardService.save(model)
         AssertUtil.assert(identityCardService.findByNaturalFrom(model.naturalFrom))
     }
 
     @Test
-    @DisplayName("Find identity card by naturalFrom when successful, list return pageable")
     fun findByNaturalFrom_ReturnPage_WhenSuccessful() {
         identityCardService.save(model)
         AssertUtil.assert(identityCardService.findByNaturalFrom(model.naturalFrom, AssertUtil.PAGEABLE))
     }
 
     @Test
-    @DisplayName("Find identity card by emittedIn when successful, list return")
     fun findByEmittedFrom_ReturnList_WhenSuccessful() {
         identityCardService.save(model)
         AssertUtil.assert(identityCardService.findByEmittedFrom(model.emittedFrom))
     }
 
     @Test
-    @DisplayName("Find identity card by emittedIn when successful, list return pageable")
     fun findByEmittedFrom_ReturnPage_WhenSuccessful() {
         identityCardService.save(model)
         AssertUtil.assert(identityCardService.findByEmittedFrom(model.emittedFrom, AssertUtil.PAGEABLE))
     }
 
     @Test
-    @DisplayName("Find identity card by emittedAt when successful, list return")
     fun findByEmittedAt_ReturnList_WhenSuccessful() {
         identityCardService.save(model)
         AssertUtil.assert(identityCardService.findByEmittedAt(model.emittedAt))
     }
 
     @Test
-    @DisplayName("Find identity card by emittedAt when successful, list return pageable")
     fun findByEmittedAt_ReturnPage_WhenSuccessful() {
         identityCardService.save(model)
         AssertUtil.assert(identityCardService.findByEmittedAt(model.emittedAt, AssertUtil.PAGEABLE))
     }
 
     @Test
-    @DisplayName("Find identity card by validAt when successful, list return")
     fun findByValidAt_ReturnList_WhenSuccessful() {
         identityCardService.save(model)
         AssertUtil.assert(identityCardService.findByValidAt(model.validAt))
     }
 
     @Test
-    @DisplayName("Find identity card by validAt when successful, list return pageable")
     fun findByValidAt_ReturnPage_WhenSuccessful() {
         identityCardService.save(model)
         AssertUtil.assert(identityCardService.findByValidAt(model.validAt, AssertUtil.PAGEABLE))
     }
 
     @Test
-    @DisplayName("Find identity card by validAt when successful, list return")
     fun findByMaritalStatus_ReturnList_WhenSuccessful() {
         identityCardService.save(model)
         AssertUtil.assert(identityCardService.findByMaritalStatus(model.maritalStatus))
     }
 
     @Test
-    @DisplayName("Find identity card by validAt when successful, list return pageable")
     fun findByMaritalStatus_ReturnPage_WhenSuccessful() {
         identityCardService.save(model)
         AssertUtil.assert(identityCardService.findByMaritalStatus(model.maritalStatus, AssertUtil.PAGEABLE))
-    }
-
-    @Test
-    @DisplayName("Create or update identity card when successful")
-    fun saveOrUpdate_WhenSuccessful() {
-        val response = identityCardService.saveOrUpdate(model)
-        assertNotNull(response.id)
-        assertEquals(response, model)
     }
 }

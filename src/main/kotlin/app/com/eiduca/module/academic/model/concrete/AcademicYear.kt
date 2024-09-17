@@ -10,7 +10,7 @@ import jakarta.persistence.Table
 import java.time.LocalDate
 
 @Entity
-@Table(name ="tb_academic_year")
+@Table(name ="tb_academic_years")
 class AcademicYear(
     @Column(unique = true) var name: String,
     @Column(unique = true) var code: String,

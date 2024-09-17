@@ -5,13 +5,13 @@ import app.com.eiduca.module.core.util.AssertUtil
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 
+@DisplayName("Test data range repository")
 abstract class DataRangeRepositoryTest<T: DataRangeModel>(
     private val dataRangeRepository: DataRangeRepository<T>,
     model: T
 ): ConcreteRepositoryTest<T>(dataRangeRepository, model) {
 
     @Test
-    @DisplayName("Find dataRangeModel by startDate when successful, return list")
     fun findByStartDate_ReturnList_WhenSuccessful() {
         runner()
         persistModel()
@@ -19,7 +19,6 @@ abstract class DataRangeRepositoryTest<T: DataRangeModel>(
     }
 
     @Test
-    @DisplayName("Find dataRangeModel by startDate when successful, return list pageable")
     fun findByStartDate_ReturnPage_WhenSuccessful() {
         runner()
         persistModel()
@@ -27,7 +26,6 @@ abstract class DataRangeRepositoryTest<T: DataRangeModel>(
     }
 
     @Test
-    @DisplayName("Find dataRangeModel by endDate when successful, return list")
     fun findByEndDate_ReturnList_WhenSuccessful() {
         runner()
         persistModel()
@@ -35,7 +33,6 @@ abstract class DataRangeRepositoryTest<T: DataRangeModel>(
     }
 
     @Test
-    @DisplayName("Find dataRangeModel by endDate when successful, return list pageable")
     fun findByEndDate_ReturnPage_WhenSuccessful() {
         runner()
         persistModel()

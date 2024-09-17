@@ -22,8 +22,7 @@ class PersonAddressRepositoryTest(
 ){
 
     @Test
-    @DisplayName("Find address of person by person and address when successful")
-    fun findByPersonAndAddress_WhenSuccessful(){
+    fun findByPersonAndAddress_ReturnObject_WhenSuccessful(){
         runner()
         persistModel()
         personAddressRepository.findByPersonAndAddress(model.person, model.address).ifPresentOrElse(

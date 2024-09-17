@@ -18,7 +18,6 @@ class UniversityRepositoryTest(
 ): CompanyRepositoryTest<University>(universityRepository, UniversityCreate.UNIVERSITY_SAVE){
 
    @Test
-   @DisplayName("Find university by type when successful, return list")
    fun findByType_ReturnList_WhenSuccessful() {
       runner()
       persistModel()
@@ -26,16 +25,9 @@ class UniversityRepositoryTest(
    }
 
    @Test
-   @DisplayName("Find university by type when successful, return list pageable")
    fun findByType_ReturnPage_WhenSuccessful() {
       runner()
       persistModel()
       AssertUtil.assert(universityRepository.findByType(model.type, AssertUtil.PAGEABLE))
-   }
-
-   override fun runner() = universityRepository.deleteAll()
-
-   override fun persistModel(){
-      universityRepository.findByName(model.name).orElse(universityRepository.save(model))
    }
 }

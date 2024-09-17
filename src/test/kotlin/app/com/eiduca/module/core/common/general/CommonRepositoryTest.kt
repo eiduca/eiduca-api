@@ -8,13 +8,13 @@ import org.junit.jupiter.api.Test
 import org.springframework.transaction.annotation.Transactional
 
 @Transactional
+@DisplayName("Test common repository")
 abstract class CommonRepositoryTest <T: CommonModel>(
     var repository: CommonRepository<T>,
     var model: T
 ){
     @Test
-    @DisplayName("Find model by id when successful")
-    fun findById_WhenSuccessful() {
+    fun findById_ReturnObject_WhenSuccessful() {
         runner()
         persistModel()
         repository.findById(model.id).ifPresentOrElse(
@@ -24,16 +24,14 @@ abstract class CommonRepositoryTest <T: CommonModel>(
     }
 
     @Test
-    @DisplayName("List pageable of model when successful")
-    fun findByAll_WhenSuccessful() {
+    fun findByAll_ReturnPage_WhenSuccessful() {
         runner()
         persistModel()
         AssertUtil.assert(repository.findAll(AssertUtil.PAGEABLE))
     }
 
     @Test
-    @DisplayName("Create model  when successful")
-    fun save_WhenSuccessful(){
+    fun save_ReturnObject_WhenSuccessful(){
         runner()
         persistModel()
         assertNotNull(model.id)
@@ -41,8 +39,7 @@ abstract class CommonRepositoryTest <T: CommonModel>(
     }
 
     @Test
-    @DisplayName("Delete model by id when successful")
-    fun deleteById_WhenSuccessful() {
+    fun deleteById_ReturnVoid_WhenSuccessful() {
         runner()
         persistModel()
         repository.deleteById(model.id)
@@ -56,6 +53,7 @@ abstract class CommonRepositoryTest <T: CommonModel>(
     fun runner(){}
 }
 
+@DisplayName("Test concrete repository")
 abstract class ConcreteRepositoryTest <T: ConcreteModel>(
     repository: ConcreteRepository<T>,
     model: T,

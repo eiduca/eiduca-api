@@ -44,6 +44,9 @@ abstract class CommonModel(
 }
 
 @MappedSuperclass
+abstract class PivotModel() : CommonModel()
+
+@MappedSuperclass
 abstract class ConcreteModel(
     var deletedAt: LocalDateTime? = null,
     var deletedBy: String? = null,
@@ -58,4 +61,8 @@ abstract class ConcreteModel(
 }
 
 @MappedSuperclass
-abstract class PivotModel() : CommonModel()
+abstract class ConcretePivotModel(
+    deletedAt: LocalDateTime? = null,
+    deletedBy: String? = null,
+    registerType: RegisterType? = RegisterType.APPLICATION
+): ConcreteModel(deletedAt, deletedBy, registerType)

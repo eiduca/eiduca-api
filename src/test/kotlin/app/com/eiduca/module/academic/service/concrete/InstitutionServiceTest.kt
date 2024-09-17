@@ -21,10 +21,8 @@ import java.util.Optional
 @ExtendWith(SpringExtension::class)
 @DisplayName("Test of institution service")
 class InstitutionServiceTest: CompanyServiceTest<Institution>() {
-
     @InjectMocks
     lateinit var institutionService: InstitutionService
-
     @Mock
     lateinit var institutionRepository: InstitutionRepository
 
@@ -32,7 +30,7 @@ class InstitutionServiceTest: CompanyServiceTest<Institution>() {
     lateinit var universityRepository: UniversityRepository
 
     @BeforeEach
-    fun setUpInstitution() {
+    fun setUp() {
         setUpCompany(institutionService, institutionRepository, InstitutionCreate.INSTITUTION_SAVE)
         val list = mutableListOf(model)
         val page = PageImpl(list)

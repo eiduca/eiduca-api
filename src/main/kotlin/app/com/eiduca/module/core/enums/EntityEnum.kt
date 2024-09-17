@@ -20,11 +20,18 @@ enum class EntityEnum(
     PERSON_ADDRESS(PersonAddress::class),
 
     COURSE(Course::class),
+    CLASSROOM(Classroom::class),
     DAY_PERIOD(DayPeriod::class),
     DISCIPLINE(Discipline::class),
     UNIVERSITY(University::class),
     INSTITUTION(Institution::class),
     ACADEMIC_YEAR(AcademicYear::class),
+    ACADEMIC_PERIOD(AcademicPeriod::class),
+    CURRICULUM_YEAR(CurriculumYear::class),
+    COURSE_DISCIPLINE(CourseDiscipline::class),
+    REGIME_DISCIPLINE(RegimeDiscipline::class),
+    PROFILE_DISCIPLINE(ProfileDiscipline::class),
     UNIVERSITY_ADDRESS(UniversityAddress::class),
     INSTITUTION_ADDRESS(InstitutionAddress::class),
+    CLASSROOM_DISCIPLINE(ClassroomDiscipline::class),
 }

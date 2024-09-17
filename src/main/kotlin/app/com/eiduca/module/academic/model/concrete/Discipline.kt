@@ -17,4 +17,6 @@ class Discipline(
     constructor(): this("","",null)
 
     override fun toRequest(): DisciplineRequest = DisciplineRequest(code, name, description)
+
+    override fun toString(): String = "Discipline(${super.toString()})"
 }

@@ -5,17 +5,15 @@ import app.com.eiduca.module.core.exception.NotFoundException
 import app.com.eiduca.module.core.util.AssertUtil
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
-import org.springframework.transaction.annotation.Transactional
 
-@Transactional
+@DisplayName("Test codeNamedDescription repository")
 abstract class CodeNamedDescriptionRepositoryTest<T: CodeNamedDescriptionModel>(
     private val codeNamedDescriptionRepository: CodeNamedDescriptionRepository<T>,
     model: T,
 ): ConcreteRepositoryTest<T>(codeNamedDescriptionRepository, model) {
 
     @Test
-    @DisplayName("Find model[codeNamedDescription] by code when successful")
-    fun findByCode_WhenSuccessful() {
+    fun findByCode_ReturnObject_WhenSuccessful() {
         runner()
         persistModel()
         codeNamedDescriptionRepository.findByCode(model.code).ifPresentOrElse(
@@ -25,7 +23,6 @@ abstract class CodeNamedDescriptionRepositoryTest<T: CodeNamedDescriptionModel>(
     }
 
     @Test
-    @DisplayName("Find model[codeNamedDescription] by name when successful, return list")
     fun findByName_ReturnList_WhenSuccessful() {
         runner()
         persistModel()
@@ -33,7 +30,6 @@ abstract class CodeNamedDescriptionRepositoryTest<T: CodeNamedDescriptionModel>(
     }
 
     @Test
-    @DisplayName("Find model[codeNamedDescription] by name when successful, return list pageable")
     fun findByName_ReturnPage_WhenSuccessful() {
         runner()
         persistModel()
@@ -41,7 +37,6 @@ abstract class CodeNamedDescriptionRepositoryTest<T: CodeNamedDescriptionModel>(
     }
 
     @Test
-    @DisplayName("Find model[codeNamedDescription] by name when successful, return list")
     fun findByDescription_ReturnList_WhenSuccessful() {
         runner()
         persistModel()
@@ -49,7 +44,6 @@ abstract class CodeNamedDescriptionRepositoryTest<T: CodeNamedDescriptionModel>(
     }
 
     @Test
-    @DisplayName("Find model[codeNamedDescription] by name when successful, return list pageable")
     fun findByDescription_ReturnPage_WhenSuccessful() {
         runner()
         persistModel()
@@ -57,4 +51,8 @@ abstract class CodeNamedDescriptionRepositoryTest<T: CodeNamedDescriptionModel>(
     }
 
     override fun runner() = codeNamedDescriptionRepository.deleteAll()
+
+    override fun persistModel() {
+        model = codeNamedDescriptionRepository.findByCode(model.code).orElse(codeNamedDescriptionRepository.save(model))
+    }
 }

@@ -25,6 +25,8 @@ abstract class CodeNamedDescriptionModel(
     override fun hashCode(): Int = code.hashCode()
 
     override fun setToString(fields: String): String {
-        return super.setToString("code='$code', name='$name', description=$description")
+        return super.setToString("code='$code', name='$name', $fields, description=$description")
     }
+
+    override fun toString(): String = super.setToString("code='$code', name='$name', description=$description")
 }

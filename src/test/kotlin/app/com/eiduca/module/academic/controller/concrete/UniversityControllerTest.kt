@@ -10,7 +10,6 @@ import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.extension.ExtendWith
 import org.mockito.InjectMocks
 import org.mockito.Mock
-import org.springframework.http.ResponseEntity
 import org.springframework.test.context.junit.jupiter.SpringExtension
 
 @ExtendWith(SpringExtension::class)
@@ -26,7 +25,7 @@ class UniversityControllerTest: ConcreteControllerTest<University, UniversityReq
         setUpConcrete(universityController, universityService, UniversityCreate.UNIVERSITY_SAVE)
     }
 
-    override fun createModel(): ResponseEntity<University> = universityController.save(model.toRequest())
+    override fun createModel() = universityController.save(model.toRequest())
 
-    override fun updateModel(): ResponseEntity<University> = universityController.update(model.toRequest(), model.id)
+    override fun updateModel() = universityController.update(model.toRequest(), model.id)
 }

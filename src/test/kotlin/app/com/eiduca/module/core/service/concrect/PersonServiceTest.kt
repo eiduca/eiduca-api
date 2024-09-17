@@ -22,10 +22,8 @@ import kotlin.test.assertNotNull
 @ExtendWith(SpringExtension::class)
 @DisplayName("Test of person service")
 class PersonServiceTest: ConcreteServiceTest<Person>(){
-
     @InjectMocks
     lateinit var personService: PersonService
-
     @Mock
     lateinit var personRepository: PersonRepository
 
@@ -39,8 +37,7 @@ class PersonServiceTest: ConcreteServiceTest<Person>(){
     }
 
     @Test
-    @DisplayName("Find person by username when successful")
-    fun findByUsername_WhenSuccessful() {
+    fun findByUsername_ReturnObject_WhenSuccessful() {
         assertDoesNotThrow {
             val response = personService.findByUsername(model.username)
             assertEquals(response.username, model.username)
@@ -48,8 +45,7 @@ class PersonServiceTest: ConcreteServiceTest<Person>(){
     }
 
     @Test
-    @DisplayName("Find person by email when successful")
-    fun findByEmail_WhenSuccessful() {
+    fun findByEmail_ReturnObject_WhenSuccessful() {
         assertDoesNotThrow {
             val response = personService.findByEmail(model.email)
             assertEquals(response.email, model.email)
@@ -57,28 +53,16 @@ class PersonServiceTest: ConcreteServiceTest<Person>(){
     }
 
     @Test
-    @DisplayName("List pageable persons by gender when successful")
-    fun findByGender_WhenSuccessful() {
+    fun findByGender_ReturnPage_WhenSuccessful() {
         assertDoesNotThrow {
             AssertUtil.assert(personService.findByGender(model.gender, AssertUtil.PAGEABLE))
         }
     }
 
     @Test
-    @DisplayName("List pageable persons by birthday when successful")
-    fun findByBirthday_WhenSuccessful() {
+    fun findByBirthday_ReturnPage_WhenSuccessful() {
         assertDoesNotThrow {
             AssertUtil.assert(personService.findByBirthday(model.birthday, AssertUtil.PAGEABLE))
-        }
-    }
-
-    @Test
-    @DisplayName("Create or update person when successful")
-    fun saveOrUpdate_WhenSuccessful() {
-        assertDoesNotThrow {
-            val response = personService.saveOrUpdate(model)
-            assertNotNull(response.id)
-            assertEquals(response.identityCardNumber, model.identityCardNumber)
         }
     }
 }

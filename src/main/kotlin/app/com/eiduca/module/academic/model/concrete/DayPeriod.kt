@@ -7,7 +7,7 @@ import jakarta.persistence.Entity
 import jakarta.persistence.Table
 
 @Entity
-@Table(name ="tb_day_period")
+@Table(name ="tb_day_periods")
 class DayPeriod(
     code: String,
     name: String,
@@ -17,4 +17,6 @@ class DayPeriod(
     constructor(): this("","",null)
 
     override fun toRequest(): DayPeriodRequest = DayPeriodRequest(code, name, description)
+
+    override fun toString(): String = "DayPeriod(${super.toString()})"
 }

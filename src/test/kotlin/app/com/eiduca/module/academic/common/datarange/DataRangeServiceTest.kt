@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test
 import org.mockito.BDDMockito
 import org.springframework.data.domain.PageImpl
 
+@DisplayName("Test data range service")
 abstract class DataRangeServiceTest <T: DataRangeModel>: ConcreteServiceTest<T>(){
 
     private lateinit var dataRangeService: DataRangeService<T>
@@ -23,34 +24,29 @@ abstract class DataRangeServiceTest <T: DataRangeModel>: ConcreteServiceTest<T>(
 
         BDDMockito.`when`(dataRangeRepository.findByStartDate(model.startDate)).thenReturn(list)
         BDDMockito.`when`(dataRangeRepository.findByStartDate(model.startDate, AssertUtil.PAGEABLE)).thenReturn(page)
-
         BDDMockito.`when`(dataRangeRepository.findByEndDate(model.endDate)).thenReturn(list)
         BDDMockito.`when`(dataRangeRepository.findByEndDate(model.endDate, AssertUtil.PAGEABLE)).thenReturn(page)
     }
 
     @Test
-    @DisplayName("Find dataRangeModel by startDate when successful, return list")
     fun findByStartDate_ReturnList_WhenSuccessful() {
         dataRangeService.save(model)
         AssertUtil.assert(dataRangeService.findByStartDate(model.startDate))
     }
 
     @Test
-    @DisplayName("Find dataRangeModel by startDate when successful, return list pageable")
     fun findByStartDate_ReturnPage_WhenSuccessful() {
         dataRangeService.save(model)
         AssertUtil.assert(dataRangeService.findByStartDate(model.startDate, AssertUtil.PAGEABLE))
     }
 
     @Test
-    @DisplayName("Find dataRangeModel by endDate when successful, return list")
     fun findByEndDate_ReturnList_WhenSuccessful() {
         dataRangeService.save(model)
         AssertUtil.assert(dataRangeService.findByEndDate(model.endDate))
     }
 
     @Test
-    @DisplayName("Find dataRangeModel by endDate when successful, return list pageable")
     fun findByEndDate_ReturnPage_WhenSuccessful() {
         dataRangeService.save(model)
         AssertUtil.assert(dataRangeService.findByEndDate(model.endDate, AssertUtil.PAGEABLE))

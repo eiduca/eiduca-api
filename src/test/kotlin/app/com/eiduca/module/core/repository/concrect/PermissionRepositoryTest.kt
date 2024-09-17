@@ -17,14 +17,12 @@ class PermissionRepositoryTest(
     permissionRepository, PermissionCreate.PERMISSION_SAVE
 ){
     @Test
-    @DisplayName("Find permission by entity when successful, return list")
     fun findByEntity_ReturnList_WhenSuccessful() {
         persistModel()
         AssertUtil.assert(permissionRepository.findByEntity(model.entity))
     }
 
     @Test
-    @DisplayName("Find permission by entity when successful, return list pageable")
     fun findByEntity_ReturnPage_WhenSuccessful() {
         persistModel()
         AssertUtil.assert(permissionRepository.findByEntity(model.entity, AssertUtil.PAGEABLE))

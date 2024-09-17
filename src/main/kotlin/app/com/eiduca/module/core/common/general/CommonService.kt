@@ -56,6 +56,14 @@ abstract class ConcreteService<T: ConcreteModel> (
 
     override fun deleteIfExist(obj: T) = concreteRepository.findById(obj.id).ifPresent { hidden(it) }
 
+    fun destroyById(id: String) =  concreteRepository.delete(findById(id))
+
+    open fun destroy(obj: T) = concreteRepository.delete(obj)
+
+    open fun destroyAll() = concreteRepository.deleteAll()
+
+    open fun destroyIfExist(obj: T) = concreteRepository.delete(obj)
+
     protected fun hidden(entity: T){
         if(entity is IUniqueAttributeModifier) entity.updateUniqueAttributes()
         entity.deletedAt = LocalDateTime.now()

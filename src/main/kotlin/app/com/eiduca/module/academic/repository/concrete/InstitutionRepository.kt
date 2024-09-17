@@ -5,6 +5,7 @@ import app.com.eiduca.module.academic.enums.InstitutionType
 import app.com.eiduca.module.academic.model.concrete.Institution
 import app.com.eiduca.module.academic.model.concrete.University
 import app.com.eiduca.module.academic.query.InstitutionJPQL
+import app.com.eiduca.module.core.query.EntityJPQL
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
 import org.springframework.data.jpa.repository.Query
@@ -20,10 +21,10 @@ interface InstitutionRepository: CompanyRepository<Institution> {
     @Query(name = "ModelConcrete.findByType", countName = "ModelConcrete.findByTypeCount")
     fun findByType(type: InstitutionType, pageable: Pageable): Page<Institution>
 
-    @Query(name = InstitutionJPQL.FIND_ALL_UNIVERSITY)
+    @Query(name = EntityJPQL.FIND_ALL_UNIVERSITY)
     fun findByUniversity(university: University): List<Institution>
 
-    @Query(name = InstitutionJPQL.FIND_ALL_UNIVERSITY, countName = InstitutionJPQL.FIND_COUNT_UNIVERSITY)
+    @Query(name = EntityJPQL.FIND_ALL_UNIVERSITY, countName = EntityJPQL.FIND_COUNT_UNIVERSITY)
     fun findByUniversity(university: University, pageable: Pageable): Page<Institution>
 
     @Query(name = InstitutionJPQL.FIND_ONE_NAME_UNIVERSITY)

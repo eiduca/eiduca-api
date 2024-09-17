@@ -9,6 +9,7 @@ import java.util.*
 import kotlin.test.assertEquals
 import kotlin.test.assertNotNull
 
+@DisplayName("Test namedDescription service")
 abstract class NamedDescriptionServiceTest<T: NamedDescriptionModel>: ConcreteServiceTest<T>() {
 
     private lateinit var namedDescriptionService: NamedDescriptionService<T>
@@ -25,8 +26,7 @@ abstract class NamedDescriptionServiceTest<T: NamedDescriptionModel>: ConcreteSe
     }
 
     @Test
-    @DisplayName("Find namedDescription by name when successful")
-    fun findByName_WhenSuccessful() {
+    fun findByName_ReturnObject_WhenSuccessful() {
         assertDoesNotThrow {
             val response = namedDescriptionService.findByName(model.name)
             assertEquals(response.name, model.name)
@@ -34,21 +34,10 @@ abstract class NamedDescriptionServiceTest<T: NamedDescriptionModel>: ConcreteSe
     }
 
     @Test
-    @DisplayName("Find namedDescription by description when successful")
-    fun findByDescription_WhenSuccessful() {
+    fun findByDescription_ReturnObject_WhenSuccessful() {
         assertDoesNotThrow {
             val response = namedDescriptionService.findByDescription(model.description)
             assertEquals(response.description, model.description)
-        }
-    }
-
-    @Test
-    @DisplayName("Create or update namedDescription when successful")
-    fun saveOrUpdate_WhenSuccessful() {
-        assertDoesNotThrow {
-            val response = namedDescriptionService.saveOrUpdate(model)
-            assertNotNull(response.id)
-            assertEquals(response.name, model.name)
         }
     }
 }

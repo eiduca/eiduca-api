@@ -10,11 +10,10 @@ import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.extension.ExtendWith
 import org.mockito.InjectMocks
 import org.mockito.Mock
-import org.springframework.http.ResponseEntity
 import org.springframework.test.context.junit.jupiter.SpringExtension
 
 @ExtendWith(SpringExtension::class)
-@DisplayName("Test of dayPeriod controller")
+@DisplayName("Test of day periods controller")
 class DayPeriodControllerTest: ConcreteControllerTest<DayPeriod, DayPeriodRequest>() {
     @InjectMocks
     lateinit var dayPeriodController: DayPeriodController
@@ -26,7 +25,7 @@ class DayPeriodControllerTest: ConcreteControllerTest<DayPeriod, DayPeriodReques
         setUpConcrete(dayPeriodController, dayPeriodService, DayPeriodCreate.DAY_PERIOD_SAVE)
     }
 
-    override fun createModel(): ResponseEntity<DayPeriod> = dayPeriodController.save(model.toRequest())
+    override fun createModel() = dayPeriodController.save(model.toRequest())
 
-    override fun updateModel(): ResponseEntity<DayPeriod> = dayPeriodController.update(model.toRequest(), model.id)
+    override fun updateModel() = dayPeriodController.update(model.toRequest(), model.id)
 }
