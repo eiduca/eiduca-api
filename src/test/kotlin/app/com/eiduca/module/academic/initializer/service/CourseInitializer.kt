@@ -1,4 +1,4 @@
-package app.com.eiduca.module.academic.initializer
+package app.com.eiduca.module.academic.initializer.service
 
 import app.com.eiduca.module.academic.model.concrete.Course
 import app.com.eiduca.module.academic.service.concrete.*

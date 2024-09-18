@@ -15,6 +15,7 @@ class AcademicPeriod (
     name: String,
     description: String?
 ): OrderCodeNamedDescriptionModel(numb, code, name, description), IConvertRequest<AcademicPeriod> {
+
     constructor() : this(0, "","","")
 
     override fun toString(): String = "AcademicPeriod(${super.toString()})"

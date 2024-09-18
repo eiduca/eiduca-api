@@ -16,7 +16,7 @@ abstract class OrderCodeNamedDescriptionModel(
 
     override fun updateUniqueAttributes() {
         super.updateUniqueAttributes()
-        numb += 1000
+        numb += intNumb()
     }
 
     override fun setToString(fields: String): String {

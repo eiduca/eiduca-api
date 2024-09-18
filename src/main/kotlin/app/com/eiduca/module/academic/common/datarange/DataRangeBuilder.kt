@@ -17,5 +17,4 @@ abstract class DataRangeBuilder <T: DataRangeModel>: ConcreteBuilder<T>() {
         obj.startDate = startDate
         return  super.withDefaultValues(obj)
     }
-
 }

@@ -2,7 +2,7 @@ package app.com.eiduca.module.academic.integration.concrete
 
 import app.com.eiduca.annotation.EiducaTest
 import app.com.eiduca.module.academic.create.concrete.CourseDisciplineCreate
-import app.com.eiduca.module.academic.initializer.CourseDisciplineInitializer
+import app.com.eiduca.module.academic.initializer.service.CourseDisciplineInitializer
 import app.com.eiduca.module.academic.model.concrete.CourseDiscipline
 import app.com.eiduca.module.academic.service.concrete.*
 import app.com.eiduca.module.core.common.general.ConcreteControllerItTest
