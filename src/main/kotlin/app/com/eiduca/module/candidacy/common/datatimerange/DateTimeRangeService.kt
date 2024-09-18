@@ -15,4 +15,5 @@ abstract class DateTimeRangeService<T: DateTimeRangeModel> (
     fun findByEndDateTime(endDateTime: LocalDateTime) = dateTimeRangeRepository.findByEndDateTime(endDateTime)
 
     fun findByEndDateTime(endDateTime: LocalDateTime, pageable: Pageable) = dateTimeRangeRepository.findByEndDateTime(endDateTime, pageable)
+
 }

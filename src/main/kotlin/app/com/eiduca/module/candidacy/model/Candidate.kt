@@ -13,8 +13,9 @@ import jakarta.persistence.Table
 class Candidate(
     @ManyToOne var person: Person,
     @ManyToOne var course: Course,
+    @ManyToOne var calendarAccessExam: CalendarAccessExam
 ): ConcreteModel() {
 
-    constructor(): this(Person(), Course())
+    constructor(): this(Person(), Course(), CalendarAccessExam())
 
 }

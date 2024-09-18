@@ -6,6 +6,9 @@ import app.com.eiduca.module.core.model.concrect.*
 import app.com.eiduca.module.core.service.concrect.*
 import app.com.eiduca.module.academic.model.concrete.*
 import app.com.eiduca.module.academic.service.concrete.*
+import app.com.eiduca.module.candidacy.model.*
+import app.com.eiduca.module.candidacy.seed.CalendarAccessExamSeed
+import app.com.eiduca.module.candidacy.service.*
 import org.springframework.boot.ApplicationArguments
 import org.springframework.boot.ApplicationRunner
 import org.springframework.stereotype.Component
@@ -26,7 +29,8 @@ class EiducaRunner(
     val academicPeriodService: AcademicPeriodService,
     val curriculumYearService: CurriculumYearService,
     val regimeDisciplineService: RegimeDisciplineService,
-    val profileDisciplineService: ProfileDisciplineService
+    val profileDisciplineService: ProfileDisciplineService,
+    val calendarAccessExamService: CalendarAccessExamService,
 ): ApplicationRunner {
 
     override fun run(args: ApplicationArguments?) {
@@ -45,6 +49,7 @@ class EiducaRunner(
         val curriculumYears: MutableList<CurriculumYear> = mutableListOf()
         val regimeDisciplines: MutableList<RegimeDiscipline> = mutableListOf()
         val profileDisciplines: MutableList<ProfileDiscipline> = mutableListOf()
+        val calendarAccessExams: MutableList<CalendarAccessExam> = mutableListOf()
 
         /* Module core */
 
@@ -85,6 +90,11 @@ class EiducaRunner(
             it.classroom.dayPeriod = dayPeriods.first { d -> d.code == it.classroom.dayPeriod.code }
             it.classroom.course = courses.first { c -> c.code == it.classroom.course.code }
             classrooms.addLast(classroomService.saveOrUpdate(it.classroom))
+        }
+
+        CalendarAccessExamSeed.entries.forEach {
+            it.calendarAccessExam.academicYear = academicYears.first { a -> a.code == it.calendarAccessExam.academicYear.code }
+            calendarAccessExams.addLast(calendarAccessExamService.saveOrUpdate(it.calendarAccessExam))
         }
 
     }

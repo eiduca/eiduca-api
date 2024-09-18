@@ -11,16 +11,15 @@ import java.time.LocalDateTime
 @NoRepositoryBean
 interface DateTimeRangeRepository<T: DateTimeRangeModel>: ConcreteRepository<T> {
 
-    @Query(name = DateTimeRangeJPQL.FIND_ALL_START_DATETIME)
-    fun findByStartDateTime(startDateTime: LocalDateTime): List<T>
+        @Query(name = DateTimeRangeJPQL.FIND_ALL_START_DATETIME)
+        fun findByStartDateTime(startDateTime: LocalDateTime): List<T>
 
-    @Query(name = DateTimeRangeJPQL.FIND_ALL_START_DATETIME, countName = DateTimeRangeJPQL.FIND_COUNT_START_DATETIME)
-    fun findByStartDateTime(startDateTime: LocalDateTime, pageable: Pageable): Page<T>
+        @Query(name = DateTimeRangeJPQL.FIND_ALL_START_DATETIME, countName = DateTimeRangeJPQL.FIND_COUNT_START_DATETIME)
+        fun findByStartDateTime(startDateTime: LocalDateTime, pageable: Pageable): Page<T>
 
-    @Query(name = DateTimeRangeJPQL.FIND_ALL_END_DATETIME)
-    fun findByEndDateTime(endDateTime: LocalDateTime): List<T>
+        @Query(name = DateTimeRangeJPQL.FIND_ALL_END_DATETIME)
+        fun findByEndDateTime(endDateTime: LocalDateTime): List<T>
 
-    @Query(name = DateTimeRangeJPQL.FIND_ALL_END_DATETIME, countName = DateTimeRangeJPQL.FIND_COUNT_END_DATETIME)
-    fun findByEndDateTime(endDateTime: LocalDateTime, pageable: Pageable): Page<T>
-
+        @Query(name = DateTimeRangeJPQL.FIND_ALL_END_DATETIME, countName = DateTimeRangeJPQL.FIND_COUNT_END_DATETIME)
+        fun findByEndDateTime(endDateTime: LocalDateTime, pageable: Pageable): Page<T>
 }

@@ -1,6 +1,7 @@
 package app.com.eiduca.module.academic.repository.concrete
 
 import app.com.eiduca.module.academic.create.concrete.ClassroomCreate
+import app.com.eiduca.module.academic.initializer.manager.ClassroomEntityManager
 import app.com.eiduca.module.academic.model.concrete.Classroom
 import app.com.eiduca.module.core.common.general.ConcreteRepositoryTest
 import app.com.eiduca.module.core.exception.NotFoundException
@@ -97,14 +98,6 @@ class ClassroomRepositoryTest(
     }
 
     override fun persistModel() {
-        model.course.institution.university = testEntityManager.findOrSave(model.course.institution.university)
-        model.course.academicYear = testEntityManager.findOrSave(model.course.academicYear)
-        model.course.institution = testEntityManager.findOrSave(model.course.institution)
-        model.course = testEntityManager.findOrSave(model.course)
-
-        model.curriculumYear = testEntityManager.findOrSave(model.curriculumYear)
-        model.academicPeriod = testEntityManager.findOrSave(model.academicPeriod)
-        model.dayPeriod = testEntityManager.findOrSave(model.dayPeriod)
-        model = testEntityManager.persistFlushFind(model)
+        model = testEntityManager.persistFlushFind(ClassroomEntityManager.initializer(testEntityManager, model))
     }
 }

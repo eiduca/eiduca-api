@@ -37,25 +37,21 @@ class CourseServiceTest: CodeNamedDescriptionServiceTest<Course>() {
     }
 
     @Test
-    @DisplayName("Find course by institution when successful, return list")
     fun findByInstitution_ReturnList_WhenSuccessful() {
         AssertUtil.assert(courseService.findByInstitution(model.institution))
     }
 
     @Test
-    @DisplayName("Find course by institution when successful, return list pageable")
     fun findByInstitution_ReturnPage_WhenSuccessful() {
         AssertUtil.assert(courseService.findByInstitution(model.institution, AssertUtil.PAGEABLE))
     }
 
     @Test
-    @DisplayName("Find course by academicYear when successful, return list")
     fun findByAcademicYear_ReturnList_WhenSuccessful() {
         AssertUtil.assert(courseService.findByAcademicYear(model.academicYear))
     }
 
     @Test
-    @DisplayName("Find course by academicYear when successful, return list pageable")
     fun findByAcademicYear_ReturnPage_WhenSuccessful() {
         AssertUtil.assert(courseService.findByAcademicYear(model.academicYear, AssertUtil.PAGEABLE))
     }

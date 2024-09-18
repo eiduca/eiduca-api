@@ -26,8 +26,6 @@ class CourseDisciplineServiceTest: DisciplineRegimeProfileServiceTest<CourseDisc
     @BeforeEach
     fun setUp(){
         setUpDisciplineRegimeProfile(courseDisciplineService, courseDisciplineRepository, CourseDisciplineCreate.COURSE_DISCIPLINE_SAVE)
-        this.courseDisciplineRepository = courseDisciplineRepository
-        this.courseDisciplineService = courseDisciplineService
 
         val list = mutableListOf(model)
         val page = PageImpl(list)

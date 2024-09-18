@@ -22,7 +22,7 @@ class CalendarAccessExamService(
 
     fun findByAcademicYear(academicYear: AcademicYear, pageable: Pageable): Page<CalendarAccessExam> = calendarAccessExamRepository.findByAcademicYear(academicYear, pageable)
 
-    fun finByNumbAndAcademicYear(numb: Int, academicYear: AcademicYear): CalendarAccessExam{
+    fun findByNumbAndAcademicYear(numb: Int, academicYear: AcademicYear): CalendarAccessExam{
         return calendarAccessExamRepository.findByNumbAndAcademicYear(numb, academicYear).orElseThrow { NotFoundException("Not found CalendarAccessExam by numb, academicYear") }
     }
 

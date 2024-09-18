@@ -13,7 +13,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension
 
 @ExtendWith(SpringExtension::class)
 @DisplayName("Test of academic period service")
-class AcademicPeriodRequestServiceTest: OrderCodeNamedDescriptionServiceTest<AcademicPeriod>(){
+class AcademicPeriodServiceTest: OrderCodeNamedDescriptionServiceTest<AcademicPeriod>(){
     @InjectMocks
     lateinit var academicPeriodService: AcademicPeriodService
     @Mock

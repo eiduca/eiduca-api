@@ -2,6 +2,7 @@ package app.com.eiduca.module.academic.repository.concrete
 
 import app.com.eiduca.module.academic.common.named.CodeNamedDescriptionRepositoryTest
 import app.com.eiduca.module.academic.create.concrete.CourseCreate
+import app.com.eiduca.module.academic.initializer.manager.CourseEntityManager
 import app.com.eiduca.module.academic.model.concrete.Course
 import app.com.eiduca.module.core.util.AssertUtil
 import org.junit.jupiter.api.Test
@@ -47,10 +48,9 @@ class CourseRepositoryTest(
     }
 
     override fun persistModel() {
-        model.institution.university = testEntityManager.findOrSave(model.institution.university)
-        model.academicYear = testEntityManager.findOrSave(model.academicYear)
-        model.institution = testEntityManager.findOrSave(model.institution)
-        model = testEntityManager.persistFlushFind(model)
+        model = testEntityManager.persistFlushFind(
+            CourseEntityManager.initializer(testEntityManager, model)
+        )
     }
 }
 

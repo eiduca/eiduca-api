@@ -45,32 +45,27 @@ class InstitutionServiceTest: CompanyServiceTest<Institution>() {
     }
 
     @Test
-    @DisplayName("Find institution by type when successful, return list")
     fun findByType_ReturnList_WhenSuccessful() {
         AssertUtil.assert(institutionService.findByType(model.type))
     }
 
     @Test
-    @DisplayName("Find institution by type when successful, return list pageable")
     fun findByType_ReturnPage_WhenSuccessful() {
         AssertUtil.assert(institutionService.findByType(model.type, AssertUtil.PAGEABLE))
     }
 
     @Test
-    @DisplayName("Find institution by university when successful, return list")
     fun findByUniversity_ReturnList_WhenSuccessful() {
         AssertUtil.assert( institutionService.findByUniversity(model.university))
     }
 
     @Test
-    @DisplayName("Find institution by university when successful, return list pageable")
     fun findByUniversity_ReturnPage_WhenSuccessful() {
         AssertUtil.assert( institutionService.findByUniversity(model.university, AssertUtil.PAGEABLE))
     }
 
     @Test
-    @DisplayName("Find institution by name and university when successful")
-    fun findByNameAndUniversity_WhenSuccessful(){
+    fun findByNameAndUniversity_ReturnObject_WhenSuccessful(){
         AssertUtil.assert(institutionService.findByNameAndUniversity(model.name, model.university))
     }
 }

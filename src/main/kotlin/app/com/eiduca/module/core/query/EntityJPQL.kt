@@ -2,8 +2,11 @@ package app.com.eiduca.module.core.query
 
 class EntityJPQL {
     companion object{
+        const val FIND_ALL_PERSON = "SELECT e FROM #{#entityName} e WHERE person = :person AND deletedBy IS NULL AND deletedAt IS NULL"
+        const val FIND_COUNT_PERSON = "SELECT e FROM #{#entityName} e WHERE person = :person AND deletedBy IS NULL AND deletedAt IS NULL"
+
         const val FIND_ALL_UNIVERSITY = "SELECT e FROM #{#entityName} e WHERE university = :university AND deletedBy IS NULL AND deletedAt IS NULL"
-        const  val FIND_COUNT_UNIVERSITY = "SELECT e FROM #{#entityName} e WHERE university = :university AND deletedBy IS NULL AND deletedAt IS NULL"
+        const val FIND_COUNT_UNIVERSITY = "SELECT e FROM #{#entityName} e WHERE university = :university AND deletedBy IS NULL AND deletedAt IS NULL"
 
         const val FIND_ALL_COURSE = "SELECT e FROM #{#entityName} e WHERE course = :course AND deletedBy IS NULL AND deletedAt IS NULL"
         const val FIND_COUNT_COURSE = "SELECT count(*) FROM #{#entityName} e WHERE course = :course AND deletedBy IS NULL AND deletedAt IS NULL"

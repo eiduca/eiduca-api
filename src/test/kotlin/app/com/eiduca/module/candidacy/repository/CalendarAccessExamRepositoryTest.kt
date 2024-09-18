@@ -1,7 +1,7 @@
 package app.com.eiduca.module.candidacy.repository
 
 import app.com.eiduca.module.academic.common.datarange.DataRangeRepositoryTest
-import app.com.eiduca.module.candidacy.CalendarAccessExamCreate
+import app.com.eiduca.module.candidacy.create.CalendarAccessExamCreate
 import app.com.eiduca.module.candidacy.model.CalendarAccessExam
 import app.com.eiduca.module.core.exception.NotFoundException
 import app.com.eiduca.module.core.util.AssertUtil

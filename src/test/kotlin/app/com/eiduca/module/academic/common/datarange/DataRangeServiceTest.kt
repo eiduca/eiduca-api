@@ -30,25 +30,21 @@ abstract class DataRangeServiceTest <T: DataRangeModel>: ConcreteServiceTest<T>(
 
     @Test
     fun findByStartDate_ReturnList_WhenSuccessful() {
-        dataRangeService.save(model)
         AssertUtil.assert(dataRangeService.findByStartDate(model.startDate))
     }
 
     @Test
     fun findByStartDate_ReturnPage_WhenSuccessful() {
-        dataRangeService.save(model)
         AssertUtil.assert(dataRangeService.findByStartDate(model.startDate, AssertUtil.PAGEABLE))
     }
 
     @Test
     fun findByEndDate_ReturnList_WhenSuccessful() {
-        dataRangeService.save(model)
         AssertUtil.assert(dataRangeService.findByEndDate(model.endDate))
     }
 
     @Test
     fun findByEndDate_ReturnPage_WhenSuccessful() {
-        dataRangeService.save(model)
         AssertUtil.assert(dataRangeService.findByEndDate(model.endDate, AssertUtil.PAGEABLE))
     }
 }

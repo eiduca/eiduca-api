@@ -44,8 +44,7 @@ class ClassroomServiceTest: ConcreteServiceTest<Classroom>() {
     }
 
     @Test
-    @DisplayName("Find classroom by code when successful")
-    fun findByCode_WhenSuccessful() {
+    fun findByCode_ReturnObject_WhenSuccessful() {
         assertDoesNotThrow {
             val classroomSave = classroomService.findOrSave(model)
             val classroomFound = classroomService.findByCode(model.code)
@@ -54,56 +53,47 @@ class ClassroomServiceTest: ConcreteServiceTest<Classroom>() {
     }
 
     @Test
-    @DisplayName("Find classroom by course when successful, return list")
     fun findByCourse_ReturnList_WhenSuccessful() {
         AssertUtil.assert(classroomService.findByCourse(model.course))
     }
 
     @Test
-    @DisplayName("Find classroom by course when successful, return page")
     fun findByCourse_ReturnPage_WhenSuccessful() {
         AssertUtil.assert(classroomService.findByCourse(model.course, AssertUtil.PAGEABLE))
     }
 
     @Test
-    @DisplayName("Find classroom by day period when successful, return list")
     fun findByDayPeriod_ReturnList_WhenSuccessful() {
         AssertUtil.assert(classroomService.findByDayPeriod(model.dayPeriod))
     }
 
     @Test
-    @DisplayName("Find classroom by day period when successful, return page")
     fun findByDayPeriod_ReturnPage_WhenSuccessful() {
         AssertUtil.assert(classroomService.findByDayPeriod(model.dayPeriod, AssertUtil.PAGEABLE))
     }
 
     @Test
-    @DisplayName("Find classroom by academic period when successful, return list")
     fun findByAcademicPeriod_ReturnList_WhenSuccessful() {
         AssertUtil.assert(classroomService.findByAcademicPeriod(model.academicPeriod))
     }
 
     @Test
-    @DisplayName("Find classroom by academic period when successful, return page")
     fun findByAcademicPeriod_ReturnPage_WhenSuccessful() {
         AssertUtil.assert(classroomService.findByAcademicPeriod(model.academicPeriod, AssertUtil.PAGEABLE))
     }
 
     @Test
-    @DisplayName("Find classroom by curriculum year when successful, return list")
     fun findByCurriculumYear_ReturnList_WhenSuccessful() {
         AssertUtil.assert(classroomService.findByCurriculumYear(model.curriculumYear))
     }
 
     @Test
-    @DisplayName("Find classroom by curriculum year when successful, return page")
     fun findByCurriculumYear_ReturnPage_WhenSuccessful() {
         AssertUtil.assert(classroomService.findByCurriculumYear(model.curriculumYear, AssertUtil.PAGEABLE))
     }
 
     @Test
-    @DisplayName("Find classroom by course, dayPeriod, academicPeriod, curriculumYear when successful")
-    fun findByCourseAndDayPeriodAndAcademicPeriodAndCurriculumYear_WhenSuccessful() {
+    fun findByCourseAndDayPeriodAndAcademicPeriodAndCurriculumYear_ReturnClassroom_WhenSuccessful() {
         assertDoesNotThrow {
             val classroomSave = classroomService.findOrSave(model)
             val classroomFound = classroomService.findByCourseAndDayPeriodAndAcademicPeriodAndCurriculumYear(

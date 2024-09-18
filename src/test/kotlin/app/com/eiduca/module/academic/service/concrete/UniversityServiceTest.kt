@@ -34,14 +34,12 @@ class UniversityServiceTest: CompanyServiceTest<University>(){
     }
 
     @Test
-    @DisplayName("Find institution by type when successful, return list")
     fun findByType_ReturnList_WhenSuccessful() {
         universityService.save(model)
         AssertUtil.assert(universityService.findByType(model.type))
     }
 
     @Test
-    @DisplayName("Find institution by type when successful, return list pageable")
     fun findByType_ReturnPage_WhenSuccessful() {
         universityService.save(model)
         AssertUtil.assert(universityService.findByType(model.type, AssertUtil.PAGEABLE))
