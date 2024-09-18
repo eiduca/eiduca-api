@@ -114,4 +114,21 @@ import app.com.eiduca.module.core.model.concrect.Permission
      INSTITUTION_ADDRESS_SAVE(PermissionFactory.build("SAVE_INSTITUTION_ADDRESS", "Save address of institution", EntityEnum.INSTITUTION_ADDRESS)),
      INSTITUTION_ADDRESS_UPDATE(PermissionFactory.build("UPDATE_INSTITUTION_ADDRESS", "Edit address of institution", EntityEnum.INSTITUTION_ADDRESS)),
      INSTITUTION_ADDRESS_DELETE(PermissionFactory.build("DELETE_INSTITUTION_ADDRESS", "Delete address of institution", EntityEnum.INSTITUTION_ADDRESS)),
+
+     /*Candidate module*/
+
+     ACCESS_EXAM_VIEW(PermissionFactory.build("VIEW_ACCESS_EXAM", "View access exam", EntityEnum.ACCESS_EXAM)),
+     ACCESS_EXAM_SAVE(PermissionFactory.build("SAVE_ACCESS_EXAM", "Save access exam", EntityEnum.ACCESS_EXAM)),
+     ACCESS_EXAM_UPDATE(PermissionFactory.build("UPDATE_ACCESS_EXAM", "Edit access exam", EntityEnum.ACCESS_EXAM)),
+     ACCESS_EXAM_DELETE(PermissionFactory.build("DELETE_ACCESS_EXAM", "Delete access exam", EntityEnum.ACCESS_EXAM)),
+
+     CANDIDATE_VIEW(PermissionFactory.build("VIEW_CANDIDATE", "View candidate", EntityEnum.CANDIDATE)),
+     CANDIDATE_SAVE(PermissionFactory.build("SAVE_CANDIDATE", "Save candidate", EntityEnum.CANDIDATE)),
+     CANDIDATE_UPDATE(PermissionFactory.build("UPDATE_CANDIDATE", "Edit candidate", EntityEnum.CANDIDATE)),
+     CANDIDATE_DELETE(PermissionFactory.build("DELETE_CANDIDATE", "Delete candidate", EntityEnum.CANDIDATE)),
+
+     CALENDAR_ACCESS_EXAM_VIEW(PermissionFactory.build("VIEW_CALENDAR_ACCESS_EXAM", "View calendar access exam", EntityEnum.CALENDAR_ACCESS_EXAM)),
+     CALENDAR_ACCESS_EXAM_SAVE(PermissionFactory.build("SAVE_CALENDAR_ACCESS_EXAM", "Save calendar access exam", EntityEnum.CALENDAR_ACCESS_EXAM)),
+     CALENDAR_ACCESS_EXAM_UPDATE(PermissionFactory.build("UPDATE_CALENDAR_ACCESS_EXAM", "Edit calendar access exam", EntityEnum.CALENDAR_ACCESS_EXAM)),
+     CALENDAR_ACCESS_EXAM_DELETE(PermissionFactory.build("DELETE_CALENDAR_ACCESS_EXAM", "Delete calendar access exam", EntityEnum.CALENDAR_ACCESS_EXAM)),
  }
